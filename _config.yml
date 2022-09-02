@@ -17,6 +17,8 @@ plugins:
 header_pages:
 - index.md
 - about.md
+- contact.md
+- linux.md
 
 footer: 'so long, and thanks for all the bits'
 
