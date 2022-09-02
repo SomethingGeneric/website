@@ -1,4 +1,5 @@
 deploy:
-	sudo jekyll build -d /var/www/main
+	jekyll build
+	sudo cp _site/* /var/www/main/.
 test:
 	jekyll serve
