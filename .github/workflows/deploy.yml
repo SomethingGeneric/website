@@ -6,6 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: sudo apt-get install ruby-full build-essential zlib1g-dev -y
-    - run: gem install jekyll bundler
+    - run: sudo gem install jekyll bundler
     - run: bundle exec jekyll build
     - run: echo "done."
