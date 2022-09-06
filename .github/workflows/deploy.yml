@@ -9,4 +9,4 @@ jobs:
     - run: sudo gem install jekyll bundler
     - run: sudo bundle
     - run: bundle exec jekyll build
-    - run: echo "done."
+    - run: ls 
