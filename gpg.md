@@ -6,7 +6,7 @@ title: GPG
 
 My (public) GPG key `matt@getcryst.al` is:
 
-{% highlight %}
+```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mI0EYsWL6QEEAOlsnyqTiCoBXQ5HKg0CamYAs7S3kXkebrS9NOQ2/QBoK7mmkmYf
@@ -26,6 +26,6 @@ SWQcJMHHG/nl2SFydl+37cW0Ncvq3aY77Q1siV0jCwomm5EiPu8x8jrW7bZmDZEY
 vI4HQCVeHarytg6UwB6JCd4PweDVq0IxkBAgyutNDXAFaAahr1j6
 =1uDq
 -----END PGP PUBLIC KEY BLOCK-----
-{% endhighlight %}
+```
 
 Feel free to contact me using this key if you feel the need.
