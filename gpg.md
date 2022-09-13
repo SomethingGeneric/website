@@ -6,7 +6,7 @@ title: GPG
 
 My (public) GPG key `matt@getcryst.al` is:
 
-{% highlight bash %}
+{% highlight %}
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mI0EYsWL6QEEAOlsnyqTiCoBXQ5HKg0CamYAs7S3kXkebrS9NOQ2/QBoK7mmkmYf
