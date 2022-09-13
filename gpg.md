@@ -1,0 +1,30 @@
+---
+layout: page
+title: GPG
+#permalink: /gpg/
+---
+
+My (public) GPG key `matt@getcryst.al` is:
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mI0EYsWL6QEEAOlsnyqTiCoBXQ5HKg0CamYAs7S3kXkebrS9NOQ2/QBoK7mmkmYf
+dob4LexwWyJfpgDiNXqvB0qDGSP3zRtizP8BOoShHPEqj3QLcBlF9savbblXlXIV
+hwDojNCg2yi1D2/lT3mxWne8jqlNGMETFirsvHZ66yK13H8r/UkaU5UXABEBAAG0
+H01hdHQgQ29tcHRvbiA8bWF0dEBnZXRjcnlzdC5hbD6IzgQTAQgAOBYhBAI4VqB5
+tEoE2xBeeJuEIU1dUlcfBQJixYvpAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheA
+AAoJEJuEIU1dUlcftA4EALcRYYaInAMGT679k5xRurbNrmv7gIajNHns6/FNi80P
+ZZmx2RL3yy6oBQhbYel3DSjGFlrsXKeHAzcNC5GutHFLrFmgIO4PWF+oA4F7PCmd
+96UTpWFg+en86NdY6OCnjFxMvdKo3Z3OxAVLqdiSWyVztGK4fUmypQLCWtN7UXpC
+uI0EYsWL6QEEANLzOzoz8Z4yCgikhdcMjg0VX+tc2qpTA2a0DcVnp0+xPzItH/MH
+Gs9D/MpIeQ4rgYJ8mkTqS6uKDOFc+/zuD9fJCq0+AC9iCu7CcoCnRrNQ2YN+R8c3
+qaBHA/YWW640hgDq/JAAdw2bGe3hBVp3byyF4X1m2Qj2OiTSB/RcKNZ5ABEBAAGI
+tgQYAQgAIBYhBAI4VqB5tEoE2xBeeJuEIU1dUlcfBQJixYvpAhsMAAoJEJuEIU1d
+UlcfzlMEAItI007TZ2ELkeB/xjFhQj5KJkzNj0B+2q8fJmcYmFudij+snZXrEZRF
+SWQcJMHHG/nl2SFydl+37cW0Ncvq3aY77Q1siV0jCwomm5EiPu8x8jrW7bZmDZEY
+vI4HQCVeHarytg6UwB6JCd4PweDVq0IxkBAgyutNDXAFaAahr1j6
+=1uDq
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+Feel free to contact me using this key if you feel the need.

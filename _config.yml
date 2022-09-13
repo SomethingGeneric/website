@@ -19,6 +19,7 @@ header_pages:
 - about.md
 - contact.md
 - linux.md
+- gnupg.md
 
 footer: 'so long, and thanks for all the bits'
 
