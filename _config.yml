@@ -10,6 +10,7 @@ github_username:  jekyll
 theme: jekyll-theme-console
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 header_pages:
 - index.md
