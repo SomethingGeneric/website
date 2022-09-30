@@ -15,7 +15,10 @@ As an added Murphy's law moment, around the same time, we were due for a new ISO
 Through a combination of sources, most of which are so far buiried in my firefox history as to be inaccesible, I managed to eek out some request limits on nginx, which seems to have (mostly?) solved the issue.
 
 ## Fail2ban
-Fail2ban seems to be incredibly versatile, if you have the willpower to spend ages configuring it. Luckily for me, combining the default `nginx-limit-req` rule and `ufw` seemed to work _well enough._
+Fail2ban seems to be incredibly versatile, if you have the willpower to spend ages configuring it. Luckily for me, combining the default `nginx-limit-req` rule and `ufw` seemed to work _well enough._ (And by that, I mean that editing the nginx conf worked, and the rest was a disaster)
 
 ## Conclusion
 Please hurry up and fix mirroring, OSSPlanet!!
+
+## Next-Day Update
+We're setting up a strong VPS with our new OpenCollective money 👀, so even if we keep delaying OSSPlanet, this should still be resolved Soon:tm:
