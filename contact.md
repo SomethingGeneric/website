@@ -4,9 +4,9 @@ title: Contact
 #permalink: /contact/
 ---
 
-* Email:
+* Email: `matthew.compton[at]mymail[dot]champlain[dot]edu`, or:
 {% highlight bash %}
 for i in {getcryst.al,xhec.dev,tar.black}; do echo "matt@${i}"; done
 {% endhighlight %}
-[I don't have a Linux box](https://ssh.xhec.dev/?hostname=localhost&username=sandbox&password=c2FuZGJveA==&command=./scripts/emails)
-* Discord: `ratthew#2121`
+If you don't have a machine to run bash, see the Linux page above.
+* Discord: `ratthew#6909`

@@ -4,4 +4,4 @@ deploy:
 	bundle exec jekyll build
 	cp -rv _site/* ../main/.
 test:
-	jekyll serve
+	jekyll serve -H 0.0.0.0

@@ -4,6 +4,7 @@ layout: home
 ---
 # Matt C
 Welcome to my little corner of the internet!
+![Profile Picture](/me.jpg){: width="250"}
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
 * Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/Gamerbot2)
@@ -14,6 +15,7 @@ Welcome to my little corner of the internet!
 * Cybersecurity challenge sponsored by Montgomery College
 ## Where else am I?
 * [LinkedIn](https://www.linkedin.com/in/matt-compton-a06243220)
-* [Twitter](https://twitter.com/MattComp10)
+* [Resume](https://docs.google.com/document/d/1iIT9jZc3YPY7sGR_W9KAo65rap06ndWn42dKppscSJI/edit?usp=sharing)
 * [GitHub](https://github.com/SomethingGeneric)
+* [My Gitea](https://git.xhec.dev)
 ## Posts
