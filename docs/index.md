@@ -1,10 +1,8 @@
 ---
 title: Home
-layout: home
 ---
 # Matt C
 Welcome to my little corner of the internet!
-![Profile Picture](/me.jpg){: width="250"}
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
 * Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/Gamerbot2)
