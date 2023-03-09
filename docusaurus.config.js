@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Matt C',
   tagline: 'So long, and thanks for all the bits',
-  favicon: 'img/favicon.ico',
+  favicon: 'siseor.jpg',
 
   // Set the production url of your site here
   url: 'https://xhec.dev',
@@ -33,7 +33,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          exclude: ['onions.md'],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl:
@@ -62,14 +64,14 @@ const config = {
         title: 'Matt C',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'siseor.jpg',
         },
         items: [
           {
             type: 'doc',
             docId: 'index',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Pages',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           /*{

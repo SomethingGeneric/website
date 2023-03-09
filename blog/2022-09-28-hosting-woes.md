@@ -1,8 +1,8 @@
 ---
-layout: post
+slug: hosting-woes
 title:  "Hosting Woes"
-date:   2022-09-28 18:29:00 -0400
-categories: hosting nginx fail2ban linux
+authors: [matt]
+tags: [hosting, nginx, fail2ban, linux]
 ---
 # Irritations with Hosting
 As I'm sure you know (since I mentioned it on the site at least once), I help host Crystal Linux's infrastructure, using two different nodes. 

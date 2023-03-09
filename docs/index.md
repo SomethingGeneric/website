@@ -19,4 +19,3 @@ Welcome to my little corner of the internet!
 ### Note:
 If you'd like a target to poke around with, feel free to use this box.
 In the event that you find a serious security issue, please email me.
-## Posts

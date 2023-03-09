@@ -1,8 +1,8 @@
 ---
-layout: post
+slug: moving-to-jekyll
 title:  "Moving this site to Jekyll"
-date:   2022-09-02 18:29:00 -0400
-categories: jekyll website
+authors: [matt]
+tags: [jekyll, website]
 ---
 # Some thoughts on static(ish) sites
 I've always hated web-design. In fact, I actually paid a friend of mine, [Kris](https://github.com/kketg), to do the CSS and templates for my previous site.
