@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Contact
-#permalink: /contact/
 ---
 
 * Email: `matt[at]xhec[dot]dev`
