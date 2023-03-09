@@ -124,7 +124,7 @@ const config = {
             ],
           },
         ],*/
-        copyright: `Copyright © ${new Date().getFullYear()} Matt C. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Matt C. Built with a bit of Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
