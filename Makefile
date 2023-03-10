@@ -1,6 +1,6 @@
-deploy:
-	git pull
+build:
 	npm run build
+deploy: build
 	cp -rv build/* /var/www/xhecdev/.
 test:
-	npm run serve
+	npx docusaurus start

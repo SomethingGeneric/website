@@ -54,6 +54,29 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'homelab',
+        path: 'homelab',
+        routeBasePath: 'homelab',
+        sidebarPath: require.resolve('./sidebars.js'),
+        // ... other options
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'techjournals',
+        path: 'techjournals',
+        routeBasePath: 'techjournals',
+        sidebarPath: require.resolve('./sidebars.js'),
+        // ... other options
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -71,6 +94,20 @@ const config = {
             docId: 'index',
             position: 'left',
             label: 'Pages',
+          },
+          {
+            type: 'doc',
+            docId: 'index',
+            position: 'left',
+            label: 'Homelab',
+            docsPluginId: 'homelab',
+          },
+          {
+            type: 'doc',
+            docId: 'index',
+            position: 'left',
+            label: 'Tech Journals',
+            docsPluginId: 'techjournals',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           /*{
