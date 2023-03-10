@@ -1,7 +1,6 @@
 deploy:
 	git pull
-	bundle install
-	bundle exec jekyll build
-	cp -rv _site/* /var/www/xhecdev/.
+	npm run build
+	cp -rv build/* /var/www/xhecdev/.
 test:
-	jekyll serve -H 0.0.0.0
+	npm run serve
