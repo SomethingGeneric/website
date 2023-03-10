@@ -6,5 +6,5 @@ Website source code
 * `make test`
 
 ## Deploy
-* Edit `Makefile` to make sure cp goes to the correct directory
+* Edit `Makefile` to make sure `cp` goes to the correct directory
 * In my case, `sudo make deploy`
