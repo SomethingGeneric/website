@@ -5,7 +5,7 @@ title: Home
 Welcome to my little corner of the internet!
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
-* Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/Gamerbot2)
+* Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/GamerbotAgain)
 * 13ft, a non-paywalled version of 12ft.io. Find it [here](https://xhec.dev/13ft.html)
 * Many others on my [GitHub](https://github.com/SomethingGeneric)
 ## Technology-related Events
