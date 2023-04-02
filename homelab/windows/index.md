@@ -1,1 +1,0 @@
-# I'm not insane, so I don't run any Windows Servers.
