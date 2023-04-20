@@ -49,3 +49,12 @@ R1(config-subif)#ip address 192.168.20.254 255.255.255.0
 ```
 
 Borrowed from [https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick](https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick)
+
+**Static Routing**
+```
+switch# configure terminal
+switch(config)#
+switch(config)# ip route 192.0.2.0/8 ethernet 1/2 192.0.2.4
+switch(config)# show ip static-route
+switch(config)# copy running-config startup-config # save config for next reboot
+```
