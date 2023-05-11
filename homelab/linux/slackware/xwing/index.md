@@ -1,5 +1,5 @@
 # xwing
-This is my main laptop, an LG Gram 14", with a 10th gen i7 (I forget what year. 2020 maybe?)
+This is my main laptop, (but it's not running Slack anymore), an LG Gram 14", with a 10th gen i7 (I forget what year. 2020 maybe?)
 
 ## Install steps
 * I don't remember exactly what I selected, I believe it was "terse"
