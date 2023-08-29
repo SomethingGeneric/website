@@ -15,7 +15,7 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /website
+          cd /root/website
           git pull
           make deploy
 
