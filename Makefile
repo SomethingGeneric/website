@@ -1,7 +1,7 @@
 setup:
-	npm i -g docusaurus
+	yarn install --frozen-lockfil
 build:
-	npm run build
+	yarn build
 deploy: build
 	cp -rv build/* /var/www/xhecdev/.
 test:
