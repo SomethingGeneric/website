@@ -1,4 +1,4 @@
-name: Build Website
+name: Build and Deploy the Website
 
 on: [push]
 
@@ -7,23 +7,15 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - name: Get repo
-      uses: actions/checkout@v3
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: npm
-    - name: Do build
-      run: |
-        make setup build
-        ls -la build/
-    - name: Deploy
-      uses: appleboy/scp-action@v0.1.4
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        source: "build/*"
-        target: /var/www/xhecdev/.
+        script: |
+          cd /website
+          git pull
+          make deploy
+

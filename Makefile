@@ -1,6 +1,6 @@
 setup:
 	npm ci
-build:
+build: setup
 	npm run build
 deploy: build
 	cp -rv build/* /var/www/xhecdev/.

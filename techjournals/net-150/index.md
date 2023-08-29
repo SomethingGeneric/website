@@ -1,2 +1,2 @@
-# NET 150
+# NET 150 - Network Fundamentals
 

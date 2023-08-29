@@ -1,4 +1,4 @@
-# SEC 110
+# SEC 110 - Cybersecurity Fundamentals
 
 Glossary
 
