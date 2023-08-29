@@ -1,6 +1,9 @@
 name: Build and Deploy the Website
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   build:
@@ -16,6 +19,6 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /root/website
-          git pull
+          git checkout main
           make deploy
 
