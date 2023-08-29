@@ -1,7 +1,7 @@
 setup:
-	yarn install --frozen-lockfil
+	npm ci
 build:
-	yarn build
+	npm run build
 deploy: build
 	cp -rv build/* /var/www/xhecdev/.
 test:
