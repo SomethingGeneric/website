@@ -15,7 +15,7 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - name: Do build
-      run: npm run build
+      run: make setup build
     - name: Deploy
       uses: appleboy/scp-action@v0.1.4
       with:
