@@ -19,3 +19,8 @@
 ## Deliverable 1
 ![image](https://github.com/SomethingGeneric/website/assets/12242178/1a671f3a-fcbe-4d79-a4f1-1ac3383f079f)
 
+## Deliverable 2
+![image](https://github.com/SomethingGeneric/website/assets/12242178/17bbc472-c226-41fe-959a-6cd920278b11)
+
+## Deliverable 3
+![image](https://github.com/SomethingGeneric/website/assets/12242178/648d2cc5-315c-4351-b702-66e1823be142)
