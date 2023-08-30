@@ -14,8 +14,10 @@
 
 
 ## PfSense Documentation
-* THIS TRIPPED ME UP, disable if it's configured by the first-setup wizard: ![image](https://github.com/SomethingGeneric/website/assets/12242178/1125d355-6155-4782-9ed3-f6fc9813bfc9)
-* Interfaces: ![image](https://github.com/SomethingGeneric/website/assets/12242178/46f643f5-3ab1-44c4-a273-6f0f439c7a43)
+* THIS TRIPPED ME UP, disable if it's configured by the first-setup wizard
+    ![image](https://github.com/SomethingGeneric/website/assets/12242178/1125d355-6155-4782-9ed3-f6fc9813bfc9)
+* Interfaces:
+    ![image](https://github.com/SomethingGeneric/website/assets/12242178/46f643f5-3ab1-44c4-a273-6f0f439c7a43)
 
 
 
