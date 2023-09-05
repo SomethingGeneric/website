@@ -1,6 +1,10 @@
 name: Test build of website
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - 'experiment'
+  pull_request:
 
 jobs:
   tbuild:
