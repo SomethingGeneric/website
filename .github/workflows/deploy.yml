@@ -21,4 +21,5 @@ jobs:
           cd /root/website
           git checkout main
           make deploy
+          systemctl restart nginx
 
