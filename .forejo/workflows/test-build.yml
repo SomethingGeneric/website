@@ -1,6 +1,6 @@
 name: Test build of website
 run-name: Goober thig idk
-on: [push, pull_request]
+on: [push]
 jobs:
   tbuild:
     runs-on: debian
