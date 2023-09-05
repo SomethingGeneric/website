@@ -5,7 +5,7 @@ The `ad01` preconfigured machine didn't boot, so I followed the regedit instruct
 And afterwards it booted.
 
 ## IP Setup for ad01
-![IP Config windows for ad01](image)
+![IP Config windows for ad01](image.png)
 
 And the details that were set:
 ```
