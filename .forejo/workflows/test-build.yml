@@ -3,7 +3,7 @@ run-name: Goober thig idk
 on: [push]
 jobs:
   tbuild:
-    runs-on: debian
+    runs-on: "debian"
     steps:
     - name: Check out code
       uses: actions/checkout@v3
