@@ -26,7 +26,7 @@ deploy-job:
     variables: true
   script:
     - mkdir ~/.ssh
-    - cp $SECRET_SSH_KEY > ~/.ssh/id_rsa.pub
+    - cp $SECRET_SSH_KEY ~/.ssh/id_rsa.pub
     - apt update && apt install rsync -y
     - echo Pushing to $SSH_HOST at $DEPLOY_PATH
     - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
