@@ -24,15 +24,13 @@ deploy-job:
   stage: deploy
   inherit:
     variables: true
+  before_script:
+    - 'which ssh-agent || ( apt-get install -qq -y openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(cat "$SECRET_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - mkdir ~/.ssh
-    - echo "Creating SSH key"
-    - |
-      cat >> ~/.ssh/config << EOF
-      Host *
-        StrictHostKeyChecking no
-      EOF
-    - cp $SECRET_SSH_KEY ~/.ssh/id_rsa.pub
     - echo "Installing rsync"
     - apt update && apt install rsync -y
     - echo "Pushing to $SSH_HOST at $DEPLOY_PATH"
