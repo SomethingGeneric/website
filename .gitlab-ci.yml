@@ -5,7 +5,7 @@ stages:          # List of stages for jobs, and their order of execution
   - deploy
 
 variables: # goofy thing where you have to manually inherit secrets/variables from the UI
-  SSH_KEY: $SSH_KEY
+  SSH_KEY: $SECRET_SSH_KEY
   SSH_HOST: "www.xhec.dev"
   SSH_USER: "root"
   DEPLOY_PATH: "/var/www/xhecdev/"
@@ -26,7 +26,7 @@ deploy-job:
     variables: true
   script:
     - mkdir ~/.ssh
-    - echo $SSH_KEY > ~/.ssh/id_rsa.pub
+    - cp $SECRET_SSH_KEY > ~/.ssh/id_rsa.pub
     - apt update && apt install rsync -y
     - echo Pushing to $SSH_HOST at $DEPLOY_PATH
     - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
