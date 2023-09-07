@@ -19,7 +19,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /root/website
+          git pull
           git checkout main
+          git pull
           make deploy
           systemctl restart nginx
 
