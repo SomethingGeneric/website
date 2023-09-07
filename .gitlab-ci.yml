@@ -30,8 +30,9 @@ deploy-job:
   #  - ssh-add <(cat "$SECRET_SSH_KEY")
     - mkdir -p ~/.ssh
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - cp $SECRET_SSH_KEY ~/.ssh/id_rsa
   script:
     - echo "Installing rsync"
     - apt update && apt install rsync -y
     - echo "Pushing to $SSH_HOST at $DEPLOY_PATH"
-    - echo "$SECRET_SSH_KEY" | rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
+    - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
