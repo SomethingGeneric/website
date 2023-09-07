@@ -1,3 +1,6 @@
+# This repo has moved to https://gitlab.mattcompton.dev/matt/website
+
+-----------------------
 # website
 Website source code
 
