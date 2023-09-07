@@ -17,6 +17,7 @@ build-job:       # This job runs in the build stage, which runs first.
 deploy-job:
   stage: deploy
   script:
-    - echo $SSH_KEY > .ssh/id_rsa.pub
+    - mkdir ~/.ssh
+    - echo $SSH_KEY > ~/.ssh/id_rsa.pub
     - apt update && apt install rsync -y
     - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
