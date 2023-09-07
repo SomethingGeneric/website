@@ -4,6 +4,12 @@ stages:          # List of stages for jobs, and their order of execution
   - build
   - deploy
 
+variables: # goofy thing where you have to manually inherit secrets/variables from the UI
+  - SSH_KEY = $SSH_KEY
+  - SSH_HOST = $SSH_HOST
+  - SSH_USER = $SSH_USER
+  - DEPLOY_PATH = $DEPLOY_PATH
+
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   artifacts: 
