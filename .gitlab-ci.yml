@@ -31,6 +31,7 @@ deploy-job:
     - mkdir -p ~/.ssh
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - cp $SECRET_SSH_KEY ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
   script:
     - echo "Installing rsync"
     - apt update && apt install rsync -y
