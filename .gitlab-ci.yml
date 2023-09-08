@@ -1,32 +1,38 @@
-# This file is a template, and might need editing before it works on your project.
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
-#
-# You can copy and paste this template into a new `.gitlab-ci.yml` file.
-# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
-#
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/ee/development/cicd/templates.html
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
-
-image: node:18
+image: node:18-bookworm
 
 stages:          # List of stages for jobs, and their order of execution
   - build
+  - deploy
+
+variables: # goofy thing where you have to manually inherit secrets/variables from the UI
+  SSH_KEY: $SECRET_SSH_KEY
+  SSH_HOST: "www.xhec.dev"
+  SSH_USER: "root"
+  DEPLOY_PATH: "/var/www/xhecdev/"
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
-  artifacts: 
+  artifacts:
     paths: 
         - build/
   script:
-    - echo "Compiling the code..."
+    - echo "Running build"
     - make build
-    - echo "Compile complete."
+    - echo "Build complete."
+
+deploy-job:
+  stage: deploy
+  only:
+    - main
+  inherit:
+    variables: true
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - cp $SECRET_SSH_KEY ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+  script:
+    - echo "Installing rsync"
+    - apt update && apt install rsync -y
+    - echo "Pushing to $SSH_HOST at $DEPLOY_PATH"
+    - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
