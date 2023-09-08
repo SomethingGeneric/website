@@ -16,9 +16,9 @@ build-job:       # This job runs in the build stage, which runs first.
     paths: 
         - build/
   script:
-    - echo "Compiling the code..."
+    - echo "Running build"
     - make build
-    - echo "Compile complete."
+    - echo "Build complete."
 
 deploy-job:
   stage: deploy
