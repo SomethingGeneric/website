@@ -1,4 +1,4 @@
-# "Lab": Telnet, NC, cURL, HTTP
+# "Lab": 2.2: Telnet, NC, cURL, HTTP
 
 ## Part 1: telnet
 * Command: `telnet localhost 8008`
