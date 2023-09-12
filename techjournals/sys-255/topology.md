@@ -10,6 +10,6 @@
 ```mermaid
 graph TD;
     fw01-->ad01;
-    fw01-->dhcp01;
     ad01-->wks01;
+    ad01-->dhcp01;
 ```
