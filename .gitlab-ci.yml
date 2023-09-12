@@ -41,6 +41,7 @@ deploy-job:
 create_merge_request:
   stage: deploy
   before_script:
+    - apt-get update && apt-get install sudo -y
     - curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | sudo bash
     - echo "export GITLAB_TOKEN=$GLAB_TOKEN" >> ~/.bashrc
     - echo "export GLAB_HOST=https://gitlab.mattcompton.dev" >> ~/.bashrc
