@@ -1,6 +1,6 @@
 # Lab 03 - Linux
 
-## Some of the items in here involved editing my (CentOS Reference)[/techjournals/centos-commands.md] page.
+## Some of the items in here involved editing my [CentOS Reference](/techjournals/centos-commands.md) page.
 
 ## Setting up the ethernet interface
 Using `nmtui` command, set the network interface `ens192` to the following:
