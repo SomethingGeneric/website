@@ -9,6 +9,7 @@ variables: # goofy thing where you have to manually inherit secrets/variables fr
   SSH_HOST: "www.xhec.dev"
   SSH_USER: "root"
   DEPLOY_PATH: "/var/www/xhecdev/"
+  GLAB_TOKEN: $GLAB_TOKEN
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -36,3 +37,22 @@ deploy-job:
     - apt update && apt install rsync -y
     - echo "Pushing to $SSH_HOST at $DEPLOY_PATH"
     - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
+
+create_merge_request:
+  stage: deploy
+  before_script:
+    - apt-get update && apt-get install sudo -y
+    - curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | sudo bash
+    - echo "export GITLAB_TOKEN=$GLAB_TOKEN" >> ~/.bashrc
+    - echo "export GLAB_HOST=https://gitlab.mattcompton.dev" >> ~/.bashrc
+    - source ~/.bashrc
+  script:
+    - |
+      if git diff --quiet main...HEAD; then
+        echo "No changes relative to main branch. Skipping merge request creation."
+      else
+        echo "Changes detected. Creating merge request."
+        glab mr create -s experiment -t main -t "Automatic merge request from CI" -d "This merge request was automatically created by the CI pipeline because changes were detected relative to the main branch."
+      fi
+  only:
+    - experiment

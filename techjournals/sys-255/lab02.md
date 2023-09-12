@@ -1,4 +1,4 @@
-# Lab 02
+# Lab 02 - AD and DNS
 
 ## Pre-Setup:
 The `ad01` preconfigured machine didn't boot, so I followed the regedit instructions in this guide: https://woshub.com/windows-install-error-computer-restarted-unexpectedly/
