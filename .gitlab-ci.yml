@@ -43,9 +43,7 @@ create_merge_request:
   before_script:
     - apt-get update && apt-get install sudo -y
     - curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | sudo bash
-    - echo "export GITLAB_TOKEN=$GLAB_TOKEN" >> ~/.bashrc
-    - echo "export GLAB_HOST=https://gitlab.mattcompton.dev" >> ~/.bashrc
-    - source ~/.bashrc
+    - glab auth login -h "https://gitlab.mattcompton.dev" -t "$GLAB_TOKEN"
   script:
     - |
       if git diff --quiet main...HEAD; then
