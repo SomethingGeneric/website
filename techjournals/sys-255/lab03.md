@@ -12,6 +12,11 @@ Using `nmtui` command, set the network interface `ens192` to the following:
 
 Outside of the interface, set the hostname to `dhcp01-matt`
 
+### Screencaps of NMTUI
+1. ![nmtui main page](/lab03_nmtui_1.png)
+2. ![nmtui interface list](/lab03_nmtui_2.png)
+3. ![nmtui config for ens192](/lab03_nmtui_3.png)
+
 ## Adding a new user, and setting them as a wheel member
 * `adduser matt` (OR `useradd -m matt`)
 * `passwd matt`
