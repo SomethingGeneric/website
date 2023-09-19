@@ -1,4 +1,4 @@
-# CentOS Combined Reference
+# CentOS 7 Combined Reference
 (Useful for SEC260 and SYS255)
 
 ## From SEC 260
@@ -20,6 +20,8 @@
 * `passwd <username>` - Set the password for a user
 * `usermod -aG wheel <username>` - Add a user to the wheel group (for more options see `usermod --help` or `man usermod`)
 * `history | head -n 10` - Show the first 10 entries 
+* `systemctl start ...` - Start a service (like `dhcpd` or `sshd`)
+* `systemctl enable ...` - Enable a service to auto-start on boot
 
 ## Manual Page Tags
 * `man hier` - Show the manual page for the filesystem layout
