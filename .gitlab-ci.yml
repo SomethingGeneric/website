@@ -38,19 +38,21 @@ deploy-job:
     - echo "Pushing to $SSH_HOST at $DEPLOY_PATH"
     - rsync -avc build/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH/.
 
-create_merge_request:
-  stage: deploy
-  before_script:
-    - apt-get update && apt-get install sudo -y
-    - curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | sudo bash
-    - glab auth login -h "gitlab.mattcompton.dev" -t "$GLAB_TOKEN"
-  script:
-    - |
-      if git diff --quiet main...HEAD; then
-        echo "No changes relative to main branch. Skipping merge request creation."
-      else
-        echo "Changes detected. Creating merge request."
-        glab mr create -s experiment -t main -t "Automatic merge request from CI" -d "This merge request was automatically created by the CI pipeline because changes were detected relative to the main branch."
-      fi
-  only:
-    - experiment
+############
+# create_merge_request:
+#   stage: deploy
+#   before_script:
+#     - apt-get update && apt-get install sudo -y
+#     - curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | sudo bash
+#     - glab auth login -h "gitlab.mattcompton.dev" -t "$GLAB_TOKEN"
+#   script:
+#     - |
+#       if git diff --quiet main...HEAD; then
+#         echo "No changes relative to main branch. Skipping merge request creation."
+#       else
+#         echo "Changes detected. Creating merge request."
+#         glab mr create -s experiment -t main -t "Automatic merge request from CI" -d "This merge request was automatically created by the CI pipeline because changes were detected relative to the main branch."
+#       fi
+#   only:
+#     - experiment
+############
