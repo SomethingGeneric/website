@@ -8,7 +8,6 @@
     * `firewall-cmd --reload` - Reload config to apply changes
     * `firewall-cmd --query-port=80/tcp` - Query if port 80 is open
 * `ip addr` - Show interface ip addresses
-* `yum install ...` - Package manager
 * `vi` - Silly editor
 * `nano` - Slightly less silly editor
 * `systemctl restart ...` - Restart a running service (like `httpd`, or `sshd`)
@@ -25,3 +24,11 @@
 
 ## Manual Page Tags
 * `man hier` - Show the manual page for the filesystem layout
+
+## Package Commands:
+* `yum install ...` - Install package
+* `yum update` - Sync repos
+* `yum upgrade` - Install newer versions over current versions
+
+## Package Names
+* `httpd` - Apache2, for some reason
