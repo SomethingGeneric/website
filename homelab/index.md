@@ -1,4 +1,3 @@
-# Homelab Stuff
-
-## Misc Notes:
-* For a lot of my machines, I've tried to name them after Starwars things, usually ships but sometimes characters
+# Homelab Projects
+At the moment, I'm mid-setting up stuff on my new Vermont infrastructure, and shunting stuff over.
+Most of the docs on Maryland setup were outdated anyways.
