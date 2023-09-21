@@ -73,4 +73,4 @@ chown fred:marketing /marketing/newproducts.txt
 The file already had owner+group rw, so it remained after ownership transfered.
 
 ## Deliverable 1
-![outputs](/permslab_deliberable1.png)
+![outputs](/permslab_deliverable1.png)
