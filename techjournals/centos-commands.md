@@ -21,6 +21,10 @@
 * `history | head -n 10` - Show the first 10 entries 
 * `systemctl start ...` - Start a service (like `dhcpd` or `sshd`)
 * `systemctl enable ...` - Enable a service to auto-start on boot
+* `chown USER:GROUP ...` - Change the owner (and group if specified) of given file/directory
+* `chmod PERMS ...` - Set the permissions of file/dir to `PERMS`, described in [this assignment](sys-255/linux_file_permissions.md)
+* `groups` - Show groups your user is a member of
+* `su ...` - (S)witch (U)ser, defaults to `root` if not specified.
 
 ## Manual Page Tags
 * `man hier` - Show the manual page for the filesystem layout
