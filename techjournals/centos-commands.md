@@ -36,3 +36,7 @@
 
 ## Package Names
 * `httpd` - Apache2, for some reason
+* `mod_ssl` - Apache2 SSL functionality
+
+## Paths
+* `/etc/pki/tls/{certs,private}` - for SSL certs

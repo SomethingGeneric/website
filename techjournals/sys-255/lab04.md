@@ -1,4 +1,4 @@
-# Lab 4: DHCP
+# Lab 04: DHCP
 
 ## Some of the items in here involved editing my [CentOS Reference](/techjournals/centos-commands.md) page.
 
