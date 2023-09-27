@@ -1,4 +1,4 @@
-# Lab 03 - Linux
+# Lab 03: Linux
 
 ## Some of the items in here involved editing my [CentOS Reference](/techjournals/centos-commands.md) page.
 

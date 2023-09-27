@@ -1,4 +1,4 @@
-# Lab 01 - pfSense
+# Lab 01: pfSense
 
 ## pfSense Configurations
 ![image](https://github.com/SomethingGeneric/website/assets/12242178/b8f80810-449d-4d21-abb3-c5c920d31a29)

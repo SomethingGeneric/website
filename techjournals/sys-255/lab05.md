@@ -46,6 +46,25 @@ In the Policy Editor, drop down `User Configuration\Policies\Administrative Temp
 ## Deliverable 1:
 A screenshot of logged-in desktop as `alice@yourname.local` on `wks01` with NO recycle bin icon.
 
+## Step 12:
+As in step 7, make a new GPO called `DisableLastLogin`, and add `YOURDOMAIN\Domain Computers` to the filter
+
+## Step 13:
+Right-click and edit `DisableLastLogin`, so you can drop-down `Computer Configuration\Policies\Windows Settings\Security Settings\Local Policies\Security Options`, and then scroll to `Interactive logon: Don't display last signed-in`, and enable it.
+
+## Step 14:
+Sign in to `wks01` as your domain admin account, and then:
+```ps
+gpupdate /force
+gpresult /scope computer /r 
+```
+
+## Deliverable 2
+Screenshot of the second command above.
+
+## Deliverable 3
+Screenshot of the login screen where there are no longer any usernames visible
+
 ## Resources:
 I goofed u pwhile adding an OU, enabling detailed view was required to follow these steps and fix the typo:
 https://petri.com/delete-protected-ou-active-directory/#:~:text=The%20process%20to%20delete%20a,deletion%2C'%20then%20click%20OK.
