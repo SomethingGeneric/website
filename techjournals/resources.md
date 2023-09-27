@@ -1,14 +1,25 @@
 # Other Resources
 
-# GitHub Pages from other Champlain folks:
+## GitHub Pages from other Champlain folks:
+
+### Faculty
 * https://github.com/ashemery
-* https://github.com/soup-hacker
+
+### Alumni
+* https://github.com/mirpag
 * https://github.com/Chromosom3
+
+### 2024
+* https://github.com/soup-hacker
 * https://github.com/Oliver-Mustoe
 * https://github.com/dthomsen116
 * https://github.com/ChampPG
-* https://github.com/mirpag
 * https://github.com/Ptsoares
+
+### 2025
+* https://github.com/AinsleyPlayer
+
+### 2026
 * https://github.com/savannahc502
 * https://github.com/Hsanokklis
 * https://github.com/LPouliot
