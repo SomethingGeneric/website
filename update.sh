@@ -2,6 +2,4 @@
 
 git pull
 
-npm run build
-
 make deploy
