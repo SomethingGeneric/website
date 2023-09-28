@@ -28,3 +28,4 @@
 * https://github.com/savannahc502
 * https://github.com/Hsanokklis
 * https://github.com/LPouliot
+* https://github.com/JNicholls2026/James-Nicholls-Tech-Journal/wiki
