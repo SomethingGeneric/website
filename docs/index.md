@@ -6,11 +6,11 @@ Welcome to my little corner of the internet!
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
 * Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/GamerbotAgain)
-* Many others on my [GitHub](https://github.com/SomethingGeneric) or my [GitLab Instance](https://gitlab.mattcompton.dev/matt)
+* Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.mattcompton.dev/matt)
 ## Where else am I?
 * [LinkedIn](https://www.linkedin.com/in/matt-compton-a06243220)
 * [Resume](https://docs.google.com/document/d/1DnYIzam28i1XA539HbV1L0TYgKv_BUmVXJM7WnJIEUk/edit?usp=sharingg)
-* [My GitLab](https://gitlab.mattcompton.dev/matt)
+* [My Forgejo](https://git.mattcompton.dev/matt)
 * [GitHub](https://github.com/SomethingGeneric)
 * [Blog Posts for CyberTechVT](https://www.cybervt.com/blogs/vaultwarden)
 ## Technology-related Events
