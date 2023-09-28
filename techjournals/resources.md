@@ -14,6 +14,7 @@
 * https://github.com/Oliver-Mustoe
 * https://github.com/dthomsen116
 * https://github.com/ChampPG
+* https://gitbook.paulgleason.dev/
 * https://github.com/Ptsoares
 
 ### 2025
