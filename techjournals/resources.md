@@ -18,6 +18,9 @@
 
 ### 2025
 * https://github.com/AinsleyPlayer
+* https://molly-shapiro-portfolio.gitbook.io/home/
+* https://github.com/mshapiro2025
+* https://www.mollyeshapiro.com/
 
 ### 2026
 * https://github.com/savannahc502
