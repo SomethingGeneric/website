@@ -11,7 +11,7 @@ const config = {
   favicon: 'siseor.jpg',
 
   // Set the production url of your site here
-  url: 'https://xhec.dev',
+  url: 'https://www.mattcompton.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
