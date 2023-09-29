@@ -13,7 +13,7 @@ flowchart TD;
 ```
 
 ## Services:
-* `wks01` - pfSense has upstream dns and is the default gateway - WAN IP: `10.0.17.104/24`, LAN IP: `10.0.5.2/24`
+* `fw01` - pfSense has upstream dns and is the default gateway - WAN IP: `10.0.17.104/24`, LAN IP: `10.0.5.2/24`
 * `ad01` - Domain controller, DNS for machines on AD - IP: `10.0.5.5`
 * `dhcp01` - DHCP server, SSH-able - IP: `10.0.5.3`
 * `wks01` - Windows 10 Client, AD member - IP: `10.0.5.100` (assigned via DHCP currently, should likely manually assign `.105` or smth before DHCP configured, if required.)
