@@ -4,6 +4,7 @@
 
 ### Faculty
 * https://github.com/ashemery
+* https://github.com/thedunston
 
 ### Alumni
 * https://github.com/mirpag
