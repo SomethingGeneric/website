@@ -1,5 +1,8 @@
 # Other Resources
 
+## Files
+* [IP/CIDR chart](/IPv4CIDRChart_2015.pdf)
+
 ## GitHub Pages from other Champlain folks:
 
 ### Faculty
