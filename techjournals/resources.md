@@ -1,5 +1,8 @@
 # Other Resources
 
+## Tools
+* [IP-Binary Converter](https://www.browserling.com/tools/ip-to-bin)
+
 ## Files
 * [IP/CIDR chart](/IPv4CIDRChart_2015.pdf)
 
