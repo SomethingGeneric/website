@@ -90,7 +90,7 @@ const config = {
         theme: {light: 'neutral', dark: 'forest'},
       },
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/siseor.jpg',
       navbar: {
         title: 'Matt C',
         logo: {
