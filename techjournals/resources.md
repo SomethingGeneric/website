@@ -8,32 +8,23 @@
 
 ## GitHub Pages from other Champlain folks:
 
-### Faculty
-* https://github.com/ashemery
-* https://github.com/thedunston
-
-### Alumni
-* https://github.com/mirpag
-* https://github.com/Chromosom3
-
-### 2024
-* https://github.com/soup-hacker
-* https://github.com/Oliver-Mustoe
-* https://github.com/dthomsen116
-* https://github.com/ChampPG
-* https://gitbook.paulgleason.dev/
-* https://github.com/Ptsoares
-
-### 2025
-* https://github.com/AinsleyPlayer
-* https://molly-shapiro-portfolio.gitbook.io/home/
-* https://github.com/mshapiro2025
-* https://www.mollyeshapiro.com/
-
-### 2026
-* https://github.com/natalie363
-* https://github.com/wswearingin
-* https://github.com/savannahc502
-* https://github.com/Hsanokklis
-* https://github.com/LPouliot
-* https://github.com/JNicholls2026/James-Nicholls-Tech-Journal/wiki
+| Name | Fac/Student | Year | Link(s) |
+| ---- | --------- | ---- | ---- |
+| Ali Hadi | Fac | |  https://github.com/ashemery |
+| Duane Dunston | Former Fac |  |  https://github.com/thedunston |
+| Devin Paden | Former Fac | | https://github.com/gmcyber <br/> https://greenmountaincyber.com |
+| Miranda Pagarelski | Alumni | 2023 | https://github.com/mirpag |
+| Dylan Navarro | Alumni | 2023 | https://github.com/Chromosom3 |
+| Miles Campbell | Student | 2024 | https://github.com/soup-hacker |
+| Oliver Mustoe | Student | 2024 | https://github.com/Oliver-Mustoe |
+| David Thomsen | Student | 2024 | https://github.com/dthomsen116 |
+| Paul Gleason | Student | 2024 | https://github.com/ChampPG <br/> https://gitbook.paulgleason.dev/ |
+| Parker Soares | Student | 2024 | https://github.com/Ptsoares |
+| Ainsley Smith | Student | 2025 | https://github.com/AinsleyPlayer |
+| Molly Shapiro | Student | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 |
+| Natalie Eckles | Student | 2026 | https://github.com/natalie363 |
+| Will Swearingin | Student | 2026 | https://github.com/wswearingin |
+| Savannah Ciak | Student | 2026 | https://github.com/savannahc502 |
+| Hannelore Sanokklis | Student | 2026 | https://github.com/Hsanokklis |
+| Lily Pouliot | Student | 2026 | https://github.com/LPouliot |
+| James Nicholls | Student | 2026 | https://github.com/JNicholls2026/James-Nicholls-Tech-Journal/wiki |
