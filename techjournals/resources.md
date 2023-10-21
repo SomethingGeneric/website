@@ -15,6 +15,8 @@
 | Devin Paden | Former Fac | | https://github.com/gmcyber <br/> https://greenmountaincyber.com |
 | Miranda Pagarelski | Alumni | 2023 | https://github.com/mirpag |
 | Dylan Navarro | Alumni | 2023 | https://github.com/Chromosom3 |
+| Noah Beckman | Alumni | 2023 | https://github.com/CyberM00se |
+| Max Berry | Student | 2024 | https://github.com/Berrym-tech |
 | Miles Campbell | Student | 2024 | https://github.com/soup-hacker |
 | Oliver Mustoe | Student | 2024 | https://github.com/Oliver-Mustoe |
 | David Thomsen | Student | 2024 | https://github.com/dthomsen116 |
@@ -27,4 +29,5 @@
 | Savannah Ciak | Student | 2026 | https://github.com/savannahc502 |
 | Hannelore Sanokklis | Student | 2026 | https://github.com/Hsanokklis |
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot |
-| James Nicholls | Student | 2026 | https://github.com/JNicholls2026/James-Nicholls-Tech-Journal/wiki |
+| James Nicholls | Student | 2026 | https://github.com/JNicholls2026 |
+| Aidan Smith | Student | 2027 | https://github.com/aidan01smith |
