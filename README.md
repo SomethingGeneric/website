@@ -8,5 +8,3 @@ Website source code
 ## Deploy
 * Edit `Makefile` to make sure `cp` goes to the correct directory
 * In my case, `sudo make deploy`
-
-# foo
