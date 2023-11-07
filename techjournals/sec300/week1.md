@@ -1,6 +1,7 @@
 # Week 1
+11/7/23
 
-## Random
+## Architecture
 ELK used to be Elasticsearch, Logstash, Kibana
 
 Now there's Beats, so it's "technically" referred to as the "Elastic Stack"
@@ -10,3 +11,4 @@ Now there's Beats, so it's "technically" referred to as the "Elastic Stack"
 * Logstash: Log aggregator
 * Kibana: Visualization element
 * Beats: monitoring agent
+
