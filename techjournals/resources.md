@@ -16,6 +16,7 @@
 | Miranda Pagarelski | Alumni | 2023 | https://github.com/mirpag |
 | Dylan Navarro | Alumni | 2023 | https://github.com/Chromosom3 |
 | Noah Beckman | Alumni | 2023 | https://github.com/CyberM00se |
+| Tom Claflin | Alumni | 2023 | https://github.com/TomClaflin |
 | Max Berry | Student | 2024 | https://github.com/Berrym-tech |
 | Miles Campbell | Student | 2024 | https://github.com/soup-hacker |
 | Oliver Mustoe | Student | 2024 | https://github.com/Oliver-Mustoe |
