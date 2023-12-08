@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Matt C',
   tagline: 'So long, and thanks for all the bits',
-  favicon: 'siseor.jpg',
+  favicon: 'pal_flag_fav.png',
 
   // Set the production url of your site here
   url: 'https://www.mattcompton.dev',
@@ -92,12 +92,12 @@ const config = {
         theme: {light: 'neutral', dark: 'forest'},
       },
       // Replace with your project's social card
-      image: 'img/siseor.jpg',
+      image: 'img/pal_flag_fav.png',
       navbar: {
         title: 'Matt C',
         logo: {
           alt: 'My Site Logo',
-          src: 'siseor.jpg',
+          src: 'pal_flag_fav.png',
         },
         items: [
           {
