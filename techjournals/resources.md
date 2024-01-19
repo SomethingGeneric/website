@@ -11,6 +11,7 @@
 | Name | Fac/Student | Year | Link(s) |
 | ---- | --------- | ---- | ---- |
 | Ali Hadi | Fac | |  https://github.com/ashemery |
+| Furkan Paligu | Fac | | https://github.com/fpaligu |
 | Duane Dunston | Former Fac |  |  https://github.com/thedunston |
 | Devin Paden | Former Fac | | https://github.com/gmcyber <br/> https://greenmountaincyber.com |
 | Miranda Pagarelski | Alumni | 2023 | https://github.com/mirpag |
