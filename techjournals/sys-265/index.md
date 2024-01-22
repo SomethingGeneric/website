@@ -1,4 +1,4 @@
-# SYS-265 System Admin 2
+# SYS-265 - System Admin 2
 
 ## Topics
 * AAA and Cross Platform Authentication
