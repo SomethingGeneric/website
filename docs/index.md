@@ -14,7 +14,7 @@ Welcome to my little corner of the internet!
 * [GitHub](https://github.com/SomethingGeneric)
 * [Blog Posts for CyberTechVT](https://www.cybervt.com/blogs/vaultwarden)
 ## Technology-related Events
-* One Hackathon at Montgomery Blair HS (thanks pandemic <\3)
+* One Hackathon at Montgomery Blair HS
 * Two [Congressional App Challenges](https://www.congressionalappchallenge.us/)
 * Cybersecurity challenge sponsored by Montgomery College
 ### Note:

@@ -10,7 +10,7 @@
   * Star Topolgy: Most common for modern LANs. Cable break only affects one device, but if the central device fails, the whole network is down.
   * Star-mesh hybrid: Common for enterprise. Balances effeciency and redundancy. Star connects to uyser devices, and backbone devices are in mesh
 * MAC Addresses:
-  * 12 hex digits (6 bytes {48 bits}) long.
+  * 12 hex digits (6 bytes (48 bits)) long.
   * First six are used to indicate the NIC's vendor
   * Last sick are unique to the device
 * IP Addresses:

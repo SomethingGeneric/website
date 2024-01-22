@@ -11,6 +11,6 @@
   * (Internal registers)
   * L1 Cache (in package)
   * L2 Cache (in package)
-  * L3 Cache (on motherboard {usually})
+  * L3 Cache (on motherboard usually)
   * RAM (sometimes called L4)
   * Hard disk / SSD

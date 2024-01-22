@@ -17,7 +17,7 @@
 
 * SDRAM: Fast burst address
 * DDR: Double data rate
-* DDR{2-4L}
+* DDR(2-4L)
 
 ## Memory features
 
