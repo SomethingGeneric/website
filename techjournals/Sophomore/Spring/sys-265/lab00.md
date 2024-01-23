@@ -14,3 +14,9 @@
 
 ## Also see: Some notes are in the Powershell Notes document
 
+## mgmt01 Details
+* IP: `10.0.5.10`
+
+## Usernames:
+* `matt` - AD Standard User
+* `matt-adm` - AD Admin (other than `Administrator`)
