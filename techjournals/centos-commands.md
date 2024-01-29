@@ -39,6 +39,7 @@
 * `mod_ssl` - Apache2 SSL functionality
 * `mod_security` - Apache2 mod security
 * `mod_security_crs` - Rule sets for Apache2 mod security
+* `net-snmp-utils` - SNMP tools/services
 
 ## Paths
 * `/etc/pki/tls/{certs,private}` - for SSL certs
