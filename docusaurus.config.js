@@ -90,6 +90,9 @@ const config = {
       mermaid: {
         theme: {light: 'neutral', dark: 'forest'},
       },
+      prism: {
+        additionalLanguages: ['bash'],
+      },
       // Replace with your project's social card
       image: 'img/pal_flag_fav.png',
       navbar: {
