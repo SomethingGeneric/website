@@ -37,3 +37,4 @@ This was a bit silly, but it kept me from needing to use regex yet.
 sudo nmap -sn 10.0.5.2-50 | egrep '[0-9]{2,3}\.' | awk '{n=split($0,a," "); print a[n]}' >> sweep3.txt
 ```
 There is probably a better way to strip away the rest of the nmap output than this awful `awk` syntax, but it does work.
+The AWK script was adapted from [this post](https://stackoverflow.com/a/39703302)
