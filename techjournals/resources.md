@@ -32,4 +32,5 @@
 | Hannelore Sanokklis | Student | 2026 | https://github.com/Hsanokklis |
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot |
 | James Nicholls | Student | 2026 | https://github.com/JNicholls2026 |
+| Mike Ng | Student | 2026 | https://github.com/ItsMmmike |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith |
