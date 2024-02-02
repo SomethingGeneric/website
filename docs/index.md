@@ -9,8 +9,9 @@ Welcome to my little corner of the internet!
 * Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.mattcompton.dev/matt)
 ## Where else am I?
 * [LinkedIn](https://www.linkedin.com/in/matt-compton-a06243220)
+* <a rel="me" href="https://social.goober.cloud/@matt">Mastodon</a>
 * [Resume](https://docs.google.com/document/d/1DnYIzam28i1XA539HbV1L0TYgKv_BUmVXJM7WnJIEUk/edit?usp=sharingg)
-* [My Forgejo](https://git.goober.cloud/matt)
+* [My Forgejo (git)](https://git.goober.cloud/matt)
 * [GitHub](https://github.com/SomethingGeneric)
 * [Blog Posts for CyberTechVT](https://www.cybervt.com/blogs/vaultwarden)
 ## Technology-related Events
