@@ -2,7 +2,7 @@
 
 ## Awful terrible one-liner for NMAP DNS Discovery
 * Step 1: `sudo nmap -Pn 10.0.5.0/24 -p 53 --open -oG dns-servers2.txt`
-* Step 2: `cat dns-servers2.txt | grep -v Nmap | egrep '[0-9]{2,3}\.' | awk '{split($0,a," "); print a[2]}' | uniq` (there's gotta be a better way! {but this works})
+* Step 2: `cat dns-servers2.txt | grep -v Nmap | egrep '[0-9]{2,3}\.' | awk '{split($0,a," "); print a[2]}' | uniq` (there's gotta be a better way! but this works!)
 
 ## Script content
 Some of the items for this week's class activity are in my [scripts repo](https://git.goober.cloud/matt/sec335-scripts/src/branch/main/week3/activity3.1)
