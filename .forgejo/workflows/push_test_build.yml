@@ -1,6 +1,6 @@
-on: [push] # no PR for now .... , pull_request]
+on: [push]
 jobs:
-  test:
+  testforpush:
     runs-on: docker
     container:
         image: node:18.19.1-buster-slim
