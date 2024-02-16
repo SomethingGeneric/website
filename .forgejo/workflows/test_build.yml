@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [push] # no PR for now .... , pull_request]
 jobs:
   test:
     runs-on: docker
