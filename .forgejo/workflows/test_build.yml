@@ -1,0 +1,9 @@
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: docker
+    container:
+        image: node:18.19.1-buster-slim
+    steps:
+      - run: apt update && apt install make -y
+      - run: which npm
