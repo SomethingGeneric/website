@@ -6,4 +6,5 @@ jobs:
         image: node:18.19.1-buster-slim
     steps:
       - run: apt update && apt install make -y
+      - uses: actions/checkout
       - run: make build
