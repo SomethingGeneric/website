@@ -8,3 +8,4 @@ jobs:
       - run: apt update && apt install make git -y
       - uses: actions/checkout@v4
       - run: make build
+      - run: echo "profit"
