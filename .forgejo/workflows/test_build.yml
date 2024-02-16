@@ -5,6 +5,6 @@ jobs:
     container:
         image: node:18.19.1-buster-slim
     steps:
-      - run: apt update && apt install make -y
+      - run: apt update && apt install make git -y
       - uses: actions/checkout@v4
       - run: make build
