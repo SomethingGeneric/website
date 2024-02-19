@@ -1,8 +1,8 @@
 on:
-  release:
-    - published
+  push:
+    branches: ["deploy"]
 jobs:
-  testforpush:
+  deploysite:
     runs-on: docker
     container:
         image: node:18.19.1-buster-slim
