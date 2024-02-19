@@ -1,0 +1,14 @@
+on: [release]
+jobs:
+  testforpush:
+    runs-on: docker
+    container:
+        image: node:18.19.1-buster-slim
+    steps:
+      - run: apt update && apt install make git rsync -y
+      - uses: actions/checkout@v4
+      - run: make build
+      - run: mkdir -p .ssh/
+      - run: echo "${{ secrets.SSHKEY }}" > .ssh/id_ed25519
+      - run: chmod 600 .ssh/id_ed25519
+      - run: TGT=${{ secrets.WHERE }} make bsddeploy
