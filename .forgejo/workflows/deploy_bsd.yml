@@ -11,5 +11,5 @@ jobs:
       - run: mkdir -p .ssh/
       - run: echo "${{ secrets.SSHKEY }}" > .ssh/id_ed25519
       - run: echo "StrictHostKeyChecking no" > .ssh/config
-      - run: chmod -E 600 .ssh/
+      - run: chmod -R 600 .ssh/
       - run: TGT=${{ secrets.WHERE }} make bsddeploy
