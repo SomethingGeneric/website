@@ -5,6 +5,8 @@ build: setup
 	npm run build
 deploy: build
 	cp -rv build/* /var/www/xhecdev/.
+bsddeploy:
+	rsync -avc build/* root@${TGT}:/var/www/html/.
 test: build
 	npx docusaurus start
 update:
