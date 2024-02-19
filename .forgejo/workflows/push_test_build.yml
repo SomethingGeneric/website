@@ -1,7 +1,6 @@
 on:
   push:
-    tags-ignore:
-      - "**"
+    branches: [main]
 jobs:
   testforpush:
     runs-on: docker
