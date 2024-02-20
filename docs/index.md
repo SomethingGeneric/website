@@ -5,8 +5,8 @@ title: Home
 Welcome to my little corner of the internet!
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
-* Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/GamerbotAgain)
-* Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.mattcompton.dev/matt)
+* Discord.py bot [Gamerbot](https://git.gooer.cloud/matt/GamerbotAgain)
+* Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.goober.cloud/matt)
 ## Where else am I?
 * [LinkedIn](https://www.linkedin.com/in/matt-compton-a06243220)
 * <a rel="me" href="https://social.goober.cloud/@matt">Mastodon</a>

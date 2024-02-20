@@ -1,2 +1,2 @@
 # Vermont Homelab Stuff
-Funny comcast
+Funny comcast makes life hard with dynamic IP

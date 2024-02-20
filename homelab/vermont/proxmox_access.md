@@ -1,6 +1,6 @@
 # Accessing Proxmox
 
-URL: https://pve1.vt.mattcompton.dev/
+URL: https://pve.mattcompton.dev/
 
 Username and password should be sent
 
