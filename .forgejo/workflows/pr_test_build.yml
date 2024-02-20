@@ -1,5 +1,4 @@
-on:
-  pull_request: [opened, reopened]
+on: [pull_request]
 jobs:
   testforpush:
     runs-on: docker
