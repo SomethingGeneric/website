@@ -13,7 +13,7 @@ Welcome to my little corner of the internet!
 * [Resume](https://docs.google.com/document/d/1DnYIzam28i1XA539HbV1L0TYgKv_BUmVXJM7WnJIEUk/edit?usp=sharingg)
 * [My Forgejo (git)](https://git.goober.cloud/matt)
 * [GitHub](https://github.com/SomethingGeneric)
-* [Blog Posts for CyberTechVT](https://www.cybervt.com/blogs/vaultwarden)
+* [Blog Posts for CyberTechVT](https://www.cybertechvt.com/index.php/2023/04/27/vaultwarden/)
 ## Technology-related Events
 * One Hackathon at Montgomery Blair HS
 * Two [Congressional App Challenges](https://www.congressionalappchallenge.us/)
