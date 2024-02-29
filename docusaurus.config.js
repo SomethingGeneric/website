@@ -82,6 +82,16 @@ const config = {
         // ... other options
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'ronwriting',
+        path: 'ronwriting',
+        routeBasePath: 'ronwriting',
+        sidebarPath: require.resolve('./sidebars.js'),
+        // ... other options
+      },
+    ],
   ],
 
   themeConfig:
@@ -92,6 +102,7 @@ const config = {
       },
       prism: {
         additionalLanguages: ['bash'],
+        theme: prismThemes.dracula,
       },
       // Replace with your project's social card
       image: 'img/pal_flag_fav.png',
@@ -121,6 +132,13 @@ const config = {
             position: 'left',
             label: 'Tech Journals',
             docsPluginId: 'techjournals',
+          },
+          {
+            type: 'doc',
+            docId: 'index',
+            position: 'left',
+            label: 'Ron Posts',
+            docsPluginId: 'ronwriting',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           /*{
@@ -174,9 +192,6 @@ const config = {
           },
         ],*/
         copyright: `Copyright © ${new Date().getFullYear()} Matt C. Built with a bit of Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.dracula,
       },
     }),
 };
