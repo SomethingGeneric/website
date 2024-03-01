@@ -1,5 +1,5 @@
 # CentOS 7 Combined Reference
-(Useful for SEC260 and SYS255)
+(Useful for SEC260 and SYS255 and SYS265)
 
 ## From SEC 260
 * `dhclient` - to use DHCP to request an ip address
