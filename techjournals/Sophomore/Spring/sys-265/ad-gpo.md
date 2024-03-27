@@ -17,3 +17,13 @@ In our case:
 ### Removing OU 
 This one was also pretty easy
 `Remove-ADObject -Identity "OU=Test OU,DC=MATT,DC=LOCAL"`
+
+## Searching Event Logs
+This was a tad tricky, even thought the underlying command is pretty logical
+
+To dump event log, just do `Get-EventLog System`, optionally adding an `-After` argument to minimize output, like `-After 3/26`
+
+I never quite got Searching to work the way I wanted, but for this simple example I ended up with 
+`Get-EventLog System -After 3/26 | Where-Object { $_.InstanceID -eq 302 }`
+
+I tried using `Where-Object {$_.Message -eq "..." }` and a `$_.Source` but neither really worked.
