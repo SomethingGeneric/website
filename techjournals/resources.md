@@ -19,7 +19,7 @@
 | Noah Beckman | Alumni | 2023 | https://github.com/CyberM00se |
 | Tom Claflin | Alumni | 2023 | https://github.com/TomClaflin |
 | Max Berry | Student | 2024 | https://github.com/Berrym-tech |
-| Miles Campbell | Student | 2024 | https://github.com/soup-hacker |
+| Miles Campbell | Student | 2024 | https://gitbook.miles-campbell.dev/ <br/> https://github.com/soup-hacker |
 | Oliver Mustoe | Student | 2024 | https://github.com/Oliver-Mustoe/Oliver-Mustoe-Tech-Journal/wiki <br/> https://github.com/Oliver-Mustoe |
 | David Thomsen | Student | 2024 | https://github.com/dthomsen116 |
 | Paul Gleason | Student | 2024 | https://gitbook.paulgleason.dev/ <br/> https://github.com/ChampPG |
