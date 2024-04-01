@@ -22,7 +22,7 @@
 | Miles Campbell | Student | 2024 | https://gitbook.miles-campbell.dev/ <br/> https://github.com/soup-hacker |
 | Oliver Mustoe | Student | 2024 | https://github.com/Oliver-Mustoe/Oliver-Mustoe-Tech-Journal/wiki <br/> https://github.com/Oliver-Mustoe |
 | David Thomsen | Student | 2024 | https://github.com/dthomsen116 |
-| Paul Gleason | Student | 2024 | https://gitbook.paulgleason.dev/ <br/> https://github.com/ChampPG |
+| Paul Gleason | Student | 2024 | https://quartz.paulgleason.dev/ <br/> https://gitbook.paulgleason.dev/ <br/> https://github.com/ChampPG |
 | Parker Soares | Student | 2024 | https://github.com/Ptsoares |
 | Ainsley Smith | Student | 2025 | https://github.com/AinsleyPlayer |
 | Molly Shapiro | Student | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 |
