@@ -15,6 +15,8 @@ Welcome to my little corner of the internet!
 * [GitHub](https://github.com/SomethingGeneric)
 * [Blog Posts for CyberTechVT](https://www.cybertechvt.com/index.php/2023/04/27/vaultwarden/)
 ## Technology-related Events
+* Competed on the Champlain College [CCDC](https://www.nationalccdc.org/) Team at the [NECCDC](https://neccdl.org/) Regionals
+* Competed in the [NCAE Cyber Games](https://ncaecybergames.org/) online event, and National Invitational
 * One Hackathon at Montgomery Blair HS
 * Two [Congressional App Challenges](https://www.congressionalappchallenge.us/)
 * Cybersecurity challenge sponsored by Montgomery College
