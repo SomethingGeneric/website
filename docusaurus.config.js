@@ -82,16 +82,6 @@ const config = {
         // ... other options
       },
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'ronwriting',
-        path: 'ronwriting',
-        routeBasePath: 'ronwriting',
-        sidebarPath: require.resolve('./sidebars.js'),
-        // ... other options
-      },
-    ],
   ],
 
   themeConfig:
@@ -132,13 +122,6 @@ const config = {
             position: 'left',
             label: 'Tech Journals',
             docsPluginId: 'techjournals',
-          },
-          {
-            type: 'doc',
-            docId: 'index',
-            position: 'left',
-            label: 'Ron Posts',
-            docsPluginId: 'ronwriting',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           /*{

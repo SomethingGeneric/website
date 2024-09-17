@@ -1,0 +1,21 @@
+name: Test Build (Main branch)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  testforpush:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18.19.1-buster-slim
+    steps:
+      - name: Update and install dependencies
+        run: |
+          apt update && apt install make git -y
+          
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Build the project
+        run: make build
