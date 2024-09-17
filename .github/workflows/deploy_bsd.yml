@@ -1,0 +1,31 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: ["deploy"]
+
+jobs:
+  deploysite:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18.19.1-buster-slim
+    steps:
+      - name: Update and install dependencies
+        run: |
+          apt update && apt install make git rsync -y
+          
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Build the project
+        run: make build
+        
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_ed25519
+          echo "StrictHostKeyChecking no" > ~/.ssh/config
+          chmod -R 600 ~/.ssh/
+          
+      - name: Deploy to target server
+        run: TGT=${{ secrets.WHERE }} make bsddeploy
