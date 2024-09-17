@@ -20,6 +20,3 @@ Welcome to my little corner of the internet!
 * One Hackathon at Montgomery Blair HS
 * Two [Congressional App Challenges](https://www.congressionalappchallenge.us/)
 * Cybersecurity challenge sponsored by Montgomery College
-### Note:
-If you'd like a target to poke around with, feel free to use this box.
-In the event that you find a serious security issue, please email me.
