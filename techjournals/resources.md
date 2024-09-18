@@ -37,5 +37,5 @@
 | Jack Clark | Student | 2026 | https://github.com/jack-champlain | |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith | |
 
-If you would like to, or not to be on this list, please reach out.
+If you would like to, or not to be on this list, please reach out.<br/>
 \* \- From my experience
