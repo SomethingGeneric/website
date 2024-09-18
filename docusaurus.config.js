@@ -83,7 +83,7 @@ const config = {
         theme: prismThemes.dracula,
       },
       // Replace with your project's social card
-      image: 'img/pal_flag_fav.png',
+      image: 'img/siseor.jpg',
       navbar: {
         title: 'Matt C',
         logo: {
