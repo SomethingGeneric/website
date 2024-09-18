@@ -7,7 +7,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Matt C',
   tagline: 'So long, and thanks for all the bits',
-  favicon: 'pal_flag_fav.png',
+  favicon: 'siseor.jpg',
 
   url: 'https://www.mattcompton.dev',
   baseUrl: '/',
