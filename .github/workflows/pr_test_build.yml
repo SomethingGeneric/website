@@ -9,6 +9,14 @@ jobs:
     container:
       image: node:20.15.0-buster-slim
     steps:
+      - name: Check if push workflow ran
+        id: check_push_status
+        run: |
+          if [ -f .github/workflows/status/push_status.txt ]; then
+            echo "Push workflow already ran. Skipping PR test build."
+            exit 0
+          fi
+    
       - name: Update and install dependencies
         run: |
           apt update && apt install make git -y
