@@ -19,6 +19,8 @@ jobs:
         
       - name: Build the project
         run: make build
- 
+        
+      - name: Create status directory
+        run: mkdir -p .github/workflows/status
       - name: Create push status file
         run: echo "Push workflow ran" > .github/workflows/status/push_status.txt
