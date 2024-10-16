@@ -8,7 +8,7 @@ Welcome to my little corner of the internet!
 * Discord.py bot [Gamerbot](https://git.gooer.cloud/matt/GamerbotAgain)
 * Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.goober.cloud/matt)
 ## Where else am I?
-* <a rel="me" href="https://infosec.exchange/@SomethingGeneric">Mastodon</a>
+* <a rel="me" href="https://goobersin.space/@matt">Mastodon</a>
 * [LinkedIn](https://www.linkedin.com/in/matt-compton-a06243220)
 * [Resume](https://docs.google.com/document/d/1DnYIzam28i1XA539HbV1L0TYgKv_BUmVXJM7WnJIEUk/edit?usp=sharingg)
 * [My Forgejo (git)](https://git.goober.cloud/matt)
