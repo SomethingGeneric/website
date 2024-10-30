@@ -88,7 +88,7 @@ const config = {
         title: 'Matt C',
         logo: {
           alt: 'My Site Logo',
-          src: 'pal_flag_fav.png',
+          src: 'siseor.jpg',
         },
         items: [
           {
