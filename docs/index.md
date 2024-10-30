@@ -5,7 +5,9 @@ title: Home
 Welcome to my little corner of the internet!
 ## Stuff I've Done
 * [Crystal Linux](https://getcryst.al), an Arch based Linux distribution
-* Discord.py bot [Gamerbot](https://git.gooer.cloud/matt/GamerbotAgain)
+* [NixSphere Desktop](https://nixsphere.org), a new NixOS desktop distribution
+* [Goober.Cloud](https://goober.cloud)
+* Discord.py bot [Gamerbot](https://github.com/SomethingGeneric/GamerbotAgain/)
 * Many others on my [GitHub](https://github.com/SomethingGeneric) or my [Forgejo Instance](https://git.goober.cloud/matt)
 ## Where else am I?
 * <a rel="me" href="https://goobersin.space/@matt">Mastodon</a>
