@@ -10,25 +10,8 @@ IP Assignment Sheet: https://docs.google.com/spreadsheets/d/1QfUMFhFyiDqfvJU24Fa
 
 ## fw01-matt
 
-### Changing user password
-```
-configure
-set system login user vyos authentication plaintext-password PasswordGoesHere
-commit
-exit
-```
-https://support.vyos.io/support/solutions/articles/103000096301-set-change-the-password-of-a-user
+Steps taken for the firewall are listed in the VyOS reference sheet, from the top to the noted stop point.
 
-### Changing hostname
-```
-configure
-set system host-name fw01-matt
-commit
-save
-exit 
-```
-
-# TODO: make github repo and dump vyos config
 
 ## web01-matt
 
@@ -41,3 +24,7 @@ exit
 
 * Same steps as web01-matt
 * IP on DMZ: `172.16.50.5`
+
+Had to edit `/etc/rsyslog.conf` to recieve entries from `web01`:
+
+![config file changes](/sec350-rsyslog-log01.png)

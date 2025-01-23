@@ -9,7 +9,7 @@ const config = {
   tagline: 'So long, and thanks for all the bits',
   favicon: 'siseor.jpg',
 
-  url: 'https://www.mattcompton.dev',
+  url: 'https://mattcompton.dev',
   baseUrl: '/',
 
   trailingSlash: true,
