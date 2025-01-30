@@ -65,3 +65,17 @@ switch(config)# ip route 192.0.2.0/8 ethernet 1/2 192.0.2.4
 switch(config)# show ip static-route
 switch(config)# copy running-config startup-config # save config for next reboot
 ```
+
+## Using interface ranges (for VLAN assignment, mostly)
+```
+switch# configure terminal
+switch(config)# interface range FastEthernet 0/x-y
+switch(config)# switchport access vlan x
+```
+
+## Change a port to trunk mode
+```
+switch# configure terminal
+switch(config)# interface FastEthernet 0/x
+switch(config)# switchport trunk
+```
