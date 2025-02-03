@@ -50,9 +50,16 @@ commit ; save ; exit
 ```
 configure
 set service dns forwarding listen-address 172.16.50.2
-set service dns allow-from 172.16.50.0/29
+set service dns forwarding allow-from 172.16.50.0/29
 set service dns forwarding system
 commit ; save ; exit
 ```
 
 ## End steps done in lab 1.1 (sec350)
+
+### Remote syslog for VyOS
+```
+configure
+set system syslog host 172.16.50.5 facility authpriv level info
+commit ; save ; exit
+```

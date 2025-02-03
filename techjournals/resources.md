@@ -33,6 +33,7 @@
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot | |
 | James Nicholls | Student | 2026 | https://github.com/JNicholls2026 | |
 | Mike Ng | Student | 2026 | https://github.com/ItsMmmike | |
+| Connor East | Student | 2026? | https://github.com/ConnorEast/Tech-Journal/wiki |
 | Beth Chadbourne | Student | 2026 | https://github.com/echadbourne | |
 | Jack Clark | Student | 2026 | https://github.com/jack-champlain | |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith | |
