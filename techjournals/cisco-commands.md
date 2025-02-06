@@ -79,3 +79,11 @@ switch# configure terminal
 switch(config)# interface FastEthernet 0/x
 switch(config)# switchport trunk
 ```
+
+## Using ip helper-address
+This is for DHCP across subnets/interfaces
+```
+router(config)# interface vlan <id_here> # or a fa or ge interface
+router(config)# ip helper-address <dhcp_server_addr_here>
+```
+
