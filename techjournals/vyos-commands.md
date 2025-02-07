@@ -19,6 +19,13 @@ save
 exit 
 ```
 
+### Set system DNS server
+```
+configure
+set system name-server IPHERE
+commit ; save ; exit
+```
+
 ### Setting interfaces
 ```
 configure
@@ -32,7 +39,7 @@ exit
 ### Upstream gateway
 ```
 configure
-set protocols static route 0.0.0.0/0 next hop GATEWAYIPHERE
+set protocols static route 0.0.0.0/0 next-hop GATEWAYIPHERE
 commit ; save ; exit
 ```
 
