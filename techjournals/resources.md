@@ -24,6 +24,7 @@
 | David Thomsen | Alumni | 2024 | https://github.com/dthomsen116 | Eth Hack 1+2 |
 | Paul Gleason | Alumni | 2024 | https://quartz.paulgleason.dev/ <br/> https://gitbook.paulgleason.dev/ <br/> https://github.com/ChampPG | Eth Hack 1 | 
 | Parker Soares | Alumni | 2024 | https://github.com/Ptsoares | |
+| Jude Lindale | Alumni | 2024 | https://github.com/jude-lindale | | 
 | Ainsley Smith | Student | 2025 | https://github.com/AinsleyPlayer | |
 | Molly Shapiro | Student | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 | Concepts & Definitions |
 | Natalie Eckles | Student | 2026 | https://github.com/natalie363 | |
