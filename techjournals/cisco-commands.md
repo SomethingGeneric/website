@@ -87,3 +87,19 @@ router(config)# interface vlan <id_here> # or a fa or ge interface
 router(config)# ip helper-address <dhcp_server_addr_here>
 ```
 
+## Static NAT
+Define where's inside and where's outside
+```
+R1(config)# interface <type> <number> # e.x. fa 0/0
+R1(config)# ip nat inside
+R1(config)# exit
+R1(config)# interface <type> <number> # e.x. serial 0/0/0
+R1(config)# ip nat outside
+R1(config)# exit
+```
+
+Then you can add a static mapping like:
+```
+R1(config)# ip nat inside source static <LAN IP of machine> <IP in WAN range for router>
+# in our case:
+R1(config)# ip nat inside source static 10.0.0.2 50.0.0.1
