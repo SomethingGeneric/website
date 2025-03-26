@@ -1,5 +1,9 @@
 # Other Resources
 
+## If you need help with your firewall for sec350's midterm
+It can be found at [https://github.com/SomethingGeneric/sec350](https://github.com/SomethingGeneric/sec350) 
+
+
 ## Tools
 * [IP-Binary Converter](https://www.browserling.com/tools/ip-to-bin)
 
