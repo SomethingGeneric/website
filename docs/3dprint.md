@@ -6,8 +6,8 @@ title: 3D Printing
 I offer custom 3d printing services. I am not super CAD familiar, so I'd prefer if you find existing designs or make your own, though I am able to help with basic design changes & requests as needed.
 
 ## Current Capabilities
+* Bambu P1 - 256 mm^3 - PLA, PETG, TPU, ABS/ASA?
 * Prusa MK4 - 250mm x 210mm x 220mm build volume - PLA, PETG, ABS(?)
-* FlashForge Finder - 140mm^3 build volume - PLA, PETG(?), ABS(?)
 * Makerbot Replicator Mini - 100mm x 100mm x 125mm build volume - PLA
 
 ## Materials
