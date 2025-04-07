@@ -31,6 +31,7 @@ It can be found at [https://github.com/SomethingGeneric/sec350](https://github.c
 | Jude Lindale | Alumni | 2024 | https://github.com/jude-lindale | | 
 | Ainsley Smith | Student | 2025 | https://github.com/AinsleyPlayer | |
 | Molly Shapiro | Student | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 | Concepts & Definitions |
+| Liam Di-Falco | Student | 2025 | https://github.com/Liam-DiFalco |
 | Natalie Eckles | Student | 2026 | https://github.com/natalie363 | |
 | Will Swearingin | Student | 2026 | https://github.com/wswearingin | |
 | Savannah Ciak | Student | 2026 | https://github.com/savannahc502 | Networking | 
@@ -42,6 +43,9 @@ It can be found at [https://github.com/SomethingGeneric/sec350](https://github.c
 | Beth Chadbourne | Student | 2026 | https://github.com/echadbourne | |
 | Jack Clark | Student | 2026 | https://github.com/jack-champlain | |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith | |
+| Rune Seregina | Student | 2027 | https://github.com/rune-seregina |
+| Laura Thomas-Roy | Student | 2027 | https://github.com/laurathomas-roy |
+| Nilufer Gungor | Student | 2027 | https://github.com/aaralik1 |
 
 If you would like to, or not to be on this list, please reach out.<br/>
 \* \- From my experience
