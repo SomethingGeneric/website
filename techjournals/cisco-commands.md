@@ -105,6 +105,17 @@ R1(config)# ip nat inside source static <LAN IP of machine> <IP in WAN range for
 R1(config)# ip nat inside source static 10.0.0.2 50.0.0.1
 ```
 
+## PAT
+```
+# Create a "pool" with the public IP (only 1 in this case)
+R1(config)#ip nat pool test 30.0.0.120 30.0.0.120 netmask 255.0.0.0
+# Allow the 192.168.1.X clients to use said pool
+R1(config)#access-list 1 permit 192.168.0.0 0.0.0.255
+# Connect pool and ACL for going from inside to outside
+# overload allows up to 64k clients
+R1(config)#ip nat inside source list 1 pool test overload
+```
+
 ## Setting up OSPF
 Firstly, ensure that each router has it's interface IP addresses configured. Then, on each router:
 ```
