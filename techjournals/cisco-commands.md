@@ -103,3 +103,15 @@ Then you can add a static mapping like:
 R1(config)# ip nat inside source static <LAN IP of machine> <IP in WAN range for router>
 # in our case:
 R1(config)# ip nat inside source static 10.0.0.2 50.0.0.1
+```
+
+## Setting up OSPF
+Firstly, ensure that each router has it's interface IP addresses configured. Then, on each router:
+```
+router ospf 1
+network <network IP> <network mask> area 0
+# repeat the above line for each network that's directly connected to this router
+```
+
+The `1` after `router ospf` is a PID number, for complex routing setups where the router will have multiple executibles of the OSPF process running. We are ignoring this
+The `area 0` in each `network` command is to tell the router that the given network is in the backbone area. In a more complex setup, each layer going "down" would have a higher value here.
