@@ -42,6 +42,7 @@
 | Rune Seregina | Student | 2027 | https://github.com/rune-seregina |
 | Laura Thomas-Roy | Student | 2027 | https://github.com/laurathomas-roy |
 | Nilufer Gungor | Student | 2027 | https://github.com/aaralik1 |
+| Nydia Lane | Student | 2027 | https://github.com/nydialane |
 
 If you would like to, or not to be on this list, please reach out.<br/>
 \* \- From my experience
