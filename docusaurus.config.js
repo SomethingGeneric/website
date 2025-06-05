@@ -72,6 +72,14 @@ const config = {
     ],
   ],
 
+  scripts: [
+    {
+      src: 'https://rybbit.xhec.dev/api/script.js',
+      defer: true,
+      'data-site-id': '2',
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
