@@ -13,7 +13,7 @@ jobs:
 
       - name: Install dependencies
         shell: bash
-        run: "apt install -y make rsync"
+        run: "apt update && apt install -y make rsync"
 
       - name: Build the project
         run: make build
