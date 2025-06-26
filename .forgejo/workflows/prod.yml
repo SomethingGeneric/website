@@ -1,9 +1,7 @@
-name: Test build
+name: Prod build/push
 
 on:
   workflow_dispatch:
-  push:
-    branches: ["main"]
 
 jobs:
   build:
@@ -15,10 +13,14 @@ jobs:
 
       - name: Install dependencies
         shell: bash
-        run: "apt install -y make"
+        run: "apt install -y make rsync"
 
       - name: Build the project
         run: make build
+
+      - name: Rsync to BasedProxy
+        shell: bash
+        run: rsync -avc -e "ssh -i devbait" build/ root@10.0.1.3:/var/www/matt/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
