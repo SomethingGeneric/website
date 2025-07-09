@@ -1,1 +1,0 @@
-# SEC 300 - ELK Stack for Security Operations
