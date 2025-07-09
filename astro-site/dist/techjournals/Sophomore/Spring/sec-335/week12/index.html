@@ -1,0 +1,5 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="week-12-class-on-42224">Week 12 (Class on 4/22/24)</h1>
+<h2 id="physical-access-lab">Physical Access Lab</h2>
+<p>Changing <code>C:\\Windows\\System32\\Utilman.exe</code> and/or <code>C:\\Windows\\System32\\sethc.exe</code> for <code>cmd.exe</code> is a super easy way to get in to a Windows box, assuming you have a USB key of Kali or some other distro.</p>
+<p>The only trouble that I encountered with this lab was that the VM spun up Windows once before I changed the boot option, so it was marked as hibernated when I tried to <code>mount /dev/sda2 /mnt/foo</code> in Kali. To fix this, I found <a href="https://unix.stackexchange.com/questions/163806/force-mount-windows-hibernated-partition-in-read-write-mode">this post</a> which suggested <code>ntfsfix /dev/sda2</code>, which worked flawlessly for me!</p>  </body></html>

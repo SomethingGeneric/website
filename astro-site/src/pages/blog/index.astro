@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const posts = Object.values(import.meta.glob('./*.md', { eager: true }));
+
+---
+
+<Layout>
+  <Navbar />
+  <h1>My Blog Posts</h1>
+  <nav>
+    <ul>
+      {posts.length === 0 ? (
+        <p>No blog posts found.</p>
+      ) : (
+        posts.map(post => (
+          <li>
+            <a href={post.url}>
+              {post.frontmatter?.title || post.url.split('/').pop().replace('.html', '')}
+            </a>
+          </li>
+        ))
+      )}
+    </ul>
+  </nav>
+</Layout>

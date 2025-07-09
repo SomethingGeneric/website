@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="linux-assesment">Linux Assesment</h1>
+<p>Basically re-creating web01 and adding some kind of PHP based blog service
+WordPress in my case</p>
+<h2 id="prereqs">Prereqs</h2>
+<ol>
+<li>Set up your IP, gateway, DNS in <code>nmtui</code></li>
+<li>Ensure hostname is <code>blog01-you</code></li>
+<li>I rebooted for good measure</li>
+</ol>
+<h2 id="steps">Steps</h2>
+<h3 id="apache">Apache</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yum install -y httpd</span></span>
+<span class="line"><span>firewall-cmd --permanent --add-port=80/tcp</span></span>
+<span class="line"><span>firewall-cmd --permanent --add-port=443/tcp</span></span>
+<span class="line"><span>firewall-cmd --reload</span></span>
+<span class="line"><span>systemctl enable --now httpd</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="php-7-wordpress-requires-centos-packages-5-by-default">PHP 7 (wordpress requires, CentOS packages 5 by default)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yum install -y yum-utils epel-release</span></span>
+<span class="line"><span>yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm</span></span>
+<span class="line"><span>yum-config-manager ––enable remi–php73 # be careful with this line, as clipboard sometimes nukes the --</span></span>
+<span class="line"><span>yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql –y</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="mysql">MySQL</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yum install -y mariadb-server</span></span>
+<span class="line"><span>systemctl enable --now mariadb</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="wordpress">Wordpress</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yum install -y wget unzip nano</span></span>
+<span class="line"><span>wget https://wordpress.org/latest.zip</span></span>
+<span class="line"><span>unzip latest.zip</span></span>
+<span class="line"><span>rm -r /var/www/html # im lazy</span></span>
+<span class="line"><span>mv wordpress /var/www/html</span></span>
+<span class="line"><span># make mysql db</span></span>
+<span class="line"><span>mysql -u root</span></span>
+<span class="line"><span># in SQL prompt:</span></span>
+<span class="line"><span>CREATE DATABASE &#x3C;something>;</span></span>
+<span class="line"><span>GRANT ALL ON &#x3C;something>.* to 'username'@localhost identified by 'apassword';</span></span>
+<span class="line"><span>FLUSH PRIVILEGES;</span></span>
+<span class="line"><span>exit;</span></span>
+<span class="line"><span># END SQL</span></span>
+<span class="line"><span>setenforce 0 # SELinux can suck my nuts</span></span>
+<span class="line"><span>chown -R apache:apache /var/www/html</span></span>
+<span class="line"><span>cp /var/www/wp-config-sample.php /var/www/wp-config.php</span></span>
+<span class="line"><span>nano /var/www/html/wp-config.php</span></span>
+<span class="line"><span># fill in SQL details (db name, user name, password)</span></span>
+<span class="line"><span>systemctl restart httpd</span></span>
+<span class="line"><span># browse to http://your_ip and set up wordpress!</span></span>
+<span class="line"><span># not sure what else Joe might want from us</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="ad-join">AD join</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yum install -y realmd samba samba-common oddjob oddjob-mkhomedir sssd</span></span>
+<span class="line"><span>realm join --user=your-domain-admin-username@yourdomain.local yourdomain.local</span></span>
+<span class="line"><span># show proof:</span></span>
+<span class="line"><span>realm list</span></span>
+<span class="line"><span></span></span></code></pre>  </body></html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab----ad-gpo">Lab ?? - AD GPO</h1>
+<h2 id="ad-stuff-in-powershell">AD Stuff in PowerShell</h2>
+<h3 id="moving-objects">Moving Objects</h3>
+<p><code>Move-ADObject -Identity "DN-to-Move" -TargetPath "DN-Of-Destination-Object"</code></p>
+<p>In the case of this lab, we did <code>Move-ADObject -Identity "TARGOBJ" -TargetPath "OU=Software Deploy,DC=MATT,DC=LOCAL"</code>
+With <code>TARGOBJ</code> being <code>CN=WKS01-MATT,CN=Computers</code> and <code>CN=Matt,CN=Users</code></p>
+<h3 id="making-a-new-ou">Making a new OU</h3>
+<p>This one is very easy.
+<code>New-ADOrganizationalUnit -Name "ThingieYouWant" -Path "DC=MATT,DC=LOCAL"</code>
+In our case:
+<code>New-ADOrganizationalUnit -Name "Software Deploy" -Path "DC=MATT,DC=LOCAL"</code></p>
+<h3 id="removing-ou">Removing OU</h3>
+<p>This one was also pretty easy
+<code>Remove-ADObject -Identity "OU=Test OU,DC=MATT,DC=LOCAL"</code></p>
+<h2 id="searching-event-logs">Searching Event Logs</h2>
+<p>This was a tad tricky, even thought the underlying command is pretty logical</p>
+<p>To dump event log, just do <code>Get-EventLog System</code>, optionally adding an <code>-After</code> argument to minimize output, like <code>-After 3/26</code></p>
+<p>I never quite got Searching to work the way I wanted, but for this simple example I ended up with
+<code>Get-EventLog System -After 3/26 | Where-Object { $_.InstanceID -eq 302 }</code></p>
+<p>I tried using <code>Where-Object {$_.Message -eq "..." }</code> and a <code>$_.Source</code> but neither really worked.</p>  </body></html>

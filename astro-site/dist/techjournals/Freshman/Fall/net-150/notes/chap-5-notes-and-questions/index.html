@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="chap-5-notes--questions">Chap 5: Notes &#x26; Questions</h1>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>LAN’s only allow communication “nic-to-nic”</li>
+<li>Hubs are “dumb” layer 1 devices, thus all they do is copy incoming packets to all other ports</li>
+<li>Switches are layer 2 devices, and only forward traffic to a port with the appropriate MAC</li>
+<li>Switches store the destination MAC’s in an internal table, which could have one of a few names
+<ul>
+<li>CAM Table</li>
+<li>MAC Table</li>
+<li>Lookup table</li>
+</ul>
+</li>
+<li>Switches act like hubs on boot, until they build their table by watching thru-traffic and storing source information</li>
+<li>If the switch doesn’t know a MAC, it’ll broadcast the backet to all ports to hopefully find an answer for the future</li>
+<li>To get a MAC address for a destination, computers use ARP Broadcasts. This basically asks all devices on the network: <code>What's the physical address for ip &#x3C;some_ip></code></li>
+<li>Computers store the response in an ARP Cache, so that they don’t have to ask over-and-over again</li>
+<li>While a packet is in-transit, between LAN’s, the destination MAC is constantly updated to be the next hop.</li>
+</ul>
+<h2 id="questions">Questions</h2>
+<ul>
+<li>Can an attacker on LAN steal traffic simply by spoofing their MAC to be the same as the victim? (I know most traffic is encrypted, but, regardless??)</li>
+<li>Can you impersonate the router/gateway by responding first to an ARP query?</li>
+</ul>  </body></html>

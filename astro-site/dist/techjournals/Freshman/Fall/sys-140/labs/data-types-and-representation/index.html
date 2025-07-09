@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="data-types-and-representation">Data Types and Representation</h1>
+<p>Part 1</p>
+<p>When looking for my text, <code>"This is some sample text"</code>, in the hex editor, I found it easily with the <code>.txt</code> as there were very few other bits. <img src="https://user-images.githubusercontent.com/12242178/189202043-3d60e1cd-0803-4621-9d1b-dfbf3d87c40b.png" alt="image"></p>
+<p>When opening the <code>.pdf</code> file, which as a formatted file has lots of control codes, I couldn’t find the sample text. However, I expect it’s in-between the <code>stream</code> and <code>endstream</code> points that the editor identified.</p>
+<p>(Top of the file, showing the <code>stream</code> text)<br>
+<img src="https://user-images.githubusercontent.com/12242178/189202275-90b0fb6d-70de-4b70-9209-c7242b7b4ff7.png" alt="image"></p>
+<p>(Bottom of the file, with <code>endstream</code>)<br>
+<img src="https://user-images.githubusercontent.com/12242178/189202561-a6eb50fe-f77e-4ddf-994d-5e48e2ea2df9.png" alt="image"></p>
+<p>There are multiple instances of <code>endstream</code>, so I believe the document also has the font and size information encoded in it as well.</p>
+<p>The search box changes options because certain queries like <code>10</code> could be hex, decimal, or the user might want it interpreted as text.<br>
+<img src="https://user-images.githubusercontent.com/12242178/189202765-238ce826-a9bb-4272-9c67-1fa1224ed5a9.png" alt="image"><br>
+The program does ask you to prefix a specific hex value you’re searching for with <code>0x</code>. If you enter something that cannot represent another type of data, the program then assumes you’re searching for text.<br>
+<img src="https://user-images.githubusercontent.com/12242178/189202960-283b2205-2a45-4a0c-850b-0e93a1b6d366.png" alt="image"></p>
+<h3 id="part-2">Part 2</h3>
+<p>I belive the image was created with Photoshop on a Mac, as the file contains: <code>Adobe Photoshop CS4 Macintosh2011:01:14 14:32:2</code><br>
+<img src="https://user-images.githubusercontent.com/12242178/189203690-6fb58955-61af-4215-907c-008833910a52.png" alt="image"></p>
+<p>The hidden message would appear to be: <code>you found the hidden words!</code><br>
+<img src="https://user-images.githubusercontent.com/12242178/189203807-c117032f-7d2f-4061-97be-dabd8811f623.png" alt="image"></p>
+<h3 id="part-3">Part 3</h3>
+<p>The largest 8-bit number is <code>255</code>. The smallest (signed) 8-bit number is <code>-128</code>.</p>
+<h3 id="part-4">Part 4</h3>
+<ul>
+<li>8-bit integer = 1 character</li>
+<li>16-bit integer = 2 characters</li>
+<li>24-bit integer = 3 characters</li>
+<li>32-bit integer = 4 characters</li>
+<li>64-bit integer = … 8 characters?</li>
+</ul>  </body></html>

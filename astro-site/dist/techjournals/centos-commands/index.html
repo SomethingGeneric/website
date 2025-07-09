@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="centos-7-combined-reference">CentOS 7 Combined Reference</h1>
+<p>(Useful for SEC260 and SYS255 and SYS265)</p>
+<h2 id="from-sec-260">From SEC 260</h2>
+<ul>
+<li><code>dhclient</code> - to use DHCP to request an ip address</li>
+<li>Firewall:
+<ul>
+<li><code>firewall-cmd --permanent --add-port=80/tcp</code> - Example for adding port 80 over TCP (otherwise known as HTTP)</li>
+<li><code>firewall-cmd --reload</code> - Reload config to apply changes</li>
+<li><code>firewall-cmd --query-port=80/tcp</code> - Query if port 80 is open</li>
+</ul>
+</li>
+<li><code>ip addr</code> - Show interface ip addresses</li>
+<li><code>vi</code> - Silly editor</li>
+<li><code>nano</code> - Slightly less silly editor</li>
+<li><code>systemctl restart ...</code> - Restart a running service (like <code>httpd</code>, or <code>sshd</code>)</li>
+</ul>
+<h2 id="from-sys-255">From SYS 255</h2>
+<ul>
+<li><code>nmtui</code> - Edit network settings for interfaces managed by NetworkManager (like <code>eth0</code>)</li>
+<li><code>adduser &#x3C;username></code> - Add a new user (and home directory)</li>
+<li><code>useradd -m &#x3C;username></code> - Add a new user (and home directory) (for more options see <code>useradd --help</code> or <code>man useradd</code>)</li>
+<li><code>passwd &#x3C;username></code> - Set the password for a user</li>
+<li><code>usermod -aG wheel &#x3C;username></code> - Add a user to the wheel group (for more options see <code>usermod --help</code> or <code>man usermod</code>)</li>
+<li><code>history | head -n 10</code> - Show the first 10 entries</li>
+<li><code>systemctl start ...</code> - Start a service (like <code>dhcpd</code> or <code>sshd</code>)</li>
+<li><code>systemctl enable ...</code> - Enable a service to auto-start on boot</li>
+<li><code>chown USER:GROUP ...</code> - Change the owner (and group if specified) of given file/directory</li>
+<li><code>chmod PERMS ...</code> - Set the permissions of file/dir to <code>PERMS</code>, described in <a href="Sophomore/Fall/sys-255/pre-assesment/linux_file_permissions.md">this assignment</a></li>
+<li><code>groups</code> - Show groups your user is a member of</li>
+<li><code>su ...</code> - (S)witch (U)ser, defaults to <code>root</code> if not specified.</li>
+</ul>
+<h2 id="manual-page-tags">Manual Page Tags</h2>
+<ul>
+<li><code>man hier</code> - Show the manual page for the filesystem layout</li>
+</ul>
+<h2 id="package-commands">Package Commands:</h2>
+<ul>
+<li><code>yum install ...</code> - Install package</li>
+<li><code>yum update</code> - Sync repos</li>
+<li><code>yum upgrade</code> - Install newer versions over current versions</li>
+</ul>
+<h2 id="package-names">Package Names</h2>
+<ul>
+<li><code>httpd</code> - Apache2, for some reason</li>
+<li><code>mod_ssl</code> - Apache2 SSL functionality</li>
+<li><code>mod_security</code> - Apache2 mod security</li>
+<li><code>mod_security_crs</code> - Rule sets for Apache2 mod security</li>
+<li><code>net-snmp-utils</code> - SNMP tools/services</li>
+</ul>
+<h2 id="paths">Paths</h2>
+<ul>
+<li><code>/etc/pki/tls/{certs,private}</code> - for SSL certs</li>
+</ul>  </body></html>

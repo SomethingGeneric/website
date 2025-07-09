@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-2-2">Lab 2-2</h1>
+<h2 id="first-pcap">First PCAP</h2>
+<ul>
+<li>The Ethernet header is 14 bytes.</li>
+<li>It looks like the very very first 6 bytes are the destination MAC address.</li>
+<li>The IPv4 header is 20 bytes.</li>
+<li>The ethernet header is the first one we see because it’s the most fundamental part of moving a packet between devices.</li>
+<li>Packet capture file is: <a href="/tcipg.pcapng">tcipg</a></li>
+</ul>
+<h2 id="second-pcap">Second PCAP</h2>
+<ul>
+<li>The ethernet header is 32 bytes</li>
+<li>The padding is 18 bytes</li>
+<li>The padding is included because the response ARP payload is so short that the entire packet would be too small otherwise. (Source: “… which means an additional 18 bytes of padding had to be added to ensure this frame reaches the minimum acceptable length of 64 bytes.” from: <a href="https://www.practicalnetworking.net/series/arp/traditional-arp/">https://www.practicalnetworking.net/series/arp/traditional-arp/</a>)</li>
+<li>Packet capture file is <a href="/switch_ping.pcapng">switch_ping</a></li>
+</ul>  </body></html>

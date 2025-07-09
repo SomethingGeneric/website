@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="week-8-class-on-31824">Week 8 (Class on 3/18/24)</h1>
+<h2 id="31-weevely-php-shell-notes">3.1 Weevely PHP Shell Notes</h2>
+<p>Weevely is a very cool application to generate an ecrypted PHP reverse shell so that an attacker can control a vulnerable PHP web server.</p>
+<p>It’s also fairly straight-forward to use</p>
+<p>To generate a PHP backdoor file, simply do
+<code>weevely generate &#x3C;some_strong_password_for_encryption> &#x3C;filename_for_backdoor_file></code></p>
+<p>Then, depending on your host, you need to get this file onto the server.</p>
+<p>Once it is, you can then do
+<code>weevely http://target/path/to/file.php &#x3C;your_password_from_earlier></code></p>
+<p>And then you should be in a shell on the target server!</p>
+<h2 id="31-weevely-reflection">3.1 Weevely Reflection</h2>
+<p>This tool is super cool! Way more easy to use than manaually writing out (or even copy/pasting) someone else’s reverse shell doc, and then manually dealing with a listener.</p>
+<p>As an added bonus, since the contents of the commands you run and their results are encrypted, even if the web connection itself isn’t, it’s less likely to trigger antivirus or IDS type programs.</p>
+<h2 id="32-reverse-shells-reflection--notes">3.2 Reverse Shells Reflection &#x26; Notes</h2>
+<p>It was super interesting to see the plaintext commands and responses in wireshark. Makes it totally understandable why tools like weevely are so important.</p>
+<p>The Windows reverse shell was also quite interesting, and if I had sat down with PowerShell more before, I could definitely see how dangerous it could be, even for an OS more known for graphical configurations. The demonstration of getting caught by Windows Defender also once again illustrated the value of tools like weevely to do even just the bare minimum to hide your suspicious/malicious activities.</p>
+<p>Although, that being said, it was also comically easy to get Defender out of the way, so it clearly doesn’t do much to defend ITSELF against things like social engineering type attacks.</p>
+<p>I’d played with Linux reverse shells some before, so the final challenge was fairly familiar to me, and I used the lovely <a href="https://www.revshells.com/">RevShell</a> generator to spit out a simple python one.</p>  </body></html>

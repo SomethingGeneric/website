@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="cisco-ios-cheatsheet">Cisco iOS Cheatsheet</h1>
+<h2 id="routers-general">Routers General</h2>
+<ul>
+<li><code>enable</code> allows privileged config (if the router has a password, you’d be prompted for it.)</li>
+<li><code>config</code> to enter config mode
+<ul>
+<li><code>router rip</code> to enter RIP
+<ul>
+<li>Set V2 with <code>version 2</code></li>
+<li>Add network with <code>network &#x3C;ID></code></li>
+<li>Exit with just <code>exit</code></li>
+</ul>
+</li>
+<li><code>exit</code> to exit (and save!)</li>
+</ul>
+</li>
+<li><code>show ip route</code> shows information about routing settings (seems to include RIP and/or static)</li>
+</ul>
+<h2 id="setting-ip-adressesnetworks">Setting IP adresses/networks</h2>
+<p>Go into <code>config</code>,</p>
+<ul>
+<li><code>interface &#x3C;device name here></code></li>
+<li><code>ip address &#x3C;ip> &#x3C;mask></code></li>
+<li><code>no shutdown</code></li>
+</ul>
+<h2 id="vlans">VLANs</h2>
+<p>Once in <code>config</code>,</p>
+<ul>
+<li>To create a vlan:
+<ul>
+<li><code>vlan &#x3C;id></code></li>
+<li><code>name &#x3C;something></code></li>
+<li><code>end</code></li>
+</ul>
+</li>
+<li>To assign a port to a vlan:
+<ul>
+<li><code>interface &#x3C;if_name></code></li>
+<li><code>switchport access vlan &#x3C;id></code></li>
+<li><code>exit</code></li>
+</ul>
+</li>
+<li>To set a port as trunk:
+<ul>
+<li><code>interface &#x3C;if_name></code></li>
+<li><code>switchport mode trunk</code></li>
+<li>To permit/add a vlan id: <code>switchport trunk allowed vlan &#x3C;add/remove> &#x3C;id></code></li>
+<li><code>end</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="virtual-interfaces">Virtual Interfaces</h2>
+<p>(Once in <code>config</code> )</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>R1(config)#interface fastEthernet 0/0</span></span>
+<span class="line"><span>R1(config-if)#no shutdown</span></span>
+<span class="line"><span>R1(config-if)#exit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>R1(config)#interface fastEthernet 0/0.10</span></span>
+<span class="line"><span>R1(config-subif)#encapsulation dot1Q 10</span></span>
+<span class="line"><span>R1(config-subif)#ip address 192.168.10.254 255.255.255.0</span></span>
+<span class="line"><span>R1(config-subif)#exit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>R1(config)#interface fastEthernet 0/0.20</span></span>
+<span class="line"><span>R1(config-subif)#encapsulation dot1Q 20                 </span></span>
+<span class="line"><span>R1(config-subif)#ip address 192.168.20.254 255.255.255.0</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Borrowed from <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick">https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick</a></p>
+<h2 id="static-routing">Static Routing</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>switch# configure terminal</span></span>
+<span class="line"><span>switch(config)#</span></span>
+<span class="line"><span>switch(config)# ip route 192.0.2.0/8 ethernet 1/2 192.0.2.4</span></span>
+<span class="line"><span>switch(config)# show ip static-route</span></span>
+<span class="line"><span>switch(config)# copy running-config startup-config # save config for next reboot</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="using-interface-ranges-for-vlan-assignment-mostly">Using interface ranges (for VLAN assignment, mostly)</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>switch# configure terminal</span></span>
+<span class="line"><span>switch(config)# interface range FastEthernet 0/x-y</span></span>
+<span class="line"><span>switch(config)# switchport access vlan x</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="change-a-port-to-trunk-mode">Change a port to trunk mode</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>switch# configure terminal</span></span>
+<span class="line"><span>switch(config)# interface FastEthernet 0/x</span></span>
+<span class="line"><span>switch(config)# switchport trunk</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="using-ip-helper-address">Using ip helper-address</h2>
+<p>This is for DHCP across subnets/interfaces</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>router(config)# interface vlan &#x3C;id_here> # or a fa or ge interface</span></span>
+<span class="line"><span>router(config)# ip helper-address &#x3C;dhcp_server_addr_here></span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="static-nat">Static NAT</h2>
+<p>Define where’s inside and where’s outside</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>R1(config)# interface &#x3C;type> &#x3C;number> # e.x. fa 0/0</span></span>
+<span class="line"><span>R1(config)# ip nat inside</span></span>
+<span class="line"><span>R1(config)# exit</span></span>
+<span class="line"><span>R1(config)# interface &#x3C;type> &#x3C;number> # e.x. serial 0/0/0</span></span>
+<span class="line"><span>R1(config)# ip nat outside</span></span>
+<span class="line"><span>R1(config)# exit</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Then you can add a static mapping like:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>R1(config)# ip nat inside source static &#x3C;LAN IP of machine> &#x3C;IP in WAN range for router></span></span>
+<span class="line"><span># in our case:</span></span>
+<span class="line"><span>R1(config)# ip nat inside source static 10.0.0.2 50.0.0.1</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="pat">PAT</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Create a "pool" with the public IP (only 1 in this case)</span></span>
+<span class="line"><span>R1(config)#ip nat pool test 30.0.0.120 30.0.0.120 netmask 255.0.0.0</span></span>
+<span class="line"><span># Allow the 192.168.1.X clients to use said pool</span></span>
+<span class="line"><span>R1(config)#access-list 1 permit 192.168.0.0 0.0.0.255</span></span>
+<span class="line"><span># Connect pool and ACL for going from inside to outside</span></span>
+<span class="line"><span># overload allows up to 64k clients</span></span>
+<span class="line"><span>R1(config)#ip nat inside source list 1 pool test overload</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="setting-up-ospf">Setting up OSPF</h2>
+<p>Firstly, ensure that each router has it’s interface IP addresses configured. Then, on each router:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>router ospf 1</span></span>
+<span class="line"><span>network &#x3C;network IP> &#x3C;network mask> area 0</span></span>
+<span class="line"><span># repeat the above line for each network that's directly connected to this router</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>The <code>1</code> after <code>router ospf</code> is a PID number, for complex routing setups where the router will have multiple executibles of the OSPF process running. We are ignoring this
+The <code>area 0</code> in each <code>network</code> command is to tell the router that the given network is in the backbone area. In a more complex setup, each layer going “down” would have a higher value here.</p>  </body></html>

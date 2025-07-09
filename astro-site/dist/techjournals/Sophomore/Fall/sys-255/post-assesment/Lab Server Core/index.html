@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="server-core--remote-admin-lab">Server Core / Remote Admin Lab</h1>
+<h2 id="in-sconfig-on-fs01">In <code>sconfig</code> on fs01</h2>
+<ul>
+<li>Set admin password</li>
+<li>Set network adapter settings:
+<img src="/nconfig.png" alt="fs network"></li>
+<li>Set hostname &#x26; reboot</li>
+<li>Go back to sconfig, join domain, reboot again</li>
+</ul>
+<h2 id="deliverable-1">Deliverable 1</h2>
+<p>(screenshot of <code>sconfig</code> after domain join. Omitted for brevity.)</p>
+<h2 id="on-ad">On AD</h2>
+<ul>
+<li>Add <code>File Server Resource Manager Tools</code>, and install
+<img src="/roles-feats.png" alt="Add feature wizard"></li>
+<li>Add fs01 to the management window by right-clicking on <code>All Servers</code>, and adding it. Then, type in <code>fs</code> to find it by name.</li>
+</ul>
+<h2 id="deliverable-2">Deliverable 2</h2>
+<p><img src="/rsat-del2.png" alt="Screenshot of both servers in the admin panel"></p>
+<h2 id="on-ad-in-ad-users--groups-tool">On AD (in AD Users &#x26; Groups tool)</h2>
+<ul>
+<li>Create OU’s: <code>SYS-255/{Users,Computers,Groups}</code></li>
+<li>Create Global Security Group <code>Sales-Users</code> in <code>SYS-255/Groups/</code></li>
+<li>Add users <code>Bob</code> and <code>Alice</code> in <code>SYS-255/Users</code></li>
+<li>Add <code>Alice</code> to <code>Sales-Users</code></li>
+<li>Add <code>File Server Resource Manager</code> to fs01 through the add features and roles from server manager
+<img src="/rsat-arfw.png" alt="Tree view of features added"></li>
+</ul>
+<h2 id="on-fs01">On FS01</h2>
+<ul>
+<li>Run the following command to open the firewall for remot e file server management: <code>netsh advfirewall firewall set rule group=”Remote File Server Resource Manager Management” new enable=yes</code></li>
+</ul>
+<h2 id="deliverable-3">Deliverable 3</h2>
+<p>Screenshot of File Server Resource Manager on ad connected to fs01</p>
+<h2 id="on-ad01">On AD01</h2>
+<ul>
+<li>Through server manager -> File and Storage Services, create a quick share on fs01 called <code>Sales</code>, leaving the options alone, and noting the local and remote paths.</li>
+<li>Edit permissions by right clicking on Sales share, clicking permissions, and then “customize permissions”</li>
+<li>Remove “everyone has acces”</li>
+<li>Add Sales-Users OU as having full control.</li>
+</ul>
+<h2 id="deliverable-4">Deliverable 4</h2>
+<ul>
+<li>PT #1 is showing that alice can use the share</li>
+<li>PT #2 is showing that bob cannot
+(screenshots omitted)</li>
+</ul>
+<h2 id="deliverable-5">Deliverable 5:</h2>
+<p>Researching, and implementing, a GPO to map the network share to <code>S:\</code> on a machine if a user in <code>Sales-Users</code> signs in.
+(Screenshots omitted.)
+Resource used: <a href="https://activedirectorypro.com/map-network-drives-with-group-policy/">https://activedirectorypro.com/map-network-drives-with-group-policy/</a></p>  </body></html>

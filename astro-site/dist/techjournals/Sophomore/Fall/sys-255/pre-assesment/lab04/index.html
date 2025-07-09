@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-04-dhcp">Lab 04: DHCP</h1>
+<h2 id="some-of-the-items-in-here-involved-editing-my-centos-reference-page">Some of the items in here involved editing my <a href="/techjournals/centos-commands.md">CentOS Reference</a> page.</h2>
+<h2 id="step-0-putty">Step 0: PuTTY</h2>
+<p>(Installing PuTTY just involves downloading the <code>.msi</code> file from their <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">website</a>)
+(The only interesting part was using <code>matt.compton-adm</code> domain admin for the UAC prompt)</p>
+<h2 id="step-1-installing-dhcp">Step 1: Installing dhcp</h2>
+<ul>
+<li>Run <code>yum install dhcp</code> - Installs the dhcp daemon that we configure</li>
+</ul>
+<h2 id="step-2-configure-dhcpd">Step 2: Configure dhcpd</h2>
+<ul>
+<li>Run either <code>nano /etc/dhcp/dhcpd.conf</code> as root, or prefix with <code>sudo</code></li>
+<li>Type in contents like the below:
+<img src="/lab04_dhcpd_conf.PNG" alt="contents of dhcpd.conf"></li>
+</ul>
+<h2 id="step-3-start--enable-dhcpd">Step 3: Start &#x26; Enable dhcpd</h2>
+<ul>
+<li>Run <code>systemctl start dhcpd</code> (prefix with <code>sudo</code> if you’re not logged in as root)
+<ul>
+<li>This command starts <code>dhcpd</code> in the background as a daemon</li>
+</ul>
+</li>
+<li>Run <code>systemctl enable dhcpd</code> (again, prefix with <code>sudo</code> if needed.)
+<ul>
+<li>This command instructs the system to auto-start the service when the system boots.</li>
+</ul>
+</li>
+</ul>
+<h2 id="step-4-allow-dhcpd-through-firewall">Step 4: Allow dhcpd through firewall</h2>
+<ul>
+<li>Run <code>firewall-cmd --add-service=dhcp --permanent</code>
+<ul>
+<li>The firewall’s rule sets know that dhcp is UDP port 67, so we don’t have to explicitly say it.</li>
+</ul>
+</li>
+<li>Run <code>firewall-cmd --reload</code> to make the change active.</li>
+</ul>
+<h2 id="step-5-reconfigure-workstation-to-use-the-new-dhcp-server">Step 5: Reconfigure Workstation to use the new DHCP server</h2>
+<p>Like in Lab 1, we’re editing the adapter options. Only this time, we’re setting both back to automatic</p>
+<ul>
+<li>Control Panel -> Network and Internet -> Network Connections</li>
+<li><code>Ethernet0</code> properties -> IPv4 Properties</li>
+<li>Tick <code>Obtain an IP address automatically</code></li>
+<li>Tick <code>Obtain DNS server address automatically</code></li>
+</ul>
+<h2 id="deliverable-1">Deliverable 1</h2>
+<p>Proving that DHCP works correctly with a screenshot of <code>ipconfig /all</code>
+<img src="/lab04_deliverable1.PNG" alt="results of ipconfig command"></p>
+<h2 id="deliverable-2">Deliverable 2</h2>
+<p>Log entries on <code>dhcp01-matt</code> of the DHCP request from <code>wks01-matt</code>
+Command used: <code>sudo cat /var/log/messages | grep wks01-matt</code>
+<img src="/lab04_deliverable2.PNG" alt="results of command"></p>
+<h2 id="deliverable-3">Deliverable 3</h2>
+<p>Wireshark outputs from DHCP transaction.
+<img src="/lab04_deliverable3.PNG" alt="wireshark capture"></p>
+<h2 id="deliverable-4">Deliverable 4</h2>
+<p>To change the lease time, I consulted <a href="https://linux.die.net/man/8/dhcpd">an online man page for dhcpd</a>, and edited the file <code>/etc/dhcp/dhcpd.conf</code></p>
+<p>Contents of the file:
+<img src="/lab04_deliverable4_pt1.PNG" alt="updated configuration"></p>
+<p>Proof of updated lease time
+<img src="/lab04_deliverable4_pt2.PNG" alt="ipconfig new output"></p>  </body></html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-03---git--linux">Lab 03 - Git + Linux</h1>
+<h2 id="things-i-didnt-really-know">Things I didn’t really know</h2>
+<ul>
+<li>I think the reason my <code>secure_ssh.sh</code> script creates users with just a <code>$</code> prompt is because I probably missed a flag for <code>useradd</code>. I should probably have read my own <a href="../../../centos-commands.md">CentOS Notes</a> better.</li>
+</ul>
+<h2 id="things-i-did">Things I did</h2>
+<ul>
+<li>Since my techjournal repo is basically just the markdown pages that create this website, and I don’t think I would necesarily need this particular SSH key or script, I put the <code>linux/{centos,public-key}</code> stuff into the Git repo made specifically for my Docker project, which you can find <a href="https://git.goober.cloud/matt/forgejo-docker-stack">here</a></li>
+<li>On the off-chance that I do ever decide to reuse the script, I used <code>curl</code> within it to grab the pubkey, rather than assume that the user has <code>git</code> and has pulled the whole repository. This also makes more sense in my mind because the user might not actually <em>want</em> all the Forgejo docker compose stuff. (Although, I do think it is pretty rad)</li>
+</ul>  </body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-01---network-management--monitoring">Lab 01 - Network Management / Monitoring</h1>
+<h2 id="web01-matt-details">web01-matt details</h2>
+<ul>
+<li>IP: <code>10.0.5.200</code></li>
+<li><strong>NOT</strong> on AD</li>
+<li>Admin: <code>matt</code> (which is in the <code>wheel</code> group)</li>
+</ul>
+<h2 id="pfsense-fw01-snmp">pfSense (fw01) SNMP</h2>
+<ul>
+<li>Community string: <code>JoeOfTheEast</code></li>
+<li>All modules enabled</li>
+<li>No traps</li>
+<li>Only on the LAN interface</li>
+<li>The page has a silly restart icon which will reboot the daemon</li>
+</ul>
+<h2 id="nmon01-matt-details">nmon01-matt details</h2>
+<ul>
+<li>IP: <code>10.0.5.11</code></li>
+<li><strong>NOT</strong> in AD</li>
+<li>Same admin as <code>web01-matt</code></li>
+<li>SNMP utils installed (see <a href="/techjournals/centos-commands.md">CentOS Notes</a>)</li>
+</ul>
+<h2 id="web01-matt-snmpd-config">web01-matt SNMPD Config</h2>
+<p>Path: <code>/etc/snmp/snmpd.conf</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>com2sec myNetwork 10.0.5.0/24 JoeOfTheEast</span></span>
+<span class="line"><span>group myROGroup v2c myNetwork</span></span>
+<span class="line"><span>view all included .1 80</span></span>
+<span class="line"><span>access myROGroup "" any noauth exact all none none</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Allowed port <code>161/udp</code> in <code>firewall-cmd</code></p>
+<h2 id="tcpdump-syntax-for-snooping-on-snmp">tcpdump syntax for snooping on snmp</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> tcpdump</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> ens192</span><span style="color:#79B8FF"> -c</span><span style="color:#79B8FF"> 10</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> udp</span><span style="color:#9ECBFF"> port</span><span style="color:#79B8FF"> 161</span></span>
+<span class="line"></span></code></pre>
+<p>I had to do quite a bit of googling for that since the “expression” part of the man-page was not helpful.</p>  </body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="prep-work-for-everything-exploding">Prep work for everything exploding</h1>
+<h2 id="system-layout">System Layout</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">flowchart TD;</span></span>
+<span class="line"><span style="color:#E1E4E8">    FW[fw01 - Gateway, Firewall, Upstream DNS];</span></span>
+<span class="line"><span style="color:#E1E4E8">    AD[ad01 - Active Directory, DNS for machines];</span></span>
+<span class="line"><span style="color:#E1E4E8">    DHCP[dhcp01 - DHCP Server];</span></span>
+<span class="line"><span style="color:#E1E4E8">    WKS[wks01 - Windows Workstation];</span></span>
+<span class="line"><span style="color:#E1E4E8">    FW --> |Gateway for| AD;</span></span>
+<span class="line"><span style="color:#E1E4E8">    AD --> |Resolves DNS for| DHCP;</span></span>
+<span class="line"><span style="color:#E1E4E8">    DHCP --> |Gives IP | WKS;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="services">Services:</h2>
+<ul>
+<li><code>fw01</code> - pfSense has upstream dns and is the default gateway - WAN IP: <code>10.0.17.104/24</code>, LAN IP: <code>10.0.5.2/24</code></li>
+<li><code>ad01</code> - Domain controller, DNS for machines on AD - IP: <code>10.0.5.5</code></li>
+<li><code>dhcp01</code> - DHCP server, SSH-able - IP: <code>10.0.5.3</code></li>
+<li><code>wks01</code> - Windows 10 Client, AD member - IP: <code>10.0.5.100</code> (assigned via DHCP currently, should likely manually assign <code>.105</code> or smth before DHCP configured, if required.)</li>
+</ul>
+<h2 id="reconstruction-plan">Reconstruction Plan</h2>
+<ol>
+<li>pfSense is first, follow lab 1.</li>
+<li>ad01 is next, follow lab 2, and join wks01 to domain.</li>
+<li>Set up dhcp01 user as per lab 3, don’t bother with account creation/shell demos if not required.</li>
+<li>Follow lab 4 to enable DHCP server on dhcp01, and set workstation to be a DHCP client.</li>
+<li>Secure SSHD on dhcp01.</li>
+<li>Follow lab 5 for security policies (if required?).</li>
+</ol>  </body></html>

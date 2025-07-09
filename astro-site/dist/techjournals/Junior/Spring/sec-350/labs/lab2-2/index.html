@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-22">Lab 2.2</h1>
+<h2 id="including-authpriv-events-in-rsyslog">Including authpriv events in rsyslog</h2>
+<p>In your client config, ensure you add:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>user.notice @172.16.50.5:514</span></span>
+<span class="line"><span># New (vv)</span></span>
+<span class="line"><span>authpriv.* @172.16.50.5:514</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="drop-in-config-for-log01">Drop-in config for log01</h2>
+<p>Instead of modifying <code>/etc/rsyslog.conf</code>, we created <code>/etc/rsyslog.d/03-sec350.conf</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>module(load="imudp")</span></span>
+<span class="line"><span>input(type="imudp "port="514" ruleset="RemoteDevice)</span></span>
+<span class="line"><span>template(name="DynFile" type="string"</span></span>
+<span class="line"><span>    string="/var/log/remote-syslog/%HOSTNAME%/%$YEAR%.%$MONTH%.%$DAY%.%PROGRAMNAME%.log"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span>ruleset(name="RemoteDevice"){</span></span>
+<span class="line"><span>    action(type="omfile" dynaFile="DynFile")</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>And, make sure to re-disable the base rsyslog listening on port 514 (in <code>/etc/rsyslog.conf</code>)</p>
+<h2 id="vyos-syslog">VyOS syslog</h2>
+<p>(See the VyOS reference sheet at the top level of techjournals)</p>  </body></html>

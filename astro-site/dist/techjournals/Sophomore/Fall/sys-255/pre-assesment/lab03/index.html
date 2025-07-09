@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-03-linux">Lab 03: Linux</h1>
+<h2 id="some-of-the-items-in-here-involved-editing-my-centos-reference-page">Some of the items in here involved editing my <a href="/techjournals/centos-commands.md">CentOS Reference</a> page.</h2>
+<h2 id="setting-up-the-ethernet-interface">Setting up the ethernet interface</h2>
+<p>Using <code>nmtui</code> command, set the network interface <code>ens192</code> to the following:</p>
+<ul>
+<li>IPv4 Configuration: Manual</li>
+<li>IP Address: 10.0.5.3/24</li>
+<li>Gateway: 10.0.5.2</li>
+<li>DNS Server: 10.0.5.5</li>
+<li>Search domain: matt.local</li>
+</ul>
+<p>Outside of the interface, set the hostname to <code>dhcp01-matt</code></p>
+<h3 id="screencaps-of-nmtui">Screencaps of NMTUI</h3>
+<ol>
+<li><img src="/lab03_nmtui_1.png" alt="nmtui main page"></li>
+<li><img src="/lab03_nmtui_2.png" alt="nmtui interface list"></li>
+<li><img src="/lab03_nmtui_3.png" alt="nmtui config for ens192"></li>
+</ol>
+<h2 id="adding-a-new-user-and-setting-them-as-a-wheel-member">Adding a new user, and setting them as a wheel member</h2>
+<ul>
+<li><code>adduser matt</code> (OR <code>useradd -m matt</code>)</li>
+<li><code>passwd matt</code></li>
+<li><code>usermod -aG wheel matt</code></li>
+</ul>
+<h2 id="deliverable-1-somehow">Deliverable 1 (somehow)</h2>
+<p><img src="/lab03_deliverable1.png" alt="Deliverable 1">
+This deliverable demonstrates correctly configured networking on <code>dhcp01-matt</code></p>
+<h2 id="deliverable-2">Deliverable 2</h2>
+<p><img src="/lab03_deliverable2.png" alt="Deliverable 2">
+This deliverable demonstrates that the correct A record has been created on <code>ad01-matt</code> for <code>dhcp01-matt</code></p>
+<h2 id="deliverable-3">Deliverable 3</h2>
+<p><img src="/lab03_deliverable3.png" alt="Deliverable 3">
+This deliverable shows logging in as the local user <code>matt</code> on <code>dhcp01-matt</code> from <code>wks01-matt</code> using SSH</p>
+<h2 id="deliverable-4">Deliverable 4</h2>
+<p><img src="/lab03_deliverable4.png" alt="Deliverable 4">
+This deliverable shows the first 10 commands I ran after signing in to <code>dhcp01-matt</code></p>
+<h2 id="deliverable-5">Deliverable 5</h2>
+<ul>
+<li>Pros and cons of bash’s history function: It’s a useful reference for if you forget how you did something, or if you later find out you broke something. On the other hand, it would allow any user with admin privileges to the system to view all commands you have executed, or if a bad actor has access to your user account.</li>
+<li>How to clear bash history: A combination of <code>history -c &#x26;&#x26; rm .bash_history &#x26;&#x26; history -c</code> did the trick for me</li>
+</ul>  </body></html>

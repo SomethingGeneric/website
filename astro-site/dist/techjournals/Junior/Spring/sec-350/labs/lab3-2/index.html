@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-32---wazuh">Lab 3.2 - Wazuh</h1>
+<h2 id="setting-up-wazuh">Setting up Wazuh</h2>
+<p>Installing Wazuh is very easy, as there’s a bash install script:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>curl -sO https://packages.wazuh.com/4.3/wazuh-install.sh # for this lab,  I used 4.7, which meant simply modifying the version in the URL</span></span>
+<span class="line"><span># inspect the installer if you'd like</span></span>
+<span class="line"><span>sudo bash ./wazuh-install.sh -a -i # where "-a" means combined install (all Wazuh components on the same box), and "-i" is to ignore system requirements, as our class VMs are a little too light on RAM in Wazuh's opinion</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="installing-agents">Installing Agents</h2>
+<p>Installing agents is easy on supported platforms, as the “Deploy new agents” screen, which you can get to easily from the main dashboard by clicking “agents” and then the plus icon, will generate install scripts for every supported platform.</p>
+<h2 id="wheres-wazuh-stuff">Where’s Wazuh stuff?</h2>
+<p>Wazuh’s files live in <code>/var/ossec</code> on both the agents and the manager</p>  </body></html>

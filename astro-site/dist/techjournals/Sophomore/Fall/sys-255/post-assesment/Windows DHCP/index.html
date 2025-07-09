@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="setting-up-windows-dhcp-server">Setting up Windows DHCP Server</h1>
+<ul>
+<li>In the Server manager, add DHCP as a role for your preferred server</li>
+<li>If the machine for the DHCP server is a minimal setup (no GUI), add the “feature” for “Remote Server Administration” -> “DHCP Server Tools”</li>
+<li>Connect to the target machine in the DHCP tools window</li>
+<li>Create a scope</li>
+<li>Set options</li>
+</ul>
+<h2 id="or-if-youre-feeling-brave">Or if you’re feeling brave:</h2>
+<p>You can use Powershell on the target machine following this guide: <a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/quickstart-install-configure-dhcp-server?tabs=powershell">https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/quickstart-install-configure-dhcp-server?tabs=powershell</a></p>
+<p>I couldn’t fidnd a good reference for the <code>-OptionId</code> fields, so I gave up and used the GUI to set the default gateway of my scope.</p>  </body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="nmap-cheatsheet">nmap cheatsheet</h1>
+<p>General syntax is <code>sudo nmap &#x3C;host></code></p>
+<p>Where <code>&#x3C;host></code> is an IP, domain name, or range of IP’s.</p>
+<h2 id="host-spec-examples">Host Spec Examples</h2>
+<ul>
+<li>Single IP: <code>sudo nmap 10.0.1.1 &#x3C;options></code></li>
+<li>Domain: <code>sudo nmap goober.cloud &#x3C;options></code></li>
+<li>IP Range: <code>sudo nmap 10.0.0.0/24</code> (network ID)</li>
+<li>Multiple IPs (not net ID): <code>sudo nmap 10.0.0-10</code> (first 11)</li>
+</ul>
+<h2 id="flags-breakdown">Flags breakdown</h2>
+<ul>
+<li><code>-A</code>: Enable OS detection, version detection, script scanning, and traceroute (good flag if you’re doing a general look-see)</li>
+<li><code>-p &#x3C;number></code>: Scan only this port(s). You can do things like <code>-p 22</code> but also <code>-p 22-80</code> or <code>-p 22,25</code></li>
+<li><code>-sV</code>: Determine version info of discovered services</li>
+<li><code>-O</code>: Enable OS detection</li>
+<li><code>-sn</code>: Ping scan (default if you’re not using <code>sudo</code> or logged in as root)</li>
+<li><code>-Pn</code>: Treat all host(s) as online</li>
+</ul>
+<p>See all flags with <code>man nmap</code> or online at <a href="https://linux.die.net/man/1/nmap">https://linux.die.net/man/1/nmap</a></p>
+<h3 id="fyi">FYI</h3>
+<p>If you use <code>-A</code>, you’re essentially doing <code>-sV sC -O --traceroute</code></p>  </body></html>

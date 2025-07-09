@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="week-6-class-on-22624">Week 6 (Class on 2/26/24)</h1>
+<h2 id="password-hash-cracking-notes-61">Password Hash Cracking Notes (6.1)</h2>
+<ul>
+<li>Grabbing hashes:
+<ul>
+<li><code>cat /etc/shadow</code> (from root or with <code>sudo</code> or <code>doas</code>)</li>
+<li>Or better: <code>cat /etc/shadow | grep -v '!\*'</code></li>
+</ul>
+</li>
+<li>Breakdown of <code>/etc/shadow</code> entries:
+<ul>
+<li>Example: <code>galadriel:$6$poPWvLT/CfA/sxS/$lHbu1oMqRV2aM18fkFPbJw25U2.POqhonSmaUpbzPIPVKl2IxS86Qq8q9v3fYu5Y6qlWwbmqekbL3g1vtPmlQ/:19143:0:99999:7:::</code></li>
+<li>Fields are seperated by <code>:</code></li>
+<li>First is username</li>
+<li>Second is password hash, which has 3 sub-fields
+<ol>
+<li>Hash algorithm. <code>$6</code> in this case</li>
+<li>Salt. <code>$poPWvLT/CfA/sxS/</code> in this case.</li>
+<li>Salt + Password: <code>$lHbu1oMqRV2aM18fkFPbJw25U2.POqhonSmaUpbzPIPVKl2IxS86Qq8q9v3fYu5Y6qlWwbmqekbL3g1vtPmlQ/</code></li>
+</ol>
+</li>
+<li>And the ones after password we don’t really need for this use-case</li>
+</ul>
+</li>
+<li>Usage of <code>unshadow</code>
+<ul>
+<li>Unshadow turns a shadow file and passwd file into a combined file for tools like <code>hashcat</code> and <code>john</code></li>
+<li>Usage is very straight-forward: <code>unshadow passwd_file shadow_file > output_file</code></li>
+</ul>
+</li>
+<li>I gave up trying to use John because it didn’t want to use my GPU</li>
+<li>Hashcat made life so easy.
+<ul>
+<li>It auto-detected my NVIDIA card when I ran <code>hashcat -I</code></li>
+<li>Cracking was very easy, with just:
+<code>hashcat -m 1800 -a 0 -o output_file_name unshadow_file_name path_to_wordlist_file</code></li>
+</ul>
+</li>
+<li>We’re lucky that this old box has SHA-512, which I figured out from <a href="https://www.cyberciti.biz/faq/understanding-etcshadow-file/">this page</a></li>
+</ul>
+<h2 id="password-hash-cracking-reflection-61">Password Hash Cracking Reflection (6.1)</h2>
+<p>This assignment was really fun. Getting to use the tools that Kali has to grab other accounts from the bios box was super interesting to me.</p>
+<p>The most challenging part was the amount of time I spent trying to get JtR to accept my NVIDIA GPU, which, I never was successful with. I also never bothered using hydra or john on the Kali VM, given the lack of output from running CPU-bound on my 16-core AMD Ryzen 7, I knew that vCenter would be hopeless.</p>
+<p>Once I piped the magic arguments to hashcat, though, it took only about 5 minutes to get all three accounts that I didn’t have previously.</p>
+<p>I can totally understand the push for password managers, now, as I bet it would take ages (if it’s even possible) to crack the 20+ character, randomized nonsense that are most of my personal passwords.</p>  </body></html>

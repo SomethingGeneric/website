@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="sys-vcenter-topology-for-myself">SYS vCenter Topology (for myself)</h1>
+<h2 id="machine-descriptions">Machine Descriptions</h2>
+<ul>
+<li><code>ad01</code> - Windows Server 2019, AD domain controller and DNS server for it’s machines</li>
+<li><code>dhcp01</code> - CentOS, dhcpd server</li>
+<li><code>fw01</code> - pfSense, router, firewall, upstream DNS for `ad01“ and any non-AD machines in LAN</li>
+<li><code>wks01</code> - Windows, workstation on <code>ad01</code> AD domain</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph TD;</span></span>
+<span class="line"><span style="color:#E1E4E8">    fw01-->ad01;</span></span>
+<span class="line"><span style="color:#E1E4E8">    ad01-->dhcp01;</span></span>
+<span class="line"><span style="color:#E1E4E8">    dhcp01-->wks01;</span></span>
+<span class="line"></span></code></pre>  </body></html>

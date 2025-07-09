@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="sys-vcenter-topology-after-midterm">SYS vCenter Topology (AFTER MIDTERM)</h1>
+<h2 id="machine-descriptions">Machine Descriptions</h2>
+<ul>
+<li><code>ad-assesment</code> - <code>10.0.5.6</code>, Windows Server 2019, AD domain controller and DNS server for it’s machines</li>
+<li><code>dhcp-assesment</code> - <code>10.0.5.33</code>, CentOS, dhcpd server</li>
+<li><code>fw-assesment</code> - <code>10.0.5.2</code>, pfSense, router, firewall, upstream DNS for `ad01“ and any non-AD machines in LAN</li>
+<li><code>wks-assesment</code> - <code>10.0.5.150</code> (DHCP), Windows, workstation on <code>ad01</code> AD domain</li>
+<li><code>fs01-matt</code> - <code>10.0.5.8</code>, Windows Server, fileserver</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph TD;</span></span>
+<span class="line"><span style="color:#E1E4E8">    fw-assesment-->ad-assesment;</span></span>
+<span class="line"><span style="color:#E1E4E8">    ad-assesment-->dhcp-assesment;</span></span>
+<span class="line"><span style="color:#E1E4E8">    dhcp-assesment-->fs01;</span></span>
+<span class="line"><span style="color:#E1E4E8">    dhcp-assesment-->wks-assesment;</span></span>
+<span class="line"></span></code></pre>  </body></html>

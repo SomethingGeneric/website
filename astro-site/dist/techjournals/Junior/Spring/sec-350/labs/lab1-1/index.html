@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Astro</title><style>body{background-color:#000;color:#0f0;font-family:Courier New,Courier,monospace}a{color:#0f0}
+</style></head> <body>  <h1 id="lab-11">Lab 1.1</h1>
+<p>IP Assignment Sheet: <a href="https://docs.google.com/spreadsheets/d/1QfUMFhFyiDqfvJU24Fav5s71LYY_LKGA/edit?gid=2000835468#gid=2000835468">https://docs.google.com/spreadsheets/d/1QfUMFhFyiDqfvJU24Fav5s71LYY_LKGA/edit?gid=2000835468#gid=2000835468</a></p>
+<h2 id="rw01-matt">rw01-matt</h2>
+<ul>
+<li>Changed <code>champuser</code> password</li>
+<li>Added <code>sudo</code> user <code>matt</code></li>
+<li>Set IP with <code>nmtui</code> (netplan makes me sad)</li>
+<li>Set hostname with <code>hostnamectl set-hostname</code></li>
+</ul>
+<h2 id="fw01-matt">fw01-matt</h2>
+<p>Steps taken for the firewall are listed in the VyOS reference sheet, from the top to the noted stop point.</p>
+<h2 id="web01-matt">web01-matt</h2>
+<ul>
+<li>Changed root password</li>
+<li>Made <code>matt</code> sudo user, set password</li>
+<li>Set IP address, DNS, etc</li>
+<li>IP on DMZ: <code>172.16.50.3</code></li>
+</ul>
+<h2 id="log01-matt">log01-matt</h2>
+<ul>
+<li>Same steps as web01-matt</li>
+<li>IP on DMZ: <code>172.16.50.5</code></li>
+</ul>
+<p>Had to edit <code>/etc/rsyslog.conf</code> to recieve entries from <code>web01</code>:</p>
+<p><img src="/sec350-rsyslog-log01.png" alt="config file changes"></p>  </body></html>
