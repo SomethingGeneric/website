@@ -1,1 +1,0 @@
-# CSI-320 - Global IT & Ethics
