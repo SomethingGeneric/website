@@ -15,11 +15,27 @@ const posts = Object.values(import.meta.glob('./*.md', { eager: true }));
         <p>No blog posts found.</p>
       ) : (
         posts.map(post => (
-          <li>
-            <a href={post.url}>
-              {post.frontmatter?.title || post.url.split('/').pop().replace('.html', '')}
-            </a>
-          </li>
+            <li>
+            {(() => {
+              // Extract filename from post.url or post.file
+              const filename = post.url
+              ? post.url.split('/').pop().replace('.html', '.md')
+              : post.file?.split('/').pop();
+              // Match YYYY-MM-DD from filename
+              const dateMatch = filename && filename.match(/^(\d{4}-\d{2}-\d{2})-/);
+              const date = dateMatch ? dateMatch[1] : null;
+              return (
+              <a href={post.url}>
+                {post.frontmatter?.title || filename?.replace('.md', '')}
+                {date && (
+                <span style="margin-left: 0.5em; color: #888; font-size: 0.9em;">
+                  ({date})
+                </span>
+                )}
+              </a>
+              );
+            })()}
+            </li>
         ))
       )}
     </ul>

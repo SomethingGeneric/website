@@ -16,9 +16,9 @@ Using `nmtui` command, set the network interface `ens192` to the following:
 Outside of the interface, set the hostname to `dhcp01-matt`
 
 ### Screencaps of NMTUI
-1. ![nmtui main page](/lab03_nmtui_1.png)
-2. ![nmtui interface list](/lab03_nmtui_2.png)
-3. ![nmtui config for ens192](/lab03_nmtui_3.png)
+1. ![nmtui main page](/public/images/lab03_nmtui_1.png)
+2. ![nmtui interface list](/public/images/lab03_nmtui_2.png)
+3. ![nmtui config for ens192](/public/images/lab03_nmtui_3.png)
 
 ## Adding a new user, and setting them as a wheel member
 * `adduser matt` (OR `useradd -m matt`)
@@ -26,19 +26,19 @@ Outside of the interface, set the hostname to `dhcp01-matt`
 * `usermod -aG wheel matt`
 
 ## Deliverable 1 (somehow)
-![Deliverable 1](/lab03_deliverable1.png)
+![Deliverable 1](/public/images/lab03_deliverable1.png)
 This deliverable demonstrates correctly configured networking on `dhcp01-matt`
 
 ## Deliverable 2
-![Deliverable 2](/lab03_deliverable2.png)
+![Deliverable 2](/public/images/lab03_deliverable2.png)
 This deliverable demonstrates that the correct A record has been created on `ad01-matt` for `dhcp01-matt`
 
 ## Deliverable 3
-![Deliverable 3](/lab03_deliverable3.png)
+![Deliverable 3](/public/images/lab03_deliverable3.png)
 This deliverable shows logging in as the local user `matt` on `dhcp01-matt` from `wks01-matt` using SSH
 
 ## Deliverable 4
-![Deliverable 4](/lab03_deliverable4.png)
+![Deliverable 4](/public/images/lab03_deliverable4.png)
 This deliverable shows the first 10 commands I ran after signing in to `dhcp01-matt`
 
 ## Deliverable 5

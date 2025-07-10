@@ -8,7 +8,7 @@ URL: https://pve.mattcompton.dev/
 
 Username and password should be sent
 
-![pve credentials page](/pve_login.png)
+![pve credentials page](/public/images/pve_login.png)
 
 Make sure to change the `Realm` to `Proxmox VE auth server`.
 
@@ -18,4 +18,4 @@ You *should* have full access to make any changes to the node.
 
 The interface for your VM should look like this
 
-![pve vm view](/pve_vm_view.png)
+![pve vm view](/public/images/pve_vm_view.png)

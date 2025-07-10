@@ -30,4 +30,4 @@ Steps taken for the firewall are listed in the VyOS reference sheet, from the to
 
 Had to edit `/etc/rsyslog.conf` to recieve entries from `web01`:
 
-![config file changes](/sec350-rsyslog-log01.png)
+![config file changes](/public/images/sec350-rsyslog-log01.png)
