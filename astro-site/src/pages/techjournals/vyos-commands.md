@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # VyOS Cheatsheet
 
 ### Changing user password

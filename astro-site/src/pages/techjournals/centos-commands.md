@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # CentOS 7 Combined Reference
 (Useful for SEC260 and SYS255 and SYS265)
 

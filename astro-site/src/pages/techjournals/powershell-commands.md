@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Notable Powershell Things
 
 * Install AD: `Install-WindowsFeature AD-Domain-Services -IncludeManagementTools`
