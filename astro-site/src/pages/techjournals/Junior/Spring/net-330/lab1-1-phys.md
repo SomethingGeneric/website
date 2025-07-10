@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 1.1 Physical Hardware
 
 I don't know too much what to write here.

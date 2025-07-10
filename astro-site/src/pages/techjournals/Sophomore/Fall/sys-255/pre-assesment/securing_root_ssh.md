@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Securing SSHD
 To prevent root access
 

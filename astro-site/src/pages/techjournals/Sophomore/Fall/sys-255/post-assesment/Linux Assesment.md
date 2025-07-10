@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Linux Assesment
 Basically re-creating web01 and adding some kind of PHP based blog service
 WordPress in my case

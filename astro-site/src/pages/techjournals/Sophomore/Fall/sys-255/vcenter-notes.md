@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # VCenter Access
 
 ## While on cyber.local (or on campus generally)

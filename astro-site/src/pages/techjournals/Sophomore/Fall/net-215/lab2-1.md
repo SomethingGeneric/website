@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 2-1
 
 ## Part 1

@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 3-3 DHCP in Packet Tracer
 
 1. Creating pools in a router/magic switch is very painful but the UI makes it fine

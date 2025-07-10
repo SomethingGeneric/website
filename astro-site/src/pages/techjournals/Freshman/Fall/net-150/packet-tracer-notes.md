@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Packet Tracer Notes
 
 * Don't use `cls` in a switch

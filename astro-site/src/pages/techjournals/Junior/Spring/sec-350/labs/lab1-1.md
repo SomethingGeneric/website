@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 1.1
 
 IP Assignment Sheet: https://docs.google.com/spreadsheets/d/1QfUMFhFyiDqfvJU24Fav5s71LYY_LKGA/edit?gid=2000835468#gid=2000835468

@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Web Terms
 
 * HTML - HyperText Markup Language (defines how websites are made)

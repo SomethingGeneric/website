@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Apache & Linux AD Lab
 
 ## Setup pt 1 (on web01)

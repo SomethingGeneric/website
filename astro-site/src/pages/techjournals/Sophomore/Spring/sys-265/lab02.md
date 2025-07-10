@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 02 - Docker
 ## Things I didn't already know / suffered with
 * The documentation for [Netplan](https://netplan.readthedocs.io/en/stable/examples/#how-to-configure-a-static-ip-address-on-an-interface) is pretty good, but I had a couple of specific pain points:

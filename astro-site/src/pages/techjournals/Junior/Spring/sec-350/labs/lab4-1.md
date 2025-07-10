@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 4.1 - Network Firewalls 1
 
 ## Where's the notes?

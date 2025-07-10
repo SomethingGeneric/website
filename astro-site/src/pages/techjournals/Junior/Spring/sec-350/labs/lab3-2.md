@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 3.2 - Wazuh
 
 ## Setting up Wazuh

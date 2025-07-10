@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 7 (Class on 3/4/24)
 
 ## Exploiting Pippin (7.1) Notes

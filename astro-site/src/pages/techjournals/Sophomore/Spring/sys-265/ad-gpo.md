@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab ?? - AD GPO
 
 ## AD Stuff in PowerShell

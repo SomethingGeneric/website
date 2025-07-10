@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # SYS vCenter Topology (for myself)
 
 ## Machine Descriptions

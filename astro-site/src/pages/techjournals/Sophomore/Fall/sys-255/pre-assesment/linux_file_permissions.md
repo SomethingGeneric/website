@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Assignment: Linux File Permissions
 
 ## This assignment involved editing my [CentOS Reference](/techjournals/centos-commands.md)

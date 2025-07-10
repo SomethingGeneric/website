@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 12 (Class on 4/22/24)
 
 ## Physical Access Lab

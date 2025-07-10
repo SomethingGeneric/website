@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 5 (Class on 2/19/24)
 
 ## Password Cracking Bios - Notes

@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 2.1 - Standardizing rsyslog time
 
 To edit rsyslog so that it will report full (and actually useful) timestamps, you simply need to edit `/etc/rsyslog.conf`.

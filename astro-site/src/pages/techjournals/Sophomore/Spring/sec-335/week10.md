@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 10 (Class on 4/1/24)
 
 ## Hunting SUID and publicly writeable files (class activity 10.1)

@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # nmap cheatsheet
 
 General syntax is `sudo nmap <host>`

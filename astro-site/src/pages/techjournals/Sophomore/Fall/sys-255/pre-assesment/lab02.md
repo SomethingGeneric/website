@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 02: AD and DNS
 
 ## Pre-Setup:

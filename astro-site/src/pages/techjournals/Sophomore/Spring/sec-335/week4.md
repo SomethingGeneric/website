@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 4 (Class on 2/12/24)
 
 ## Exploiting Cupcake - Notes

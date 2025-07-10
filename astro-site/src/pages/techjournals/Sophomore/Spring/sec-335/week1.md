@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 1 (Class on 1/22/24)
 
 ## Passive Recon

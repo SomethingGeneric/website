@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # "Midterm" Assesment
 
 ## VyOS Config used by end of assessment !!!

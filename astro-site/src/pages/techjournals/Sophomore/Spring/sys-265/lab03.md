@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 03 - Git + Linux
 ## Things I didn't really know
 * I think the reason my `secure_ssh.sh` script creates users with just a `$` prompt is because I probably missed a flag for `useradd`. I should probably have read my own [CentOS Notes](../../../centos-commands.md) better.

@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # "Lab": 2.2: Telnet, NC, cURL, HTTP
 
 ## Part 1: telnet

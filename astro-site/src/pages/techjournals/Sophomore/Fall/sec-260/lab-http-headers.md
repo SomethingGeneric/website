@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # "Lab": 3.x(??): HTTP Headers
 
 ## Part 1: Manual HEAD request

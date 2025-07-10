@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 2 (Class on 1/29/24)
 
 ## Active Recon

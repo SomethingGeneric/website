@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 3 (Class on 2/5/24)
 
 ## Awful terrible one-liner for NMAP DNS Discovery

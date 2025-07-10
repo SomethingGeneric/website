@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 9 (Class on 3/25/24)
 
 This week was _really_ good fun. I enjoyed the challenge of having absolutely no hints as to what angle to take with this target.

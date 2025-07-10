@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab 01 - Network Management / Monitoring
 
 ## web01-matt details

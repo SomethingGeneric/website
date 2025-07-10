@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Setting up Windows DHCP Server
 * In the Server manager, add DHCP as a role for your preferred server
 * If the machine for the DHCP server is a minimal setup (no GUI), add the "feature" for "Remote Server Administration" -> "DHCP Server Tools"

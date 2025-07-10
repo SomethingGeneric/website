@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 6 (Class on 2/26/24)
 
 ## Password Hash Cracking Notes (6.1)

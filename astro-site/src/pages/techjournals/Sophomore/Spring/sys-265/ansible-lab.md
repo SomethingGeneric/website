@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Lab ??? - Ansible
 ## Pain Points
 * The webmin role by semuadmin didn't work. I used a playbook I manually pieced together instead. You can see it [here](https://git.goober.cloud/matt/sys265-ansible/src/branch/main/webmin.yml)

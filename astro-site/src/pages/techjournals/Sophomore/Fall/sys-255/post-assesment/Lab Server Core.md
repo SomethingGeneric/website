@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Server Core / Remote Admin Lab
 
 ## In `sconfig` on fs01

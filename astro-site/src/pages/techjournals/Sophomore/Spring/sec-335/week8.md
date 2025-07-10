@@ -1,3 +1,6 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+---
 # Week 8 (Class on 3/18/24)
 
 ## 3.1 Weevely PHP Shell Notes
