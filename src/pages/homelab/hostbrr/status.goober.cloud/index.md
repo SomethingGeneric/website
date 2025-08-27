@@ -1,9 +1,9 @@
 ---
 layout: /src/layouts/MarkdownLayout.astro
-title: "Status.Goober.Cloud"
 ---
-# Status.Goober.Cloud
+# brr.goober.cloud
 (a different HostBrr server)
 
 Runs (Uptime Kuma)[https://status.goober.cloud/status/goober]
-And the backend for (GooberEats)[https://github.com/SomethingGeneric/GooberEats]
+
+It's also a mail server, and has webmail.
