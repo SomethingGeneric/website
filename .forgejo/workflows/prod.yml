@@ -21,9 +21,3 @@ jobs:
       - name: Rsync to BasedProxy
         shell: bash
         run: chmod 0600 devbait && rsync -avc -e "ssh -o StrictHostKeyChecking=no -i devbait" dist/ root@10.0.1.5:/var/www/matt/
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          path: dist/
-
