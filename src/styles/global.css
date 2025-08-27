@@ -2,6 +2,9 @@ body {
   background-color: #000;
   color: rgb(48, 187, 48);
   font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -10,4 +13,13 @@ a {
 
 a:hover {
   color: rgb(243, 76, 26);
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+}
+
+footer p {
+  font-size: 75%;
 }

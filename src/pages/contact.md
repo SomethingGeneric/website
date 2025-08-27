@@ -5,6 +5,7 @@ title: "Contact"
 # Contact me
 * Email: `matt[at]xhec[dot]dev`
 * Discord: `r4tth3w`
+* Signal: `ratthew.69`
 
 ## If you're looking for technical support, commercial hosting, etc:
 Email: `matt[at]alchemicode[dot]com`

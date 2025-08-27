@@ -1,0 +1,16 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import { promises as fs } from 'fs';
+import path from 'path';
+
+const filePath = path.join(process.cwd(), 'src', 'data', 'ai-responses.md');
+const fileContent = await fs.readFile(filePath, 'utf-8');
+const lines = fileContent.split('\n').filter(line => line.trim() !== '');
+const randomLine = lines[Math.floor(Math.random() * lines.length)];
+---
+<Layout>
+  <h1>Matt Compton is...</h1>
+  <p>{randomLine}</p>
+</Layout>
+
