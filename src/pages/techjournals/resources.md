@@ -9,13 +9,13 @@ layout: /src/layouts/MarkdownLayout.astro
 ## Files
 * [IP/CIDR chart](/IPv4CIDRChart_2015.pdf)
 
-## GitHub Pages from other Champlain folks:
+## GitHub Pages from other Champlain Cyber/DF folks:
 
 | Name | Fac/Student | Year | Link(s) | Best Content* | 
 | ---- | ----------- | ---- | ------- | ------------ |
-| Ali Hadi | Fac | |  https://github.com/ashemery | |
+| Ali Hadi | Former Fac | |  https://github.com/ashemery | |
 | Furkan Paligu | Fac | | https://github.com/fpaligu | |
-| Duane Dunston | Former Fac |  |  https://github.com/thedunston |
+| Duane Dunston | Fac |  |  https://github.com/thedunston |
 | Devin Paden | Former Fac | | https://github.com/gmcyber <br/> https://greenmountaincyber.com | |
 | Miranda Pagarelski | Alumni | 2023 | https://github.com/mirpag | |
 | Dylan Navarro | Alumni | 2023 | https://github.com/Chromosom3 | |
@@ -28,9 +28,9 @@ layout: /src/layouts/MarkdownLayout.astro
 | Paul Gleason | Alumni | 2024 | https://quartz.paulgleason.dev/ <br/> https://gitbook.paulgleason.dev/ <br/> https://github.com/ChampPG | Eth Hack 1 | 
 | Parker Soares | Alumni | 2024 | https://github.com/Ptsoares | |
 | Jude Lindale | Alumni | 2024 | https://github.com/jude-lindale | | 
-| Ainsley Smith | Student | 2025 | https://github.com/AinsleyPlayer | |
-| Molly Shapiro | Student | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 | Concepts & Definitions |
-| Liam Di-Falco | Student | 2025 | https://github.com/Liam-DiFalco |
+| Ainsley Smith | Alumni | 2025 | https://github.com/AinsleyPlayer | |
+| Molly Shapiro | Alumni | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 | Concepts & Definitions |
+| Liam Di-Falco | Alumni | 2025 | https://github.com/Liam-DiFalco |
 | Natalie Eckles | Student | 2026 | https://github.com/natalie363 | |
 | Will Swearingin | Student | 2026 | https://github.com/wswearingin | |
 | Savannah Ciak | Student | 2026 | https://github.com/savannahc502 | Networking | 
