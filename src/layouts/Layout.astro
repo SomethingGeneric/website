@@ -1,5 +1,15 @@
 ---
 import '../styles/global.css';
+
+const currentYear = new Date().getFullYear();
+const buildDate = new Date().toLocaleString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+});
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +26,8 @@ import '../styles/global.css';
 		<footer>
 			<p>please contact me if you notice anything missing or broken on this site</p> 
 			<p>or just make an issue/PR on <a href="https://fj.mattcompton.dev/matt/website">the source repo</a></p>
+			<p>copyright matt c {currentYear}</p>
+			<p>site last built at {buildDate}</p>
 		</footer>
 	</body>
 </html>
