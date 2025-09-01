@@ -37,12 +37,14 @@ layout: /src/layouts/MarkdownLayout.astro
 | Hannelore Sanokklis | Student | 2026 | https://github.com/Hsanokklis | Any |
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot | |
 | James Nicholls | Student | 2026 | https://github.com/JNicholls2026 | |
+| Diego Perez | Student | 2026 | https://github.com/dpzrz | |
 | Mike Ng | Student | 2026 | https://github.com/ItsMmmike | |
 | Hadley Rae-Balmes | Student | 2026 | https://github.com/hbalmes56 | |
 | Connor East | Student | 2026? | https://github.com/ConnorEast/Tech-Journal/wiki |
 | Beth Chadbourne | Student | 2026 | https://github.com/echadbourne | |
 | Jack Clark | Student | 2026 | https://github.com/jack-champlain | |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith | |
+| Ken Moran | Student | 2027 | https://github.com/Foren-Ken | |
 | Rune Seregina | Student | 2027 | https://github.com/rune-seregina |
 | Laura Thomas-Roy | Student | 2027 | https://github.com/laurathomas-roy |
 | Nilufer Gungor | Student | 2027 | https://github.com/aaralik1 |
