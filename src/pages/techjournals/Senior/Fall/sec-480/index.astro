@@ -1,6 +1,6 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
+import Layout from '../../../../../layouts/Layout.astro';
+import Navbar from '../../../../../components/Navbar.astro';
 
 const files = Object.values(import.meta.glob('./*.md', { eager: true }));
 
@@ -16,13 +16,9 @@ function getTitleFromPath(path: string) {
 
 <Layout>
   <Navbar />
-  <h1>Techjournals</h1>
+  <h1>SEC-480</h1>
   <nav>
     <ul>
-      <li><a href="/techjournals/Freshman/">Freshman/</a></li>
-      <li><a href="/techjournals/Sophomore/">Sophomore/</a></li>
-      <li><a href="/techjournals/Junior/">Junior/</a></li>
-      <li><a href="/techjournals/Senior/">Senior/</a></li>
       {files.map(file => (
         <li>
           <a href={file.url}>
