@@ -46,9 +46,12 @@ layout: /src/layouts/MarkdownLayout.astro
 | Diego Perez | Student | 2026 | https://github.com/dpzrz | |
 | Mike Ng | Student | 2026 | https://github.com/ItsMmmike | |
 | Hadley Rae-Balmes | Student | 2026 | https://github.com/hbalmes56 | |
-| Connor East | Student | 2026? | https://github.com/ConnorEast/Tech-Journal/wiki |
+| Connor East | Student | 2026 | https://github.com/ConnorEast/Tech-Journal/wiki |
 | Beth Chadbourne | Student | 2026 | https://github.com/echadbourne | |
 | Jack Clark | Student | 2026 | https://github.com/jack-champlain | |
+| Louis Mattiolo | Student | 2026 | https://github.com/louismattiolo/Tech-Journal | |
+| Cameron Jalbert | Student | 2026 | https://github.com/CameronJalbert/Cameron-Tech-Journal/wiki | |
+| Eamon Stackpole | Student | 2026? | https://github.com/eamonstackpole/my-tech-journal/wiki | |
 | Aidan Smith | Student | 2027 | https://github.com/aidan01smith | |
 | Ken Moran | Student | 2027 | https://github.com/Foren-Ken | |
 | Rune Seregina | Student | 2027 | https://github.com/rune-seregina |
