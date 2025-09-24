@@ -43,6 +43,7 @@ layout: /src/layouts/MarkdownLayout.astro
 | Hannelore Sanokklis | Student | 2026 | https://github.com/Hsanokklis | Any |
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot | |
 | James Nicholls | Student | 2026 | https://github.com/JNicholls2026 | |
+| Kerry Allen | Student | 2026 | https://github.com/kerryallen89 | |
 | Diego Perez | Student | 2026 | https://github.com/dpzrz | |
 | Mike Ng | Student | 2026 | https://github.com/ItsMmmike | |
 | Hadley Rae-Balmes | Student | 2026 | https://github.com/hbalmes56 | |
