@@ -36,7 +36,8 @@ layout: /src/layouts/MarkdownLayout.astro
 | Jude Lindale | Alumni | 2024 | https://github.com/jude-lindale | | 
 | Ainsley Smith | Alumni | 2025 | https://github.com/AinsleyPlayer | |
 | Molly Shapiro | Alumni | 2025 | https://molly-shapiro-portfolio.gitbook.io/home/ <br/> https://github.com/mshapiro2025 | Concepts & Definitions |
-| Liam Di-Falco | Alumni | 2025 | https://github.com/Liam-DiFalco |
+| Liam Di-Falco | Alumni | 2025 | https://github.com/Liam-DiFalco | |
+| Adam Hachem | Alumni | 2025 | https://github.com/Adam-Hachem | |
 | Natalie Eckles | Student | 2026 | https://github.com/natalie363 | |
 | Will Swearingin | Student | 2026 | https://github.com/wswearingin | |
 | Savannah Ciak | Student | 2026 | https://github.com/savannahc502 | Networking | 
@@ -44,6 +45,10 @@ layout: /src/layouts/MarkdownLayout.astro
 | Lily Pouliot | Student | 2026 | https://github.com/LPouliot | |
 | James Nicholls | Student | 2026 | https://github.com/JNicholls2026 | |
 | Kerry Allen | Student | 2026 | https://github.com/kerryallen89 | |
+| Seraphim Gerber | Student | 2026 | https://github.com/seraphimgerber | |
+| Isaiah River | Student | 2026 | https://github.com/Isaiah-River | |
+| Gavin Francisco | Student | 2026 | https://github.com/GavinFrancisco | |
+| Skyler O'Riordan | Student | 2026 | https://github.com/skyleroriordan | |
 | Diego Perez | Student | 2026 | https://github.com/dpzrz | |
 | Mike Ng | Student | 2026 | https://github.com/ItsMmmike | |
 | Hadley Rae-Balmes | Student | 2026 | https://github.com/hbalmes56 | |
