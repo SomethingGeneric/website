@@ -1,0 +1,27 @@
+name: Test build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node22-bullseye
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        shell: bash
+        run: "apt install -y make"
+
+      - name: Build the project
+        run: make build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist/
