@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: node22-bullseye
+    container: node:22-bookworm
 
     steps:
       - name: Checkout repository
@@ -22,6 +22,6 @@ jobs:
         run: make build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: dist/
