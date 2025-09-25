@@ -28,5 +28,6 @@ jobs:
           path: dist/
           remote_path: /var/www/matt/
           remote_host: h.goober.cloud
+          remote_port: 2022
           remote_user: root
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
