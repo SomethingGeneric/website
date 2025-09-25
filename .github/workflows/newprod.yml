@@ -16,43 +16,18 @@ jobs:
 
       - name: Install dependencies
         shell: bash
-        run: "apt update && apt install -y make rsync openssh-client"
+        run: "apt update && apt install -y make rsync"
 
       - name: Build the project
         run: make build
 
-      - name: Setup SSH dir
-        shell: bash
-        run: mkdir -p ~/.ssh
-
-      - name: Setup SSH private key
+      - name: Setup SSH key
         shell: bash
         run: |
+          mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          # Ensure key is properly formatted
-          if ! ssh-keygen -y -f ~/.ssh/id_rsa >/dev/null 2>&1; then
-            echo "Error: SSH private key is not valid"
-            exit 1
-          fi
-
-      - name: Add known hosts
-        shell: bash
-        run: |
-          ssh-keyscan -H h.goober.cloud >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        shell: bash
-        run: |
-          echo "Testing SSH connection..."
-          if ssh -o ConnectTimeout=10 -o BatchMode=yes -i ~/.ssh/id_rsa root@h.goober.cloud 'echo "SSH connection successful"'; then
-            echo "SSH connection test passed"
-          else
-            echo "SSH connection test failed"
-            exit 1
-          fi
 
       - name: Rsync to BasedProxy
         shell: bash
-        run: rsync -avc -e "ssh -o BatchMode=yes -i ~/.ssh/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
+        run: rsync -avc -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
