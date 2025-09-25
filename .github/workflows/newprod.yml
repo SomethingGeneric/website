@@ -1,0 +1,33 @@
+name: Prod build/push
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:22-bookworm
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        shell: bash
+        run: "apt update && apt install -y make rsync"
+
+      - name: Build the project
+        run: make build
+
+      - name: Setup SSH key
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Rsync to BasedProxy
+        shell: bash
+        run: rsync -avc -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
