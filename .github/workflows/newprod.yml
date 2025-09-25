@@ -16,18 +16,17 @@ jobs:
 
       - name: Install dependencies
         shell: bash
-        run: "apt update && apt install -y make rsync"
+        run: "apt update && apt install -y make"
 
       - name: Build the project
         run: make build
 
-      - name: Setup SSH key
-        shell: bash
-        run: |
-          mkdir -p /foo
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /foo/id_rsa
-          chmod 600 /foo/id_rsa
-
-      - name: Rsync to BasedProxy
-        shell: bash
-        run: rsync -avc -e "ssh -o StrictHostKeyChecking=no -i /foo/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
+      - name: Deploy with rsync
+        uses: burnett01/rsync-deployments@7.1.0
+        with:
+          switches: -avzr --delete
+          path: dist/
+          remote_path: /var/www/matt/
+          remote_host: h.goober.cloud
+          remote_user: root
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
