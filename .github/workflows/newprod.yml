@@ -24,10 +24,10 @@ jobs:
       - name: Setup SSH key
         shell: bash
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          mkdir -p /foo
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /foo/id_rsa
+          chmod 600 /foo/id_rsa
 
       - name: Rsync to BasedProxy
         shell: bash
-        run: rsync -avc -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
+        run: rsync -avc -e "ssh -o StrictHostKeyChecking=no -i /foo/id_rsa" dist/ root@h.goober.cloud:/var/www/matt/
