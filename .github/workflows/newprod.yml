@@ -21,12 +21,17 @@ jobs:
       - name: Build the project
         run: make build
 
-      - name: Setup SSH key
+      - name: Setup SSH dir
         shell: bash
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+        run: mkdir -p ~/.ssh
+
+      - name: Echo privkey into location
+        shell: bash
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          
+      - name: Set ssh key perms
+        shell: bash
+        run: chmod 600 ~/.ssh/id_rsa
 
       - name: Rsync to BasedProxy
         shell: bash
