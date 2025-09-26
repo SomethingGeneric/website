@@ -6,11 +6,11 @@ title: "Lab 2-1"
 
 ## Network layout:
 
-![image](https://user-images.githubusercontent.com/12242178/188706767-0bb16c8b-6f5d-4b1e-b04e-0ed7f1245c25.png)
+![image](/images/github_cdn_04ae1557.png)
 
 ## Part 2, PC Ping
 
-![image](https://user-images.githubusercontent.com/12242178/188707032-bf70de9b-8f50-461e-bc4b-f7475e0ebc86.png)
+![image](/images/github_cdn_c99e5135.png)
 
 ## Notes:
 

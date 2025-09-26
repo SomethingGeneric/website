@@ -5,7 +5,7 @@ layout: /src/layouts/MarkdownLayout.astro
 
 ## Part 1: Manual HEAD request
 I recieved a 200 response.
-![response for HTTP HEAD request](/public/images/telnet_8008_HEAD_sec260.png)
+![response for HTTP HEAD request](/images/telnet_8008_HEAD_sec260.png)
 
 ## Part 2: Chrome Web Inspection bit
 My User-Agent is `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36`

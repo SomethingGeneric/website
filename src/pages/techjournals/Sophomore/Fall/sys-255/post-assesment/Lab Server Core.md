@@ -6,7 +6,7 @@ layout: /src/layouts/MarkdownLayout.astro
 ## In `sconfig` on fs01
 * Set admin password
 * Set network adapter settings:
-    ![fs network](/public/images/nconfig.png)
+    ![fs network](/images/nconfig.png)
 * Set hostname & reboot
 * Go back to sconfig, join domain, reboot again
 
@@ -15,11 +15,11 @@ layout: /src/layouts/MarkdownLayout.astro
 
 ## On AD
 * Add `File Server Resource Manager Tools`, and install
-![Add feature wizard](/public/images/roles-feats.png)
+![Add feature wizard](/images/roles-feats.png)
 * Add fs01 to the management window by right-clicking on `All Servers`, and adding it. Then, type in `fs` to find it by name.
  
 ## Deliverable 2
-![Screenshot of both servers in the admin panel](/public/images/rsat-del2.png)
+![Screenshot of both servers in the admin panel](/images/rsat-del2.png)
 
 ## On AD (in AD Users & Groups tool)
 * Create OU's: `SYS-255/{Users,Computers,Groups}`
@@ -27,7 +27,7 @@ layout: /src/layouts/MarkdownLayout.astro
 * Add users `Bob` and `Alice` in `SYS-255/Users`
 * Add `Alice` to `Sales-Users`
 * Add `File Server Resource Manager` to fs01 through the add features and roles from server manager
-    ![Tree view of features added](/public/images/rsat-arfw.png)
+    ![Tree view of features added](/images/rsat-arfw.png)
 
 ## On FS01
 * Run the following command to open the firewall for remot e file server management: `netsh advfirewall firewall set rule group=”Remote File Server Resource Manager Management” new enable=yes`
