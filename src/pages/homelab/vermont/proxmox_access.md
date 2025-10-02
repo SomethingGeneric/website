@@ -14,9 +14,7 @@ If you *need* credentials for Proxmox, please see the contact me page.
 
 Make sure to change the `Realm` to `Proxmox VE auth server`.
 
-Your VM is probably under `pve2`, and you likely have to click dropdowns to get to it.
-
-You *should* have full access to make any changes to the node.
+You *should* have full access to make any changes to the VM.
 
 The interface for your VM should look like this
 

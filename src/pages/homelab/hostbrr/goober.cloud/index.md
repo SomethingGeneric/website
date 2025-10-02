@@ -5,6 +5,6 @@ title: "Goober.Cloud"
 # Goober.Cloud
 (parts of it, anyways)
 
-The main Goober.Cloud server is on HostBrr because I can't host email on a residental internet connection.
+Most services have been moved to my homelab, and a new mail server is on brr.goober.cloud.
 
-Some stuff is on homelab servers, so it really depends
+I really need to get around to sunsetting this..... 10/2/25

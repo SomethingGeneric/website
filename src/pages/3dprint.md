@@ -9,7 +9,6 @@ I offer custom 3d printing services. I am not super CAD familiar, so I'd prefer 
 ## Current Capabilities
 My Bambu P1 w/ AMS - 256 mm^3 - PLA, PETG, TPU, ABS/ASA?
 
-
 ## Materials
 Currently, I only have PLA on hand. I'm happy to split the cost of acquiring PETG or any CF filament if it's more appropriate for your project.
 
