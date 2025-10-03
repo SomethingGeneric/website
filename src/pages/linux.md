@@ -12,6 +12,6 @@ I use Arch ~~Crystal~~ on my laptop and desktop machines.
 
 I mostly run Debian (or Proxmox (amped up debian)) on my servers. (Except that this web server is FreeBSD!!!)
 
-There's plenty of Linux/Arch~~/Crystal~~ stuff on my GitHub!
+There's plenty of Linux/Arch ~~/Crystal~~ stuff on my GitHub!
 <br/><br/><br/><br/><br/>
 <a target="_blank" href="https://www.freebsd.org/"><img src="/images/fbsd-banner1.gif" alt="FreeBSD Banner" height="35" /></a>
