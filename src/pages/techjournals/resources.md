@@ -3,6 +3,10 @@ layout: /src/layouts/MarkdownLayout.astro
 ---
 # Other Resources
 
+**Note:** This page has been moved to [Other Folks' Tech Journals & Resources](/techjournals/other-folks/). Please use that page instead.
+
+---
+
 ## ISO Images
 * [Thibble](https://files.thibble.org/)
 
