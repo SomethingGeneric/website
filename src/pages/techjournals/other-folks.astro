@@ -11,37 +11,33 @@ import Navbar from '../../components/Navbar.astro';
   <div id="acknowledgement-modal" class="modal-overlay">
     <div class="modal-content">
       <h2>Acknowledgement</h2>
-      <p>By accessing this page, you understand that being listed here is the "price" of using and sharing tech journals.</p>
+      <p>By accessing this page, you understand that being listed on this page is the "price" of using and sharing these tech journal links.</p>
       <p>All individuals listed here have shared their work publicly and are acknowledged for their contributions to the community.</p>
       <button id="accept-button" class="modal-button">I Understand</button>
+      <button id="add-me-btn" class="modal-button" style="margin-left:0.5em;">Add Me to the List</button>
     </div>
   </div>
 
   <!-- Main content (hidden by default until modal is dismissed) -->
   <div id="main-content" class="hidden">
-    <h2>Other Resources</h2>
-    
-    <h3>ISO Images</h3>
-    <ul>
-      <li><a href="https://files.thibble.org/">Thibble</a></li>
-    </ul>
+    <h2>GitHub Pages from other Champlain Cyber/DF folks:</h2>
+    <!-- Add Techjournal Button -->
+    <button id="add-techjournal-btn" class="modal-button" style="background-color:orange;margin-bottom:1em;">Add Your Techjournal</button>
 
-    <h3>Tools</h3>
-    <ul>
-      <li><a href="https://www.browserling.com/tools/ip-to-bin">IP-Binary Converter</a></li>
-    </ul>
-
-    <h3>Cheatsheets</h3>
-    <ul>
-      <li><a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">Reverse Shells</a></li>
-    </ul>
-
-    <h3>Files</h3>
-    <ul>
-      <li><a href="/IPv4CIDRChart_2015.pdf">IP/CIDR chart</a></li>
-    </ul>
-
-    <h3>GitHub Pages from other Champlain Cyber/DF folks:</h3>
+    <!-- Modal for submitting techjournal info -->
+    <div id="techjournal-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h2>Submit Your Techjournal</h2>
+        <form id="techjournal-form">
+          <label for="name-input">My Name:</label><br>
+          <input type="text" id="name-input" name="name" required><br><br>
+          <label for="link-input">My Techjournal Link:</label><br>
+          <input type="url" id="link-input" name="link" required><br><br>
+          <button type="submit" class="modal-button">Submit</button>
+          <button type="button" id="cancel-techjournal" class="modal-button">Cancel</button>
+        </form>
+      </div>
+    </div>
     
     <table>
       <thead>
@@ -105,6 +101,32 @@ import Navbar from '../../components/Navbar.astro';
     <p>* - From my experience</p>
   </div>
 
+      <script>
+      // Show techjournal modal from main content button
+      document.getElementById('add-techjournal-btn').onclick = function() {
+        document.getElementById('techjournal-modal').classList.remove('hidden');
+      };
+      // Show techjournal modal from acknowledgement modal
+      document.getElementById('add-me-btn').onclick = function() {
+        document.getElementById('techjournal-modal').classList.remove('hidden');
+        document.getElementById('acknowledgement-modal').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      };
+      // Hide techjournal modal
+      document.getElementById('cancel-techjournal').onclick = function() {
+        document.getElementById('techjournal-modal').classList.add('hidden');
+      };
+      // Form submit handler
+      document.getElementById('techjournal-form').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name-input').value;
+        const link = document.getElementById('link-input').value;
+        const title = encodeURIComponent(`Add techjournal: ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nTechjournal Link: ${link}`);
+        window.location.href = `https://github.com/SomethingGeneric/website/issues/new?title=${title}&body=${body}`;
+      };
+    </script>
+
   <noscript>
     <style>
       #acknowledgement-modal {
@@ -141,7 +163,7 @@ import Navbar from '../../components/Navbar.astro';
   }
 
   .modal-content h2 {
-    color: rgb(48, 187, 48);
+    color: red;
     margin-bottom: 1rem;
   }
 
