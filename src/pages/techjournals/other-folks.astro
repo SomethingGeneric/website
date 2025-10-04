@@ -1,0 +1,228 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+---
+
+<Layout>
+  <Navbar />
+  <h1>Tech Journals from Other Folks</h1>
+  
+  <!-- Modal overlay and content -->
+  <div id="acknowledgement-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Acknowledgement</h2>
+      <p>By accessing this page, you understand that being listed on this page is the "price" of using and sharing these tech journal links.</p>
+      <p>All individuals listed here have shared their work publicly and are acknowledged for their contributions to the community.</p>
+      <button id="accept-button" class="modal-button">I Understand</button>
+      <button id="add-me-btn" class="modal-button" style="margin-left:0.5em;">Add Me to the List</button>
+    </div>
+  </div>
+
+  <!-- Main content (hidden by default until modal is dismissed) -->
+  <div id="main-content" class="hidden">
+    <h2>GitHub Pages from other Champlain Cyber/DF folks:</h2>
+    <!-- Add Techjournal Button -->
+    <button id="add-techjournal-btn" class="modal-button" style="background-color:orange;margin-bottom:1em;">Add Your Techjournal</button>
+
+    <!-- Modal for submitting techjournal info -->
+    <div id="techjournal-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h2>Submit Your Techjournal</h2>
+        <form id="techjournal-form">
+          <label for="name-input">My Name:</label><br>
+          <input type="text" id="name-input" name="name" required><br><br>
+          <label for="link-input">My Techjournal Link:</label><br>
+          <input type="url" id="link-input" name="link" required><br><br>
+          <button type="submit" class="modal-button">Submit</button>
+          <button type="button" id="cancel-techjournal" class="modal-button">Cancel</button>
+        </form>
+      </div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Fac/Student</th>
+          <th>Year</th>
+          <th>Link(s)</th>
+          <th>Best Content*</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Ali Hadi</td><td>Former Fac</td><td></td><td><a href="https://github.com/ashemery">https://github.com/ashemery</a></td><td></td></tr>
+        <tr><td>Furkan Paligu</td><td>Fac</td><td></td><td><a href="https://github.com/fpaligu">https://github.com/fpaligu</a></td><td></td></tr>
+        <tr><td>Duane Dunston</td><td>Fac</td><td></td><td><a href="https://github.com/thedunston">https://github.com/thedunston</a></td><td></td></tr>
+        <tr><td>Devin Paden</td><td>Former Fac</td><td></td><td><a href="https://github.com/gmcyber">https://github.com/gmcyber</a><br/><a href="https://greenmountaincyber.com">https://greenmountaincyber.com</a></td><td></td></tr>
+        <tr><td>Miranda Pagarelski</td><td>Alumni</td><td>2023</td><td><a href="https://github.com/mirpag">https://github.com/mirpag</a></td><td></td></tr>
+        <tr><td>Dylan Navarro</td><td>Alumni</td><td>2023</td><td><a href="https://github.com/Chromosom3">https://github.com/Chromosom3</a></td><td></td></tr>
+        <tr><td>Noah Beckman</td><td>Alumni</td><td>2023</td><td><a href="https://github.com/CyberM00se">https://github.com/CyberM00se</a></td><td></td></tr>
+        <tr><td>Tom Claflin</td><td>Alumni</td><td>2023</td><td><a href="https://github.com/TomClaflin">https://github.com/TomClaflin</a></td><td></td></tr>
+        <tr><td>Max Berry</td><td>Alumni</td><td>2024</td><td><a href="https://github.com/Berrym-tech">https://github.com/Berrym-tech</a></td><td></td></tr>
+        <tr><td>Miles Campbell</td><td>Alumni</td><td>2024</td><td><a href="https://gitbook.miles-campbell.dev/">https://gitbook.miles-campbell.dev/</a><br/><a href="https://github.com/soup-hacker">https://github.com/soup-hacker</a></td><td></td></tr>
+        <tr><td>Oliver Mustoe</td><td>Alumni</td><td>2024</td><td><a href="https://github.com/Oliver-Mustoe/Oliver-Mustoe-Tech-Journal/wiki">https://github.com/Oliver-Mustoe/Oliver-Mustoe-Tech-Journal/wiki</a><br/><a href="https://github.com/Oliver-Mustoe">https://github.com/Oliver-Mustoe</a></td><td></td></tr>
+        <tr><td>David Thomsen</td><td>Alumni</td><td>2024</td><td><a href="https://github.com/dthomsen116">https://github.com/dthomsen116</a></td><td>Eth Hack 1+2</td></tr>
+        <tr><td>Paul Gleason</td><td>Alumni</td><td>2024</td><td><a href="https://quartz.paulgleason.dev/">https://quartz.paulgleason.dev/</a><br/><a href="https://gitbook.paulgleason.dev/">https://gitbook.paulgleason.dev/</a><br/><a href="https://github.com/ChampPG">https://github.com/ChampPG</a></td><td>Eth Hack 1</td></tr>
+        <tr><td>Parker Soares</td><td>Alumni</td><td>2024</td><td><a href="https://github.com/Ptsoares">https://github.com/Ptsoares</a></td><td></td></tr>
+        <tr><td>Jude Lindale</td><td>Alumni</td><td>2024</td><td><a href="https://github.com/jude-lindale">https://github.com/jude-lindale</a></td><td></td></tr>
+        <tr><td>Ainsley Smith</td><td>Alumni</td><td>2025</td><td><a href="https://github.com/AinsleyPlayer">https://github.com/AinsleyPlayer</a></td><td></td></tr>
+        <tr><td>Molly Shapiro</td><td>Alumni</td><td>2025</td><td><a href="https://molly-shapiro-portfolio.gitbook.io/home/">https://molly-shapiro-portfolio.gitbook.io/home/</a><br/><a href="https://github.com/mshapiro2025">https://github.com/mshapiro2025</a></td><td>Concepts & Definitions</td></tr>
+        <tr><td>Liam Di-Falco</td><td>Alumni</td><td>2025</td><td><a href="https://github.com/Liam-DiFalco">https://github.com/Liam-DiFalco</a></td><td></td></tr>
+        <tr><td>Adam Hachem</td><td>Alumni</td><td>2025</td><td><a href="https://github.com/Adam-Hachem">https://github.com/Adam-Hachem</a></td><td></td></tr>
+        <tr><td>Natalie Eckles</td><td>Student</td><td>2026</td><td><a href="https://github.com/natalie363">https://github.com/natalie363</a></td><td></td></tr>
+        <tr><td>Will Swearingin</td><td>Student</td><td>2026</td><td><a href="https://github.com/wswearingin">https://github.com/wswearingin</a></td><td></td></tr>
+        <tr><td>Savannah Ciak</td><td>Student</td><td>2026</td><td><a href="https://github.com/savannahc502">https://github.com/savannahc502</a></td><td>Networking</td></tr>
+        <tr><td>Hannelore Sanokklis</td><td>Student</td><td>2026</td><td><a href="https://github.com/Hsanokklis">https://github.com/Hsanokklis</a></td><td>Any</td></tr>
+        <tr><td>Lily Pouliot</td><td>Student</td><td>2026</td><td><a href="https://github.com/LPouliot">https://github.com/LPouliot</a></td><td></td></tr>
+        <tr><td>James Nicholls</td><td>Student</td><td>2026</td><td><a href="https://github.com/JNicholls2026">https://github.com/JNicholls2026</a></td><td></td></tr>
+        <tr><td>Kerry Allen</td><td>Student</td><td>2026</td><td><a href="https://github.com/kerryallen89">https://github.com/kerryallen89</a></td><td></td></tr>
+        <tr><td>Seraphim Gerber</td><td>Student</td><td>2026</td><td><a href="https://github.com/seraphimgerber">https://github.com/seraphimgerber</a></td><td></td></tr>
+        <tr><td>Isaiah River</td><td>Student</td><td>2026</td><td><a href="https://github.com/Isaiah-River">https://github.com/Isaiah-River</a></td><td></td></tr>
+        <tr><td>Gavin Francisco</td><td>Student</td><td>2026</td><td><a href="https://github.com/GavinFrancisco">https://github.com/GavinFrancisco</a></td><td></td></tr>
+        <tr><td>Skyler O'Riordan</td><td>Student</td><td>2026</td><td><a href="https://github.com/skyleroriordan">https://github.com/skyleroriordan</a></td><td></td></tr>
+        <tr><td>Diego Perez</td><td>Student</td><td>2026</td><td><a href="https://github.com/dpzrz">https://github.com/dpzrz</a></td><td></td></tr>
+        <tr><td>Mike Ng</td><td>Student</td><td>2026</td><td><a href="https://github.com/ItsMmmike">https://github.com/ItsMmmike</a></td><td></td></tr>
+        <tr><td>Hadley Rae-Balmes</td><td>Student</td><td>2026</td><td><a href="https://github.com/hbalmes56">https://github.com/hbalmes56</a></td><td></td></tr>
+        <tr><td>Connor East</td><td>Student</td><td>2026</td><td><a href="https://github.com/ConnorEast/Tech-Journal/wiki">https://github.com/ConnorEast/Tech-Journal/wiki</a></td><td></td></tr>
+        <tr><td>Beth Chadbourne</td><td>Student</td><td>2026</td><td><a href="https://github.com/echadbourne">https://github.com/echadbourne</a></td><td></td></tr>
+        <tr><td>Jack Clark</td><td>Student</td><td>2026</td><td><a href="https://github.com/jack-champlain">https://github.com/jack-champlain</a></td><td></td></tr>
+        <tr><td>Louis Mattiolo</td><td>Student</td><td>2026</td><td><a href="https://github.com/louismattiolo/Tech-Journal">https://github.com/louismattiolo/Tech-Journal</a></td><td></td></tr>
+        <tr><td>Cameron Jalbert</td><td>Student</td><td>2026</td><td><a href="https://github.com/CameronJalbert/Cameron-Tech-Journal/wiki">https://github.com/CameronJalbert/Cameron-Tech-Journal/wiki</a></td><td></td></tr>
+        <tr><td>Eamon Stackpole</td><td>Student</td><td>2026?</td><td><a href="https://github.com/eamonstackpole/my-tech-journal/wiki">https://github.com/eamonstackpole/my-tech-journal/wiki</a></td><td></td></tr>
+        <tr><td>Aidan Smith</td><td>Student</td><td>2027</td><td><a href="https://github.com/aidan01smith">https://github.com/aidan01smith</a></td><td></td></tr>
+        <tr><td>Ken Moran</td><td>Student</td><td>2027</td><td><a href="https://github.com/Foren-Ken">https://github.com/Foren-Ken</a></td><td></td></tr>
+        <tr><td>Rune Seregina</td><td>Student</td><td>2027</td><td><a href="https://github.com/rune-seregina">https://github.com/rune-seregina</a></td><td></td></tr>
+        <tr><td>Laura Thomas-Roy</td><td>Student</td><td>2027</td><td><a href="https://github.com/laurathomas-roy">https://github.com/laurathomas-roy</a></td><td></td></tr>
+        <tr><td>Nilufer Gungor</td><td>Student</td><td>2027</td><td><a href="https://github.com/aaralik1">https://github.com/aaralik1</a></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <p>If you would like to, or not to be on this list, please reach out.</p>
+    <p>* - From my experience</p>
+  </div>
+
+      <script>
+      // Show techjournal modal from main content button
+      document.getElementById('add-techjournal-btn').onclick = function() {
+        document.getElementById('techjournal-modal').classList.remove('hidden');
+      };
+      // Show techjournal modal from acknowledgement modal
+      document.getElementById('add-me-btn').onclick = function() {
+        document.getElementById('techjournal-modal').classList.remove('hidden');
+        document.getElementById('acknowledgement-modal').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      };
+      // Hide techjournal modal
+      document.getElementById('cancel-techjournal').onclick = function() {
+        document.getElementById('techjournal-modal').classList.add('hidden');
+      };
+      // Form submit handler
+      document.getElementById('techjournal-form').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name-input').value;
+        const link = document.getElementById('link-input').value;
+        const title = encodeURIComponent(`Add techjournal: ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nTechjournal Link: ${link}`);
+        window.location.href = `https://github.com/SomethingGeneric/website/issues/new?title=${title}&body=${body}`;
+      };
+    </script>
+
+  <noscript>
+    <style>
+      #acknowledgement-modal {
+        display: none !important;
+      }
+      #main-content {
+        display: block !important;
+      }
+    </style>
+  </noscript>
+</Layout>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background-color: #111;
+    border: 2px solid rgb(48, 187, 48);
+    padding: 2rem;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .modal-content h2 {
+    color: red;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .modal-button {
+    background-color: rgb(48, 187, 48);
+    color: #000;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .modal-button:hover {
+    background-color: rgb(243, 76, 26);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    border: 1px solid rgb(48, 187, 48);
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: #111;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: #0a0a0a;
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('acknowledgement-modal');
+  const mainContent = document.getElementById('main-content');
+  const acceptButton = document.getElementById('accept-button');
+
+  if (acceptButton && modal && mainContent) {
+    acceptButton.addEventListener('click', () => {
+      modal.style.display = 'none';
+      mainContent.classList.remove('hidden');
+    });
+  }
+</script>
