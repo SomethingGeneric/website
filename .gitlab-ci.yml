@@ -16,9 +16,8 @@ testbuild:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   before_script:
     - apt update -yq && apt install -y make
+    - npm i -g sharp
   script:
-    #- npm ci
-    #- npm run build
     - make build
   artifacts:
     name: "outputsite"
@@ -38,6 +37,7 @@ build_and_deploy:
   before_script:
     - apt-get update -yq
     - apt-get install -y rsync openssh-client make
+    - npm i -g sharp
     - mkdir -p ~/.ssh
     - echo "$SSHKEY" | base64 -d > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
