@@ -1,7 +1,7 @@
 PHONY: dev
 
 setup:
-	npm install
+#npm install
 	npm ci
 build: setup
 	npm run build
