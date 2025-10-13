@@ -1,0 +1,50 @@
+stages:
+  - test
+  - deploy
+
+variables:
+  IMAGE: node:current-bookworm
+
+# ----------------------------
+# Test Build (Pull/Merge Request)
+# ----------------------------
+testbuild:
+  stage: test
+  image: $IMAGE
+  rules:
+    # Run only for merge requests (similar to PRs)
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    name: "outputsite"
+    paths:
+      - dist/
+    expire_in: 1 day
+
+# ----------------------------
+# Production Build + Deploy (Push)
+# ----------------------------
+build_and_deploy:
+  stage: deploy
+  image: $IMAGE
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      when: on_success
+  before_script:
+    - apt-get update -yq
+    - apt-get install -y rsync openssh-client
+    - mkdir -p ~/.ssh
+    - echo "$SSHKEY" | base64 -d > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+  script:
+    - npm ci
+    - npm run build
+    - rsync -avc -e "ssh -p 2022" --delete dist/* "${SSH_USER}@${SSH_HOSTNAME}:${DESTPATH}/."
+  artifacts:
+    name: "outputsite"
+    paths:
+      - dist/
+    expire_in: 7 days
