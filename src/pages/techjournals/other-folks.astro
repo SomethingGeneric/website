@@ -123,7 +123,7 @@ import Navbar from '../../components/Navbar.astro';
         const link = document.getElementById('link-input').value;
         const title = encodeURIComponent(`Add techjournal: ${name}`);
         const body = encodeURIComponent(`Name: ${name}\nTechjournal Link: ${link}`);
-        window.location.href = `https://github.com/SomethingGeneric/website/issues/new?title=${title}&body=${body}`;
+        window.location.href = `https://gitlab.com/your-group/your-project/-/issues/new?issue[title]=${title}&issue[description]=${body}`;
       };
     </script>
 
