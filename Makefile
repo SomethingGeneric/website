@@ -1,8 +1,8 @@
 PHONY: dev
 
 setup:
-#npm install
 	npm ci
+	npm install sharp
 build: setup
 	npm run build
 dev:
