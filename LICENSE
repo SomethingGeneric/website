@@ -1,0 +1,31 @@
+Repository Content License
+==========================
+
+Copyright © 2025 Matt Compton. All rights reserved.
+
+1. Scope  
+   - All original text, images, audio, video, data files, stylesheets, scripts, and configurations located in this repository (collectively “Content”) are the exclusive property of Matt Compton unless explicitly noted otherwise.  
+   - Unless you have received prior written permission from Matt Compton, you may not copy, redistribute, mirror, commercialize, or create derivative works based on the Content.
+
+2. Permitted Use  
+   - You may clone or fork this repository for personal evaluation, development, or archival purposes.  
+   - You may run the project locally or on your own infrastructure strictly to view or test the site.  
+   - You may not publish the Content publicly, modify and redistribute the Content, or use it for any commercial purpose without express written approval.
+
+3. Third-Party Software Disclosure (SBOM Overview)  
+   This project is built and deployed using the following open-source components (licenses shown for quick reference; consult the upstream projects for the authoritative texts):
+   - Astro (MIT License) — Static site framework.  
+   - Node.js (MIT License) — Runtime used for development/build tooling.  
+   - npm ecosystem dependencies — Refer to `package-lock.json` for the complete dependency graph and to each package’s repository for license details.  
+   - Docker & Linux/FreeBSD environments — Infrastructure used to run the site and the GitLab proxy. These components remain under their respective upstream licenses (e.g., GPLv2 for the Linux kernel, BSD licenses for FreeBSD).
+
+   A generated software bill of materials (SBOM) for JavaScript dependencies can be obtained at build time via `npm ls --json > sbom.json`. Additional infrastructure components may have their own license requirements; review the documentation for any platform you deploy to.
+
+4. Attribution  
+   - Any copies or derivatives of the Content (permitted only with written consent) must retain this license notice and clearly attribute Matt Compton as the original author.  
+   - Third-party packages referenced above retain their original licensing and attribution requirements; nothing in this document overrides those terms.
+
+5. Warranty and Liability  
+   THE CONTENT AND ANY ACCOMPANYING CODE ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. UNDER NO CIRCUMSTANCES SHALL MATT COMPTON BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THIS CONTENT OR SOFTWARE.
+
+To request permission for uses beyond those described here, please contact Matt Compton directly.
