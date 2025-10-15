@@ -1,6 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+
+const proxyBase = (import.meta.env.PUBLIC_TECHJOURNAL_PROXY_BASE ?? '').trim().replace(/\/$/, '');
+
+const submissionConfig = {
+  enabled: Boolean(proxyBase),
+  proxyBase
+};
 ---
 
 <Layout>
@@ -36,6 +43,7 @@ import Navbar from '../../components/Navbar.astro';
           <button type="submit" class="modal-button">Submit</button>
           <button type="button" id="cancel-techjournal" class="modal-button">Cancel</button>
         </form>
+        <p id="techjournal-status" class="status-message" role="status" aria-live="polite"></p>
       </div>
     </div>
     
@@ -101,32 +109,6 @@ import Navbar from '../../components/Navbar.astro';
     <p>* - From my experience</p>
   </div>
 
-      <script>
-      // Show techjournal modal from main content button
-      document.getElementById('add-techjournal-btn').onclick = function() {
-        document.getElementById('techjournal-modal').classList.remove('hidden');
-      };
-      // Show techjournal modal from acknowledgement modal
-      document.getElementById('add-me-btn').onclick = function() {
-        document.getElementById('techjournal-modal').classList.remove('hidden');
-        document.getElementById('acknowledgement-modal').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-      };
-      // Hide techjournal modal
-      document.getElementById('cancel-techjournal').onclick = function() {
-        document.getElementById('techjournal-modal').classList.add('hidden');
-      };
-      // Form submit handler
-      document.getElementById('techjournal-form').onsubmit = function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name-input').value;
-        const link = document.getElementById('link-input').value;
-        const title = encodeURIComponent(`Add techjournal: ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nTechjournal Link: ${link}`);
-        window.location.href = `https://gitlab.goober.cloud/matt/website/-/issues/new?issue[title]=${title}&issue[description]=${body}`;
-      };
-    </script>
-
   <noscript>
     <style>
       #acknowledgement-modal {
@@ -188,6 +170,11 @@ import Navbar from '../../components/Navbar.astro';
     background-color: rgb(243, 76, 26);
   }
 
+  .modal-button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
   .hidden {
     display: none;
   }
@@ -212,17 +199,26 @@ import Navbar from '../../components/Navbar.astro';
   tr:hover {
     background-color: #0a0a0a;
   }
+
+  .status-message {
+    min-height: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .status-success {
+    color: rgb(48, 187, 48);
+  }
+
+  .status-error {
+    color: rgb(243, 76, 26);
+  }
 </style>
 
-<script>
-  const modal = document.getElementById('acknowledgement-modal');
-  const mainContent = document.getElementById('main-content');
-  const acceptButton = document.getElementById('accept-button');
+<script
+  type="application/json"
+  id="techjournal-config"
+  set:html={JSON.stringify(submissionConfig)}
+></script>
 
-  if (acceptButton && modal && mainContent) {
-    acceptButton.addEventListener('click', () => {
-      modal.style.display = 'none';
-      mainContent.classList.remove('hidden');
-    });
-  }
-</script>
+<script type="module" src="/scripts/techjournal-submission.js"></script>

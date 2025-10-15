@@ -13,6 +13,7 @@ This Astro site is fairly small, but contributors still benefit from a shared pl
 - `npm run build` (or `make build`) produces the static site in `dist/`; run before submitting PRs.
 - `npm run preview` serves the production build locally—helpful for sanity checks.
 - `npm run astro check` runs Astro’s type-aware diagnostics; use it after editing layouts or server code.
+- Issue submissions call an external proxy. Point `.env.techjournals` at that proxy’s base URL; the `make` targets source it automatically.
 
 ## Coding Style & Naming Conventions
 - Follow the existing mix of 2-space script blocks and tab-indented markup within `.astro` files; maintain the current spacing when editing.

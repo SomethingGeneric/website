@@ -1,0 +1,171 @@
+function initTechjournalSubmission(initialConfig) {
+	let config = initialConfig ?? { enabled: false };
+
+	if (!initialConfig) {
+		const configEl = document.getElementById('techjournal-config');
+		if (configEl?.textContent?.trim()) {
+			try {
+				config = JSON.parse(configEl.textContent);
+			} catch (error) {
+				console.warn('Failed to parse techjournal config', error);
+			}
+		}
+	}
+
+	const ackModal = document.getElementById('acknowledgement-modal');
+	const mainContent = document.getElementById('main-content');
+	const acceptButton = document.getElementById('accept-button');
+	const addMeButton = document.getElementById('add-me-btn');
+	const addTechjournalBtn = document.getElementById('add-techjournal-btn');
+	const techjournalModal = document.getElementById('techjournal-modal');
+	const cancelTechjournalBtn = document.getElementById('cancel-techjournal');
+	const techjournalForm = document.getElementById('techjournal-form');
+	const statusMessage = document.getElementById('techjournal-status');
+	const submitButton = techjournalForm?.querySelector('button[type=\"submit\"]');
+
+	if (
+		!ackModal ||
+		!mainContent ||
+		!acceptButton ||
+		!addMeButton ||
+		!addTechjournalBtn ||
+		!techjournalModal ||
+		!cancelTechjournalBtn ||
+		!techjournalForm
+	) {
+		return;
+	}
+
+	const setStatus = (message, variant = 'pending') => {
+		if (!statusMessage) return;
+		statusMessage.textContent = message;
+		statusMessage.classList.remove('status-success', 'status-error');
+		if (variant === 'success') statusMessage.classList.add('status-success');
+		if (variant === 'error') statusMessage.classList.add('status-error');
+	};
+
+	const showMainContent = () => {
+		ackModal.classList.add('hidden');
+		ackModal.setAttribute('aria-hidden', 'true');
+		mainContent.classList.remove('hidden');
+		mainContent.removeAttribute('aria-hidden');
+	};
+
+	const openTechjournalModal = () => {
+		techjournalModal.classList.remove('hidden');
+		techjournalModal.setAttribute('aria-hidden', 'false');
+		if (statusMessage) {
+			statusMessage.textContent = '';
+			statusMessage.classList.remove('status-success', 'status-error');
+		}
+	};
+
+	const closeTechjournalModal = () => {
+		techjournalModal.classList.add('hidden');
+		techjournalModal.setAttribute('aria-hidden', 'true');
+		techjournalForm.reset();
+		if (statusMessage) {
+			statusMessage.textContent = '';
+			statusMessage.classList.remove('status-success', 'status-error');
+		}
+	};
+
+	acceptButton.addEventListener('click', showMainContent);
+
+	addMeButton.addEventListener('click', () => {
+		showMainContent();
+		if (config.enabled) {
+			openTechjournalModal();
+		}
+	});
+
+	if (config.enabled) {
+		addTechjournalBtn.addEventListener('click', () => {
+			openTechjournalModal();
+		});
+	} else {
+		addTechjournalBtn.disabled = true;
+		addTechjournalBtn.textContent = 'Submissions unavailable';
+		addTechjournalBtn.title = 'Issue submission requires server configuration.';
+	}
+
+	cancelTechjournalBtn.addEventListener('click', () => {
+		closeTechjournalModal();
+	});
+
+	techjournalForm.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		if (!config.enabled || !config.proxyBase) {
+			setStatus('Submissions are not enabled at this time.', 'error');
+			return;
+		}
+
+		const formData = new FormData(techjournalForm);
+		const name = String(formData.get('name') ?? '').trim();
+		const link = String(formData.get('link') ?? '').trim();
+
+		if (!name || !link) {
+			setStatus('Both name and link are required.', 'error');
+			return;
+		}
+
+		const originalButtonLabel = submitButton?.textContent ?? 'Submit';
+		if (submitButton) {
+			submitButton.disabled = true;
+			submitButton.textContent = 'Submitting…';
+		}
+
+		setStatus('Submitting your request…');
+
+		const payload = { name, link };
+
+		try {
+			const response = await fetch(`${config.proxyBase}/techjournal`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			});
+
+			if (!response.ok) {
+				const errorText = await response.text().catch(() => '');
+				throw new Error(errorText || `Request failed with status ${response.status}`);
+			}
+
+			const data = (await response.json().catch(() => ({}))) || {};
+			if (data.issueUrl) {
+				setStatus(`Thanks! Your submission was sent. Track it here: ${data.issueUrl}`, 'success');
+			} else {
+				setStatus('Thanks! Your submission was sent.', 'success');
+			}
+			techjournalForm.reset();
+			setTimeout(() => closeTechjournalModal(), 2000);
+		} catch (error) {
+			console.error('Unable to submit techjournal issue', error);
+			setStatus('Something went wrong submitting your request. Please try again later.', 'error');
+		} finally {
+			if (submitButton) {
+				submitButton.disabled = false;
+				submitButton.textContent = originalButtonLabel;
+			}
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && !techjournalModal.classList.contains('hidden')) {
+			closeTechjournalModal();
+		}
+	});
+}
+
+if (typeof window !== 'undefined') {
+	const run = () => initTechjournalSubmission();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', run, { once: true });
+	} else {
+		run();
+	}
+}
+
+export { initTechjournalSubmission };
