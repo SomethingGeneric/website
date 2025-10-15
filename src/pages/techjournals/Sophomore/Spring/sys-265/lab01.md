@@ -23,18 +23,16 @@ layout: /src/layouts/MarkdownLayout.astro
 
 ## web01-matt SNMPD Config
 Path: `/etc/snmp/snmpd.conf`
-```
+```text
 com2sec myNetwork 10.0.5.0/24 JoeOfTheEast
 group myROGroup v2c myNetwork
 view all included .1 80
 access myROGroup "" any noauth exact all none none
 ```
-
 Allowed port `161/udp` in `firewall-cmd`
 
 ## tcpdump syntax for snooping on snmp
 ```bash
 sudo tcpdump -i ens192 -c 10 -v -n udp port 161
 ```
-
 I had to do quite a bit of googling for that since the "expression" part of the man-page was not helpful.

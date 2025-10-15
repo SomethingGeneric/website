@@ -11,13 +11,12 @@ And afterwards it booted.
 ![IP Config windows for ad01](/images/lab02_image.png)
 
 And the details that were set:
-```
+```text
 IP Address:  10.0.5.5
 Netmask: 255.255.255.0
 Gateway 10.0.5.2 (Make sure fw01 is running).
 DNS 10.0.5.2
 ```
-
 Final config:
 ![Finished ad01 ipv4](/images/lab02_image-1.png)
 

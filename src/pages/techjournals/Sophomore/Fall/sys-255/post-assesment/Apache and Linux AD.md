@@ -43,7 +43,7 @@ Screenshot of your custom webpage having replaced the default from Deliverable 3
 ## PHP Install & Script
 * `yum install -y php`
 * `vi /var/www/html/index.php`
-```
+```text
 <?php
 echo 'Hello SYS 255<br/>';
 for ($x=1; $x <= 10; $x++) {
@@ -51,7 +51,6 @@ for ($x=1; $x <= 10; $x++) {
 }
 ?>
 ```
-
 ## Deliverable 5
 (Screenshot of rendered PHP)
 

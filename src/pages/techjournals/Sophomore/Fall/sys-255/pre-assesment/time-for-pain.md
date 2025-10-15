@@ -14,7 +14,6 @@ flowchart TD;
     AD --> |Resolves DNS for| DHCP;
     DHCP --> |Gives IP | WKS;
 ```
-
 ## Services:
 * `fw01` - pfSense has upstream dns and is the default gateway - WAN IP: `10.0.17.104/24`, LAN IP: `10.0.5.2/24`
 * `ad01` - Domain controller, DNS for machines on AD - IP: `10.0.5.5`

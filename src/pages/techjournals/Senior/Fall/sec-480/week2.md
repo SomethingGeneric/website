@@ -27,7 +27,6 @@ else
 echo "</div>";
 ?>
 ```
-
 As you can see, the purpose is to display other pages within the index, which is something a real developer might want to do, but you can also see that our developer has made no effort to stop you from just... putting other paths in it.
 
 for example, if you went to `index.php?page=/etc/passwd`, you can view that file. If you're really lucky, and the web admin has made PHP and/or the web server run as `root`, you could probably even grab `/etc/shadow`
@@ -68,7 +67,6 @@ if(isset($_POST['search'])) {
 }
 ?>
 ```
-
 ### Note: you have to unzip rockyou if you're on a base Kali VM, and you haven't before.
 `sudo gz -d /usr/share/wordlists/rockyou.txt.gz`
 

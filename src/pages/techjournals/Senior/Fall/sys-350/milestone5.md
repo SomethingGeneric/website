@@ -29,7 +29,6 @@ def get_vms(service_instance, vm_name=None):
     container_view.Destroy()
     return vms
 ```
-
 Why do I need a new "container view" object???
 
 

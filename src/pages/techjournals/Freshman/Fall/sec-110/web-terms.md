@@ -26,7 +26,6 @@ layout: /src/layouts/MarkdownLayout.astro
   <input type="submit" value="Submit">
 </form> 
 ```
-
 * Query strings are modifiers to a url, to change the page content
 * Parameter is a name for a variable, and value is the content
 

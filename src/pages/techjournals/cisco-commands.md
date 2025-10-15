@@ -43,7 +43,7 @@ Once in `config`,
 
 (Once in `config` )
 
-```
+```text
 R1(config)#interface fastEthernet 0/0
 R1(config-if)#no shutdown
 R1(config-if)#exit
@@ -57,42 +57,37 @@ R1(config)#interface fastEthernet 0/0.20
 R1(config-subif)#encapsulation dot1Q 20                 
 R1(config-subif)#ip address 192.168.20.254 255.255.255.0
 ```
-
 Borrowed from [https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick](https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick)
 
 ## Static Routing
-```
+```text
 switch# configure terminal
 switch(config)#
 switch(config)# ip route 192.0.2.0/8 ethernet 1/2 192.0.2.4
 switch(config)# show ip static-route
 switch(config)# copy running-config startup-config # save config for next reboot
 ```
-
 ## Using interface ranges (for VLAN assignment, mostly)
-```
+```text
 switch# configure terminal
 switch(config)# interface range FastEthernet 0/x-y
 switch(config)# switchport access vlan x
 ```
-
 ## Change a port to trunk mode
-```
+```text
 switch# configure terminal
 switch(config)# interface FastEthernet 0/x
 switch(config)# switchport trunk
 ```
-
 ## Using ip helper-address
 This is for DHCP across subnets/interfaces
-```
+```text
 router(config)# interface vlan <id_here> # or a fa or ge interface
 router(config)# ip helper-address <dhcp_server_addr_here>
 ```
-
 ## Static NAT
 Define where's inside and where's outside
-```
+```text
 R1(config)# interface <type> <number> # e.x. fa 0/0
 R1(config)# ip nat inside
 R1(config)# exit
@@ -100,16 +95,14 @@ R1(config)# interface <type> <number> # e.x. serial 0/0/0
 R1(config)# ip nat outside
 R1(config)# exit
 ```
-
 Then you can add a static mapping like:
-```
+```text
 R1(config)# ip nat inside source static <LAN IP of machine> <IP in WAN range for router>
 # in our case:
 R1(config)# ip nat inside source static 10.0.0.2 50.0.0.1
 ```
-
 ## PAT
-```
+```text
 # Create a "pool" with the public IP (only 1 in this case)
 R1(config)#ip nat pool test 30.0.0.120 30.0.0.120 netmask 255.0.0.0
 # Allow the 192.168.1.X clients to use said pool
@@ -118,14 +111,12 @@ R1(config)#access-list 1 permit 192.168.0.0 0.0.0.255
 # overload allows up to 64k clients
 R1(config)#ip nat inside source list 1 pool test overload
 ```
-
 ## Setting up OSPF
 Firstly, ensure that each router has it's interface IP addresses configured. Then, on each router:
-```
+```text
 router ospf 1
 network <network IP> <network mask> area 0
 # repeat the above line for each network that's directly connected to this router
 ```
-
 The `1` after `router ospf` is a PID number, for complex routing setups where the router will have multiple executibles of the OSPF process running. We are ignoring this
 The `area 0` in each `network` command is to tell the router that the given network is in the backbone area. In a more complex setup, each layer going "down" would have a higher value here.

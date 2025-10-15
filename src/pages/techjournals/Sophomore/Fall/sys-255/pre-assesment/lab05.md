@@ -61,7 +61,6 @@ Sign in to `wks01` as your domain admin account, and then:
 gpupdate /force
 gpresult /scope computer /r 
 ```
-
 ## Deliverable 2
 Screenshot of the second command above.
 

@@ -17,5 +17,4 @@ To get into the Pippin user on MediaWiki, after being able to SSH as `peregrin.t
 use mediawiki;
 select * from users;
 ```
-
 Cracking this hash with hashcat was actually fairly straight-forward thanks to the [fourm post](https://forum.hashkiller.io/index.php?threads/25-reward-need-help-in-formatting-modifying-mediawiki-pbkdf2-sha512-hashes.32787/). The only trick was to remove the `:64:` from the dumped hash, and then it "just worked" with my Nvidia GPU and the flags documented in the above fourm post. The link that lead me to removing that noted `:64:` was this [list](https://hashcat.net/wiki/doku.php?id=example_hashes) of hashcat's supported formats (specifically `PBKDF2-HMAC-SHA512`, in our case.)

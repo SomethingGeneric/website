@@ -21,12 +21,10 @@ dig axfr @nsztm1.digi.ninja zonetransfer.me >> zt.txt
 # and
 dig axfr @nsztm2.digi.ninja zonetransfer.me >> zt.txt
 ```
-
 Then I wrote out
 ```bash
 cat zt.txt | grep -v ";" | egrep "\sA\s" | awk '{print $1" - "$5}'
 ```
-
 To grab the DNS names and host IPs. It's not too complicated, but it took me way too long to just use `egrep` instead of trying to get a conditional to work in pure AWK (sorry to  Brian Kernighan, I tried my best.)
 
 ## Overall

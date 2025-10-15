@@ -12,7 +12,7 @@ layout: /src/layouts/MarkdownLayout.astro
 ## Part 2: nc
 * Command: `nc -C localhost 8008`
 * Web request text:
-```
+```text
 OPTIONS /index.html HTTP/1.1
 Host: localhost
 Connection: close

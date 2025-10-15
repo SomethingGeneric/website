@@ -6,7 +6,7 @@ title: "IO Lab"
 
 (Not the whole doc, but the command used in the lab)
 
-```
+```text
 24  sudo apt install iotop htop -y
 25  sudo iotop
 26  cat /proc/ioports

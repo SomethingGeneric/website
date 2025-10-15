@@ -34,20 +34,18 @@ To convert a number from hexadecimal to binary, you divide the digits, and conve
 
 For example, with `5abf`,
 
-```
+```text
    5         a         b         f
  0101       1010      1011      1111       →   0101101010111111
 ```
-
 To convert back to hexadecimal from binary, you do basically the same process in reverse, and add 0’s to the front group if necessary.
 
 With `101111001101` (oops came out evenly):
 
-```
+```text
 1011 1100 1101
   B   C    D
 ```
-
 I can’t think of any new key terms from this article
 
 ### Reaction:

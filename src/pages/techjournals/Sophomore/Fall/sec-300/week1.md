@@ -23,7 +23,6 @@ flowchart TD;
     LS --> |Sends data to| ES;
     KB --> |Makes visualizations of| ES;
 ```
-
 ## Other options for log monitoring
 * Splunk (commercial)
 * Wazuh (semi-commercial)

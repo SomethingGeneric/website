@@ -11,7 +11,7 @@ If you need it, can be found at [https://github.com/SomethingGeneric/sec350](htt
 1. Check edge net interfaces in vcenter console (have to add 3rd, for DMZ)  
 2. Set interfaces by matching MAC in vcenter to ethX name in VyOS
 
-```
+```text
 # interface config
 set interface ethernet ethX description "WAN/DMZ/LAN" # as appropriate
 set interface ethernet ethX address x.x.x.x/x
@@ -20,22 +20,19 @@ set protocols static route 0.0.0.0/0 next-hop 10.0.17.2
 # and DNS
 set system name-server 10.0.17.2
 ```
-
 3. Drop-in the file `/etc/apt/sources.list.d/badidea.list`
 
-```
+```text
 deb https://deb.debian.org/debian bullseye main contrib non-free
 ```
-
 4. Pull config
 
-```
+```text
 sudo apt update && sudo apt install -y git
 git clone https://github.com/SomethingGeneric/sec350
 cp sec350/fw01-matt.config.boot /config/config.boot
 # and EDIT config.boot since MAC addrs and interfaces are prob different (also hostname i suppose lol)
 ```
-
 ## Deliverable 1
 
 ![][image1]
@@ -44,13 +41,12 @@ cp sec350/fw01-matt.config.boot /config/config.boot
 
 (\#1, had to move it to a LAN IP for testing (rip MGMT network))
 
-```
+```text
 sudo nano /etc/netplan/00-installer-config.yaml # change to LAN gateway/dns IP and pick a host IP
 sudo netplan apply
 sudo apt update && sudo apt install -y nginx
 sudo nano /var/
 ```
-
 ## Deliverable 2
 
 ![][image2]
@@ -59,13 +55,12 @@ sudo nano /var/
 
 [https://documentation.ubuntu.com/server/how-to/networking/install-isc-dhcp-server/index.html](https://documentation.ubuntu.com/server/how-to/networking/install-isc-dhcp-server/index.html) 
 
-```
+```text
 sudo apt install isc-dhcp-server
 ```
-
 And then set up `/etc/dhcp/dhcpd.conf`
 
-```
+```text
 # minimal sample /etc/dhcp/dhcpd.conf
 default-lease-time 600;
 max-lease-time 7200;
@@ -78,7 +73,6 @@ subnet 172.16.150.0 netmask 255.255.255.0 {
  option domain-name "heeho.lan";
 }
 ```
-
 Finally, `sudo systemctl enable –now isc-dhcp-server`
 
 ## SSH Key Auth from Windows Hosts
@@ -87,11 +81,10 @@ In Powershell, you can run `ssh-keygen` as you would on a Linux host
 Then you can `scp .\.ssh\id_rsa.pub you@hostip:.`  
 Then do one password SSH session and:
 
-```
+```text
 cat id_rsa.pub >> .ssh/authorized_keys 
 rm id_rsa.pub
 ```
-
 That’s it\!
 
 ## Deliverable 3

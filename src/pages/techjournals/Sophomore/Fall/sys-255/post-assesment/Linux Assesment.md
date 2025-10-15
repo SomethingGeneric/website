@@ -13,30 +13,27 @@ WordPress in my case
 ## Steps
 
 ### Apache
-```
+```text
 yum install -y httpd
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --permanent --add-port=443/tcp
 firewall-cmd --reload
 systemctl enable --now httpd
 ```
-
 ### PHP 7 (wordpress requires, CentOS packages 5 by default)
-```
+```text
 yum install -y yum-utils epel-release
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum-config-manager ––enable remi–php73 # be careful with this line, as clipboard sometimes nukes the --
 yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql –y
 ```
-
 ### MySQL
-```
+```text
 yum install -y mariadb-server
 systemctl enable --now mariadb
 ```
-
 ### Wordpress
-```
+```text
 yum install -y wget unzip nano
 wget https://wordpress.org/latest.zip
 unzip latest.zip
@@ -59,9 +56,8 @@ systemctl restart httpd
 # browse to http://your_ip and set up wordpress!
 # not sure what else Joe might want from us
 ```
-
 ### AD join
-```
+```text
 yum install -y realmd samba samba-common oddjob oddjob-mkhomedir sssd
 realm join --user=your-domain-admin-username@yourdomain.local yourdomain.local
 # show proof:
