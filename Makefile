@@ -4,5 +4,5 @@ setup:
 	npm ci
 build: setup
 	npm run build
-dev:
+dev: setup
 	npm run dev

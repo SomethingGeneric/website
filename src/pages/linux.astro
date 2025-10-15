@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout>
+  <Navbar />
+  <section>
+    <h1>Linux (and Unix!) Stuff</h1>
+    <p id="linux-tenure">I've been a linux user for a while now.</p>
+    <p>(Also take a look at my homelab docs (which I really need to update....))</p>
+    <p>
+      I was <s>I'm</s> a founding core team member and repository maintainer for
+      <a href="https://getcryst.al">Crystal Linux</a>
+    </p>
+    <p>I use Arch <s>Crystal</s> on my laptop and desktop machines.</p>
+    <p>
+      I mostly run Debian (or Proxmox (amped up debian)) on my servers. (Except that this web server is FreeBSD!!!)
+    </p>
+    <p>There's plenty of Linux/Arch <s>/Crystal</s> stuff on my GitHub!</p>
+    <p aria-hidden="true">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </p>
+    <p>
+      <a target="_blank" href="https://www.freebsd.org/">
+        <img src="/images/fbsd-banner1.gif" alt="FreeBSD Banner" height="35" />
+      </a>
+    </p>
+  </section>
+  <script>
+    const tenureElement = document.getElementById('linux-tenure');
+    const linuxStartDate = new Date(Date.UTC(2020, 3, 25)); // April 25, 2020 in UTC
+
+    const formatPart = (value, label) => `${value} ${label}${value === 1 ? '' : 's'}`;
+
+    const calculateElapsed = (start, now) => {
+      let years = now.getUTCFullYear() - start.getUTCFullYear();
+      let months = now.getUTCMonth() - start.getUTCMonth();
+      let days = now.getUTCDate() - start.getUTCDate();
+
+      if (days < 0) {
+        const previousMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 0));
+        days += previousMonth.getUTCDate();
+        months -= 1;
+      }
+
+      if (months < 0) {
+        months += 12;
+        years -= 1;
+      }
+
+      return { years, months, days };
+    };
+
+    const updateTenure = () => {
+      if (!tenureElement) return;
+      const { years, months, days } = calculateElapsed(linuxStartDate, new Date());
+      tenureElement.textContent = `I've been a linux user for ${formatPart(years, 'year')}, ${formatPart(
+        months,
+        'month'
+      )}, and ${formatPart(days, 'day')}.`;
+    };
+
+    updateTenure();
+    setInterval(updateTenure, 60 * 60 * 1000);
+  </script>
+</Layout>
