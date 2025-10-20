@@ -3,7 +3,7 @@ stages:
   - deploy
 
 variables:
-  IMAGE: node:22-bookworm
+  IMAGE: node:24-trixie
 
 # ----------------------------
 # Test Build (Pull/Merge Request)
