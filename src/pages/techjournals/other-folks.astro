@@ -12,42 +12,60 @@ const submissionConfig = {
 
 <Layout>
   <Navbar />
-  <h1>Tech Journals from Other Folks</h1>
-  
-  <!-- Modal overlay and content -->
-  <div id="acknowledgement-modal" class="modal-overlay">
-    <div class="modal-content">
-      <h2>Acknowledgement</h2>
-      <p>By accessing this page, you understand that being listed on this page is the "price" of using and sharing these tech journal links.</p>
-      <p>All individuals listed here have shared their work publicly and are acknowledged for their contributions to the community.</p>
-      <button id="accept-button" class="modal-button">I Understand</button>
-      <button id="add-me-btn" class="modal-button" style="margin-left:0.5em;">Add Me to the List</button>
-    </div>
-  </div>
-
-  <!-- Main content (hidden by default until modal is dismissed) -->
-  <div id="main-content" class="hidden">
-    <h2>GitHub Pages from other Champlain Cyber/DF folks:</h2>
-    <!-- Add Techjournal Button -->
-    <button id="add-techjournal-btn" class="modal-button" style="background-color:orange;margin-bottom:1em;">Add Your Techjournal</button>
-
-    <!-- Modal for submitting techjournal info -->
-    <div id="techjournal-modal" class="modal-overlay hidden">
+  <main>
+    <h1>Tech Journals from Other Folks</h1>
+    
+    <!-- Modal overlay and content -->
+    <div
+      id="acknowledgement-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="acknowledgement-title"
+    >
       <div class="modal-content">
-        <h2>Submit Your Techjournal</h2>
-        <form id="techjournal-form">
-          <label for="name-input">My Name:</label><br>
-          <input type="text" id="name-input" name="name" required><br><br>
-          <label for="link-input">My Techjournal Link:</label><br>
-          <input type="url" id="link-input" name="link" required><br><br>
-          <button type="submit" class="modal-button">Submit</button>
-          <button type="button" id="cancel-techjournal" class="modal-button">Cancel</button>
-        </form>
-        <p id="techjournal-status" class="status-message" role="status" aria-live="polite"></p>
+        <h2 id="acknowledgement-title">Acknowledgement</h2>
+        <p>By accessing this page, you understand that being listed on this page is the "price" of using and sharing these tech journal links.</p>
+        <p>All individuals listed here have shared their work publicly and are acknowledged for their contributions to the community.</p>
+        <div class="modal-actions">
+          <button id="accept-button" class="modal-button">I Understand</button>
+          <button id="add-me-btn" class="modal-button modal-button--outline">Add Me to the List</button>
+        </div>
       </div>
     </div>
-    
-    <table>
+
+    <!-- Main content (hidden by default until modal is dismissed) -->
+    <div id="main-content" class="hidden" aria-hidden="true">
+      <h2>GitHub Pages from other Champlain Cyber/DF folks:</h2>
+      <!-- Add Techjournal Button -->
+      <button id="add-techjournal-btn" class="modal-button modal-button--wide modal-button--outline">Add Your Techjournal</button>
+
+      <!-- Modal for submitting techjournal info -->
+      <div
+        id="techjournal-modal"
+        class="modal-overlay hidden"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="techjournal-title"
+      >
+        <div class="modal-content modal-content--narrow">
+          <h2 id="techjournal-title">Submit Your Techjournal</h2>
+          <form id="techjournal-form" class="modal-form">
+            <label for="name-input">My Name</label>
+            <input type="text" id="name-input" name="name" required>
+            <label for="link-input">My Techjournal Link</label>
+            <input type="url" id="link-input" name="link" required>
+            <div class="modal-actions modal-actions--form">
+              <button type="submit" class="modal-button">Submit</button>
+              <button type="button" id="cancel-techjournal" class="modal-button modal-button--outline">Cancel</button>
+            </div>
+          </form>
+          <p id="techjournal-status" class="status-message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      
+      <table>
       <thead>
         <tr>
           <th>Name</th>
@@ -119,99 +137,177 @@ const submissionConfig = {
       }
     </style>
   </noscript>
+</main>
 </Layout>
 
 <style>
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    background: rgba(5, 6, 7, 0.92);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 24px;
     z-index: 1000;
+    backdrop-filter: blur(2px);
   }
 
   .modal-content {
-    background-color: #111;
-    border: 2px solid rgb(48, 187, 48);
-    padding: 2rem;
-    max-width: 500px;
+    width: min(540px, 100%);
+    border: 2px solid var(--border);
+    background: var(--bg-panel);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.6), inset 0 0 18px rgba(0, 0, 0, 0.7);
+    padding: 24px;
     text-align: center;
-    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modal-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, transparent 70%, rgba(0, 0, 0, 0.35) 70%);
+    background-size: 100% 4px;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .modal-content > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .modal-content--narrow {
+    width: min(420px, 100%);
   }
 
   .modal-content h2 {
-    color: red;
-    margin-bottom: 1rem;
+    margin: 0 0 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .modal-content p {
-    margin-bottom: 1rem;
+    margin: 0 0 16px;
+    color: var(--text-muted);
     line-height: 1.6;
   }
 
+  .modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .modal-actions--form {
+    justify-content: flex-end;
+  }
+
   .modal-button {
-    background-color: rgb(48, 187, 48);
-    color: #000;
-    border: none;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 24px;
+    min-height: 44px;
     border-radius: 4px;
-    font-weight: bold;
+    letter-spacing: 0.1em;
   }
 
-  .modal-button:hover {
-    background-color: rgb(243, 76, 26);
+  .modal-button--outline {
+    background: transparent;
+    border: 2px dashed var(--accent);
+    color: var(--accent);
   }
 
-  .modal-button[disabled] {
+  .modal-button--outline:hover,
+  .modal-button--outline:focus-visible {
+    background: var(--accent);
+    color: var(--bg-primary);
+  }
+
+  .modal-button--wide {
+    width: min(320px, 100%);
+    display: block;
+    margin: 0 auto 16px;
+  }
+
+  .modal-button:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  .modal-form {
+    display: grid;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .modal-form label {
+    color: var(--accent);
+  }
+
+  .status-message {
+    min-height: 1.5rem;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .status-success {
+    color: var(--accent);
+  }
+
+  .status-error {
+    color: var(--error);
+  }
+
+  #main-content h2 {
+    margin-top: 32px;
+  }
+
+  table {
+    margin: 24px 0;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+
+  thead th {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  th,
+  td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    color: var(--text-muted);
+  }
+
+  tbody tr:hover {
+    background: rgba(255, 170, 0, 0.08);
   }
 
   .hidden {
     display: none;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-  }
+  @media (max-width: 600px) {
+    .modal-content {
+      padding: 20px;
+    }
 
-  th, td {
-    border: 1px solid rgb(48, 187, 48);
-    padding: 0.5rem;
-    text-align: left;
-  }
-
-  th {
-    background-color: #111;
-    font-weight: bold;
-  }
-
-  tr:hover {
-    background-color: #0a0a0a;
-  }
-
-  .status-message {
-    min-height: 1.5rem;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .status-success {
-    color: rgb(48, 187, 48);
-  }
-
-  .status-error {
-    color: rgb(243, 76, 26);
+    .modal-actions--form {
+      justify-content: center;
+    }
   }
 </style>
 

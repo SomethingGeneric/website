@@ -1,6 +1,6 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
+import Layout from '/src/layouts/Layout.astro';
+import Navbar from '/src/components/Navbar.astro';
 
 const files = Object.values(import.meta.glob('./*.md', { eager: true }));
 
@@ -16,12 +16,10 @@ function getTitleFromPath(path: string) {
 
 <Layout>
   <Navbar />
-  <h1>Homelab</h1>
+  <h1>Atlantic.net</h1>
   <nav>
     <ul>
-      <li><a href="/homelab/atlantic/">Atlantic.net/</a></li>
-      <li><a href="/homelab/hostbrr/">Hostbrr/</a></li>
-      <li><a href="/homelab/vermont/">Vermont/</a></li>
+      <li><a href="/homelab/atlantic/mail.xhec.dev/">mail.xhec.dev/</a></li>
       {files.map(file => (
         <li>
           <a href={file.url}>

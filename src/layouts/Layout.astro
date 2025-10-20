@@ -21,15 +21,23 @@ const buildDate = new Date().toLocaleString('en-US', {
 		<link rel="icon" href="/images/siseor.jpg" />
 	</head>
 	<body>
-		<main>
-			<slot />
-		</main>
-		<footer>
-			<p>please contact me if you notice anything missing or broken on this site</p>
-			<p>site last built at {buildDate}</p> 
-			<!--<p>or just make an issue/PR on <a href="https://gitlab.goober.cloud/matt/website/-/issues/new?type=ISSUE">the source repo</a></p>-->
-			<p>Please view the <a href="/policy">site policy.</a></p>
-			<p>copyright matt c {currentYear}</p>
-		</footer>
+		<div class="crt-wrapper">
+			<div class="console">
+				<header>
+					<span>matt c</span>
+					<span>sys/online</span>
+				</header>
+				<div class="console-content">
+					<slot />
+				</div>
+				<footer>
+					<p>please contact me if you notice anything missing or broken on this site</p>
+					<p>site last built at {buildDate}</p>
+					<!--<p>or just make an issue/PR on <a href="https://gitlab.goober.cloud/matt/website/-/issues/new?type=ISSUE">the source repo</a></p>-->
+					<p>Please view the <a href="/policy">site policy.</a></p>
+					<p>copyright matt c {currentYear}</p>
+				</footer>
+			</div>
+		</div>
 	</body>
 </html>
