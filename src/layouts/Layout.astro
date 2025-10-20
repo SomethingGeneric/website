@@ -25,11 +25,11 @@ const buildDate = new Date().toLocaleString('en-US', {
 			<slot />
 		</main>
 		<footer>
-			<p>please contact me if you notice anything missing or broken on this site</p> 
+			<p>please contact me if you notice anything missing or broken on this site</p>
+			<p>site last built at {buildDate}</p> 
 			<!--<p>or just make an issue/PR on <a href="https://gitlab.goober.cloud/matt/website/-/issues/new?type=ISSUE">the source repo</a></p>-->
 			<p>Please view the <a href="/policy">site policy.</a></p>
 			<p>copyright matt c {currentYear}</p>
-			<p>site last built at {buildDate}</p>
 		</footer>
 	</body>
 </html>
