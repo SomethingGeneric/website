@@ -11,33 +11,38 @@ import Navbar from '../components/Navbar.astro';
     <p>(Also take a look at my homelab docs (which I really need to update....))</p>
     <p>
       I was <s>I'm</s> a founding core team member and repository maintainer for
-      <a href="https://getcryst.al">Crystal Linux</a>
+      <a href="https://web.archive.org/web/20240603050511/https://getcryst.al/site">Crystal Linux</a>
     </p>
     <p>I use Arch <s>Crystal</s> on my laptop and desktop machines.</p>
     <p>
       I mostly run Debian (or Proxmox (based on Debian)) on my servers. (And this web server is FreeBSD!)
     </p>
     <p>There's plenty of Linux/Arch <s>/Crystal</s> stuff on my GitHub!</p>
-    <p aria-hidden="true">
+    <!-- <p aria-hidden="true">
       <br />
       <br />
       <br />
       <br />
       <br />
-    </p>
+    </p> -->
     <p>
       <a target="_blank" href="https://www.freebsd.org/">
-        <img src="/images/fbsd-banner1.gif" alt="FreeBSD Banner" height="35" />
+        <img src="/images/fbsd-banner1.gif" alt="FreeBSD Banner" data-banner />
       </a>
     </p>
     <p>
 	    <a target="_blank" href="https://archlinux.org/">
-	      <img src="/images/archlinux-logo-light-90dpi.png" alt="Arch Linux Logo" height="70"/>
+	      <img src="/images/archlinux-logo-light-90dpi.png" alt="Arch Linux Logo" data-lock-logo/>
 	    </a>
     </p>
     <p>
 	    <a target="_blank" href="https://debian.org/">
-	      <img src="/images/debianbutton.jpg" alt="Debian Linux Logo" height="70"/>
+	      <img src="/images/debianbutton.jpg" alt="Debian Linux Logo" data-lock-logo/>
+	    </a>
+    </p>
+    <p>
+		<a target="_blank" href="https://my.fsf.org/join">
+			      <img src="/images/FSF40-logo.png" alt="Free Software Foundation 40th Anniversary" data-lock-logo/>
 	    </a>
     </p>
   </section>
@@ -77,5 +82,34 @@ import Navbar from '../components/Navbar.astro';
 
     updateTenure();
     setInterval(updateTenure, 60 * 60 * 1000);
+
+    const bannerImage = document.querySelector('[data-banner]');
+    const lockImages = document.querySelectorAll('[data-lock-logo]');
+
+    const applyBannerWidth = () => {
+      if (!bannerImage) return;
+      const width = bannerImage.naturalWidth || bannerImage.getBoundingClientRect().width;
+      if (!width) return;
+      const targetWidth = Math.round(width);
+
+      const setDimensions = (img) => {
+        img.style.width = '100%';
+        img.style.maxWidth = `${targetWidth}px`;
+        img.style.height = 'auto';
+        img.style.display = 'block';
+      };
+
+      setDimensions(bannerImage);
+      lockImages.forEach(setDimensions);
+    };
+
+    if (bannerImage) {
+      if (bannerImage.complete) {
+        applyBannerWidth();
+      } else {
+        bannerImage.addEventListener('load', applyBannerWidth, { once: true });
+      }
+      window.addEventListener('resize', applyBannerWidth);
+    }
   </script>
 </Layout>
