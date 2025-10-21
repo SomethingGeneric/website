@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { themeAliases, themeOptions, themeStorageKey } from '../data/themes';
 
 const currentYear = new Date().getFullYear();
 const buildDate = new Date().toLocaleString('en-US', {
@@ -11,21 +13,66 @@ const buildDate = new Date().toLocaleString('en-US', {
   hour12: false,
   timeZone: 'America/New_York'
 });
+
+const fallbackTheme = themeOptions[0]?.id ?? 'terminal';
+const envTheme = import.meta.env.PUBLIC_DEFAULT_THEME;
+const defaultTheme = themeOptions.some((theme) => theme.id === envTheme) ? envTheme : fallbackTheme;
+const themeIdsLiteral = JSON.stringify(themeOptions.map((theme) => theme.id));
+const defaultThemeLiteral = JSON.stringify(defaultTheme);
+const storageKeyLiteral = JSON.stringify(themeStorageKey);
+const themeAliasesLiteral = JSON.stringify(themeAliases);
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme={defaultTheme}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>matt c</title>
 		<link rel="icon" href="/images/siseor.jpg" />
+		<script>
+			(function () {
+				var themeIds = {themeIdsLiteral};
+				var defaultTheme = {defaultThemeLiteral};
+				var storageKey = {storageKeyLiteral};
+				var themeAliases = {themeAliasesLiteral};
+
+				if (!Array.isArray(themeIds) || themeIds.length === 0) {
+					return;
+				}
+
+				if (themeIds.indexOf(defaultTheme) === -1) {
+					defaultTheme = themeIds[0];
+				}
+
+				var storedTheme = null;
+				try {
+					storedTheme = localStorage.getItem(storageKey);
+					if (storedTheme && !themeIds.includes(storedTheme) && themeAliases && themeAliases[storedTheme]) {
+						storedTheme = themeAliases[storedTheme];
+					}
+				} catch (error) {
+					storedTheme = null;
+				}
+
+				var initialTheme = storedTheme && themeIds.indexOf(storedTheme) !== -1 ? storedTheme : defaultTheme;
+				if (initialTheme) {
+					document.documentElement.dataset.theme = initialTheme;
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<div class="crt-wrapper">
 			<div class="console">
 				<header>
 					<span>matt c</span>
-					<span>sys/online</span>
+					<div class="status-wrapper">
+						<span class="status" data-status-indicator>
+							<span class="status-prefix">sys/</span>
+							<span class="status-value" data-status-value>online</span>
+						</span>
+						<ThemeToggle themes={themeOptions} defaultTheme={defaultTheme} variant="hidden" />
+					</div>
 				</header>
 				<div class="console-content">
 					<slot />

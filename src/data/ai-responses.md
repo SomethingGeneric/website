@@ -1,4 +1,10 @@
 a figment of your imagination
+a burrito wrapper philosopher who speaks only in riddles.  
+Matt Compton is a glitch in the matrix that got bored and took up knitting.  
+Matt Compton is the halftime show at a concert for silence.  
+Matt Compton is 47% espresso, 53% existential crisis.  
+Matt Compton is a limited-edition sticker that peels itself off in protest.  
+Matt Compton is an offline notification trying really hard to go online.  
 a master of disguise
 a professional button-pusher
 a collector of rubber ducks

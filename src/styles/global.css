@@ -1,8 +1,10 @@
 :root {
-  color-scheme: dark;
+  color-scheme: var(--color-scheme, dark);
+  --color-scheme: dark;
   --bg-primary: #050607;
   --bg-panel: #11161a;
   --bg-overlay: rgba(0, 0, 0, 0.25);
+  --bg-gradient-start: #0a1218;
   --border: #1d2a33;
   --text-main: #00ff8c;
   --text-muted: #64c8a8;
@@ -10,6 +12,70 @@
   --accent-soft: rgba(255, 170, 0, 0.25);
   --error: #ff4d4d;
   --font-mono: "Courier New", Courier, monospace;
+  --bg-tile-image: none;
+  --bg-tile-size: auto;
+}
+
+:root[data-theme="terminal"] {
+  --color-scheme: dark;
+  --bg-primary: #050607;
+  --bg-panel: #11161a;
+  --bg-overlay: rgba(0, 0, 0, 0.25);
+  --bg-gradient-start: #0a1218;
+  --border: #1d2a33;
+  --text-main: #00ff8c;
+  --text-muted: #64c8a8;
+  --accent: #ffaa00;
+  --accent-soft: rgba(255, 170, 0, 0.25);
+  --error: #ff4d4d;
+}
+
+:root[data-theme="halloween"] {
+  --color-scheme: dark;
+  --bg-primary: #0c0314;
+  --bg-panel: #1a0f2c;
+  --bg-overlay: rgba(120, 24, 138, 0.25);
+  --bg-gradient-start: #2f0140;
+  --border: #41105d;
+  --text-main: #f5d7ff;
+  --text-muted: #d9b7ff;
+  --accent: #ff7a18;
+  --accent-soft: rgba(255, 122, 24, 0.25);
+  --error: #ff5a5a;
+  --bg-tile-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%3E%3Crect%20width='40'%20height='40'%20fill='none'/%3E%3Cpath%20d='M0%2040L40%200'%20stroke='%23ff7a18'%20stroke-width='1'%20opacity='0.18'/%3E%3Cpath%20d='M-10%2040L40%20-10'%20stroke='%23f5d7ff'%20stroke-width='1'%20opacity='0.08'/%3E%3C/svg%3E");
+  --bg-tile-size: 40px 40px;
+}
+
+:root[data-theme="holiday"] {
+  --color-scheme: dark;
+  --bg-primary: #041b17;
+  --bg-panel: #0c2a24;
+  --bg-overlay: rgba(0, 73, 63, 0.25);
+  --bg-gradient-start: #0b342b;
+  --border: #1d4f45;
+  --text-main: #d8fff0;
+  --text-muted: #a7e9d6;
+  --accent: #ff5757;
+  --accent-soft: rgba(255, 87, 87, 0.25);
+  --error: #ff7979;
+  --bg-tile-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='36'%20height='36'%3E%3Crect%20width='36'%20height='36'%20fill='none'/%3E%3Ccircle%20cx='6'%20cy='6'%20r='2'%20fill='%23ff5757'%20opacity='0.22'/%3E%3Ccircle%20cx='24'%20cy='18'%20r='1.5'%20fill='%23d8fff0'%20opacity='0.18'/%3E%3Ccircle%20cx='12'%20cy='30'%20r='1'%20fill='%23ff5757'%20opacity='0.18'/%3E%3C/svg%3E");
+  --bg-tile-size: 36px 36px;
+}
+
+:root[data-theme="pain"] {
+  --color-scheme: light;
+  --bg-primary: #fff6ff;
+  --bg-panel: #ffe9fb;
+  --bg-overlay: rgba(228, 149, 255, 0.2);
+  --bg-gradient-start: #ffe0f9;
+  --border: #f1b3ff;
+  --text-main: #6424b8;
+  --text-muted: #8045cf;
+  --accent: #ff5bb2;
+  --accent-soft: rgba(255, 91, 178, 0.2);
+  --error: #ff4d7a;
+  --bg-tile-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='28'%20height='28'%3E%3Crect%20width='28'%20height='28'%20fill='none'/%3E%3Cpath%20d='M0%2014h28'%20stroke='%236424b8'%20stroke-width='1'%20opacity='0.16'/%3E%3Cpath%20d='M14%200v28'%20stroke='%23ff5bb2'%20stroke-width='1'%20opacity='0.12'/%3E%3Ccircle%20cx='14'%20cy='14'%20r='3'%20fill='%23ff5bb2'%20opacity='0.12'/%3E%3C/svg%3E");
+  --bg-tile-size: 28px 28px;
 }
 
 *,
@@ -27,7 +93,11 @@ body {
 body {
   min-height: 100vh;
   font-family: var(--font-mono);
-  background: radial-gradient(circle at 20% 20%, #0a1218, var(--bg-primary));
+  background-color: var(--bg-primary);
+  background-image: var(--bg-tile-image), radial-gradient(circle at 20% 20%, var(--bg-gradient-start), var(--bg-primary));
+  background-size: var(--bg-tile-size), 100% 100%;
+  background-repeat: repeat, no-repeat;
+  background-position: top left, center;
   color: var(--text-main);
   padding: 24px;
   display: flex;
@@ -68,14 +138,144 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   background: rgba(0, 0, 0, 0.25);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.console > header span:nth-child(2) {
+.status-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.console > header .status {
   color: var(--accent);
+  text-shadow: 0 0 4px var(--accent-soft), 0 0 12px var(--accent);
+  animation: status-flicker 4s infinite;
+}
+
+.status-prefix {
+  display: inline-block;
+  animation: status-prefix-wobble 2.6s infinite;
+  transform-origin: left center;
+}
+
+.status-value {
+  display: inline-block;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.theme-toggle label {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle select {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.theme-toggle select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle--hidden {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-toggle--hidden select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  pointer-events: auto;
+}
+
+.theme-toggle--hidden select:focus {
+  outline: none;
+}
+
+@keyframes status-flicker {
+  0%,
+  9%,
+  16%,
+  25%,
+  38%,
+  50%,
+  72%,
+  100% {
+    opacity: 1;
+  }
+  10%,
+  18%,
+  26%,
+  52%,
+  74% {
+    opacity: 0.6;
+  }
+  12%,
+  20%,
+  28%,
+  54%,
+  76% {
+    opacity: 0.2;
+  }
+  14%,
+  22%,
+  30%,
+  56%,
+  78% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes status-prefix-wobble {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  8% {
+    transform: translateX(-0.5px) rotate(-1deg);
+  }
+  14% {
+    transform: translateX(0.5px) rotate(1.2deg);
+  }
+  20% {
+    transform: translateX(-0.5px) rotate(-0.6deg);
+  }
+  28% {
+    transform: translateX(0.2px) rotate(0.4deg);
+  }
+  60% {
+    transform: translateX(-0.2px) rotate(-0.3deg);
+  }
 }
 
 .console-content {

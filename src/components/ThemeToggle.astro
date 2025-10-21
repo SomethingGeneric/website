@@ -1,0 +1,154 @@
+---
+import type { ThemeOption } from '../data/themes';
+import { themeAliases, themeStorageKey } from '../data/themes';
+
+export interface Props {
+  themes: ThemeOption[];
+  defaultTheme: string;
+  variant?: 'default' | 'hidden';
+}
+
+const { themes, defaultTheme, variant = 'default' } = Astro.props;
+const themeIds = themes.map((theme) => theme.id);
+const themeLabels = Object.fromEntries(themes.map((theme) => [theme.id, theme.label]));
+const selectId = `theme-toggle-select-${Math.random().toString(36).slice(2, 9)}`;
+const selectAriaLabel = 'Theme selector';
+---
+<div class={`theme-toggle${variant === 'hidden' ? ' theme-toggle--hidden' : ''}`}>
+	{variant === 'default' ? <label for={selectId}>Theme</label> : null}
+	<select
+		id={selectId}
+		name={selectId}
+		aria-label={variant === 'default' ? undefined : selectAriaLabel}
+	>
+		{themes.map((theme) => (
+			<option value={theme.id} selected={theme.id === defaultTheme}>{theme.label}</option>
+		))}
+	</select>
+</div>
+<script
+	data-storage-key={themeStorageKey}
+	data-themes={JSON.stringify(themeIds)}
+	data-default-theme={defaultTheme}
+	data-theme-labels={JSON.stringify(themeLabels)}
+	data-select-id={selectId}
+	data-status-selector="[data-status-indicator]"
+	data-theme-aliases={JSON.stringify(themeAliases)}
+>
+	(function () {
+		var script = document.currentScript;
+		if (!script) {
+			return;
+		}
+
+		var storageKey = script.dataset.storageKey || 'site-theme';
+
+		var aliases = {};
+		try {
+			var parsedAliases = JSON.parse(script.dataset.themeAliases || '{}');
+			if (parsedAliases && typeof parsedAliases === 'object') {
+				aliases = parsedAliases;
+			}
+		} catch (error) {
+			aliases = {};
+		}
+
+		var themes;
+		try {
+			themes = JSON.parse(script.dataset.themes || '[]');
+		} catch (error) {
+			themes = [];
+		}
+
+		if (!Array.isArray(themes) || themes.length === 0) {
+			return;
+		}
+
+		var defaultTheme = script.dataset.defaultTheme;
+		if (!defaultTheme || themes.indexOf(defaultTheme) === -1) {
+			defaultTheme = themes[0];
+		}
+
+		var initialTheme = defaultTheme;
+		try {
+			var storedTheme = localStorage.getItem(storageKey);
+			if (storedTheme && !themes.includes(storedTheme) && aliases && aliases[storedTheme]) {
+				storedTheme = aliases[storedTheme];
+				try {
+					localStorage.setItem(storageKey, storedTheme);
+				} catch (error) {
+					// ignore migration errors
+				}
+			}
+			if (storedTheme && themes.indexOf(storedTheme) !== -1) {
+				initialTheme = storedTheme;
+			}
+		} catch (error) {
+			// localStorage may be unavailable (e.g., privacy settings)
+		}
+
+		if (initialTheme) {
+			document.documentElement.dataset.theme = initialTheme;
+		}
+
+		var selectId = script.dataset.selectId;
+		var select = selectId ? document.getElementById(selectId) : null;
+		if (!select) {
+			return;
+		}
+
+		var statusSelector = script.dataset.statusSelector;
+		var statusEl = statusSelector ? document.querySelector(statusSelector) : null;
+		var statusValueEl = statusEl ? statusEl.querySelector('[data-status-value]') : null;
+
+		var themeLabels = {};
+		try {
+			var parsedLabels = JSON.parse(script.dataset.themeLabels || '{}');
+			if (parsedLabels && typeof parsedLabels === 'object') {
+				themeLabels = parsedLabels;
+			}
+		} catch (error) {
+			themeLabels = {};
+		}
+
+		function formatStatus(themeId) {
+			var label = themeLabels[themeId] || themeId;
+			return typeof label === 'string' ? label.toLowerCase() : themeId;
+		}
+
+		function updateStatus(themeId) {
+			if (!statusEl) {
+				return;
+			}
+
+			if (statusValueEl) {
+				statusValueEl.textContent = themeId === defaultTheme ? 'online' : formatStatus(themeId);
+				return;
+			}
+
+			if (themeId === defaultTheme) {
+				statusEl.textContent = 'sys/online';
+			} else {
+				statusEl.textContent = 'sys/' + formatStatus(themeId);
+			}
+		}
+
+		select.value = initialTheme;
+		updateStatus(initialTheme);
+
+		select.addEventListener('change', function (event) {
+			var value = event && event.target ? event.target.value : null;
+			if (!value || themes.indexOf(value) === -1) {
+				return;
+			}
+
+			document.documentElement.dataset.theme = value;
+			updateStatus(value);
+			try {
+				localStorage.setItem(storageKey, value);
+			} catch (error) {
+				// ignore persistence errors
+			}
+		});
+	})();
+</script>
