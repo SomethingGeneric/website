@@ -8,6 +8,32 @@ const filePath = path.join(process.cwd(), "src/data/ai-responses.md");
 const fileContents = await fs.readFile(filePath, "utf8");
 const responses = fileContents.split("\n").filter(Boolean); // filter(Boolean) removes empty lines
 const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+
+const blogModules = Object.values(import.meta.glob("./blog/*.md", { eager: true }));
+
+const postsWithDates = blogModules
+  .map((post) => {
+    const url = post.url;
+    const filename = post.file?.split("/").pop() ?? (url ? url.split("/").pop()?.replace(".html", ".md") : null);
+    const dateFromFrontmatter = post.frontmatter?.date ?? post.frontmatter?.pubDate;
+    const dateMatch = !dateFromFrontmatter && filename ? filename.match(/^(\d{4}-\d{2}-\d{2})/) : null;
+    const dateString = dateFromFrontmatter ?? dateMatch?.[1] ?? null;
+    const date = dateString ? new Date(dateString) : null;
+
+    return {
+      title: post.frontmatter?.title ?? filename?.replace(".md", "") ?? "Untitled post",
+      url,
+      date,
+      displayDate: date
+        ? date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+        : null,
+    };
+  })
+  .filter((post) => post.url && post.date);
+
+const latestPost = postsWithDates
+  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
+  .at(0) ?? null;
 ---
 
 <Layout>
@@ -20,6 +46,19 @@ const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 		<a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ"><img src="/images/clippy.jpg" alt="Change your profile picture to clippy in order to support the right to repair movement."/></a>
 		<p>Louis Rossman's <a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ">video</a> on the Clippy movement.</p>
 
+		{latestPost && (
+		<section>
+			<h2>Latest Blog Post</h2>
+			<h4 class="latest-post__title">
+				<a href={latestPost.url}>{latestPost.title}</a>
+			</h3>
+			{latestPost.displayDate && (
+				<p class="latest-post__meta">Published {latestPost.displayDate}</p>
+			)}
+		</section>
+		<br/>
+		)}
+
 		<h2>Stuff I've Done</h2>
 		<ul>
 			<li>
@@ -27,11 +66,11 @@ const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 				Linux distribution
 			</li>
 			<li><a href="https://goober.cloud">Goober.Cloud</a></li>
-			<li>
+			<!--<li>
 				Discord.py bot <a
 					href="https://github.com/SomethingGeneric/GamerbotAgain/"
 					>Gamerbot</a>
-			</li>
+			</li>-->
 			<li>
 				Many others on my <a href="https://github.com/SomethingGeneric"
 					>GitHub</a
@@ -81,4 +120,19 @@ const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 		</ul>
 		<br/>
 	</main>
+	<style>
+		.latest-post {
+			margin-top: 2rem;
+			padding: 1rem;
+			border: 2px solid #fff;
+		}
+
+		.latest-post__title {
+			margin-top: 0.25rem;
+		}
+
+		.latest-post__meta {
+			margin: 0.5rem 0 0;
+		}
+	</style>
 </Layout>
