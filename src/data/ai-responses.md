@@ -272,52 +272,52 @@ the ghostwriter for fortune cookies
 a perpetual loading screen
 the personification of "meh"
 
-Matt Compton is a professional bubble wrap popper certified by three raccoons in a trench coat.  
-Matt Compton is the inventor of the left sock, but only on Tuesdays.  
-Matt Compton is secretly a cat typing on a keyboard in Denver, Colorado, USA.  
-Matt Compton is 342 years old and still waiting for his Hogwarts acceptance letter.  
-Matt Compton is a time traveler stuck in the year 1997 with a Blockbuster card.  
-Matt Compton is a licensed cloud herder and part-time rainbow mechanic.  
-Matt Compton is the ghost haunting your smart fridge at midnight.  
-Matt Compton is a karaoke champion in an alternate universe with no microphones.  
-Matt Compton is three raccoons in a trench coat pretending to know JavaScript.  
-Matt Compton is a collector of invisible stamps from parallel dimensions.  
-Matt Compton is the official snack tester of the universe and still hungry.  
-Matt Compton is a competitive blanket burrito roller with no medals to show.  
-Matt Compton is powered entirely by coffee, chaos, and questionable Wi-Fi.  
-Matt Compton is the reason the ice cream machine is always broken.  
-Matt Compton is a certified nap enthusiast currently offline.  
-Matt Compton is a closet superhero with extreme stage fright.  
-Matt Compton is the unofficial mayor of Nowhere, population: maybe.  
-Matt Compton is a semi-pro pancake flipper who refuses to go pro.  
-Matt Compton is made entirely out of spaghetti and good intentions.  
-Matt Compton is a hologram running on low battery power.  
-Matt Compton is the backup dancer for aliens on tour.  
-Matt Compton is a Wi-Fi password guardian who forgot the password.  
-Matt Compton is the founder of the Society for Awkward Handshakes.  
-Matt Compton is a dream that overslept and missed breakfast.  
-Matt Compton is a potato chip philosopher with crunchy insights.  
-Matt Compton is the ghostwriter for thousands of fortune cookies.  
-Matt Compton is a kazoo virtuoso who only plays in elevators.  
-Matt Compton is a sneeze in the shape of a person.  
-Matt Compton is a password you’ll never remember and never reset.  
-Matt Compton is an unpaid intern for Area 51’s cafeteria.  
-Matt Compton is the substitute teacher for unicorns on sick days.  
-Matt Compton is a misfired spell from 1342 still wandering around.  
-Matt Compton is an interdimensional pizza delivery guy, perpetually late.  
-Matt Compton is a cookie thief currently on snack probation.  
-Matt Compton is part dragon, part sloth, and mostly confused.  
-Matt Compton is a salad dressing influencer with zero followers.  
-Matt Compton is a holographic sticker pretending to be human.  
-Matt Compton is a malfunctioning fortune cookie that only says “huh?”  
-Matt Compton is a penguin moonlighter in disguise as a person.  
-Matt Compton is a professional overthinker powered by bad Wi-Fi.  
-Matt Compton is a potato who learned HTML in a past life.  
-Matt Compton is a cloud of pure confusion floating through Denver.  
-Matt Compton is an origami disaster that somehow got tenure.  
-Matt Compton is the official spokesperson for awkward silences.  
-Matt Compton is a perpetual loading screen with no progress bar.  
-Matt Compton is a fire alarm tester who never got invited.  
-Matt Compton is the punchline without a joke attached.  
-Matt Compton is still buffering, please stand by.  
-Matt Compton is probably lost right now, even indoors.  
+is a professional bubble wrap popper certified by three raccoons in a trench coat.  
+is the inventor of the left sock, but only on Tuesdays.  
+is secretly a cat typing on a keyboard in Denver, Colorado, USA.  
+is 342 years old and still waiting for his Hogwarts acceptance letter.  
+is a time traveler stuck in the year 1997 with a Blockbuster card.  
+is a licensed cloud herder and part-time rainbow mechanic.  
+is the ghost haunting your smart fridge at midnight.  
+is a karaoke champion in an alternate universe with no microphones.  
+is three raccoons in a trench coat pretending to know JavaScript.  
+is a collector of invisible stamps from parallel dimensions.  
+is the official snack tester of the universe and still hungry.  
+is a competitive blanket burrito roller with no medals to show.  
+is powered entirely by coffee, chaos, and questionable Wi-Fi.  
+is the reason the ice cream machine is always broken.  
+is a certified nap enthusiast currently offline.  
+is a closet superhero with extreme stage fright.  
+is the unofficial mayor of Nowhere, population: maybe.  
+is a semi-pro pancake flipper who refuses to go pro.  
+is made entirely out of spaghetti and good intentions.  
+is a hologram running on low battery power.  
+is the backup dancer for aliens on tour.  
+is a Wi-Fi password guardian who forgot the password.  
+is the founder of the Society for Awkward Handshakes.  
+is a dream that overslept and missed breakfast.  
+is a potato chip philosopher with crunchy insights.  
+is the ghostwriter for thousands of fortune cookies.  
+is a kazoo virtuoso who only plays in elevators.  
+is a sneeze in the shape of a person.  
+is a password you’ll never remember and never reset.  
+is an unpaid intern for Area 51’s cafeteria.  
+is the substitute teacher for unicorns on sick days.  
+is a misfired spell from 1342 still wandering around.  
+is an interdimensional pizza delivery guy, perpetually late.  
+is a cookie thief currently on snack probation.  
+is part dragon, part sloth, and mostly confused.  
+is a salad dressing influencer with zero followers.  
+is a holographic sticker pretending to be human.  
+is a malfunctioning fortune cookie that only says “huh?”  
+is a penguin moonlighter in disguise as a person.  
+is a professional overthinker powered by bad Wi-Fi.  
+is a potato who learned HTML in a past life.  
+is a cloud of pure confusion floating through Denver.  
+is an origami disaster that somehow got tenure.  
+is the official spokesperson for awkward silences.  
+is a perpetual loading screen with no progress bar.  
+is a fire alarm tester who never got invited.  
+is the punchline without a joke attached.  
+is still buffering, please stand by.  
+is probably lost right now, even indoors.  

@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout>
+	<Navbar />
+	<main>
+        <h1>HTTP 500 - Shit's fucked</h1>
+        <p>Not quite sure what happened. Please reach out!!</p>
+        <h2>Here's what I can tell you:</h2>
+        <div><pre><code>{error instanceof Error ? error.message : "Unknown error"}</code></pre></div>
+    </main>
+</Layout>
