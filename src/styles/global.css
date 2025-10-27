@@ -540,6 +540,27 @@ input[type="submit"]:active {
   color: var(--accent);
 }
 
+#ad-note-hidden, #ad-note {
+        display: none;
+}
+
+@media (min-height: 30em) { @media (min-width: 75em) {
+        #ad-note {
+                display: block;
+                position: fixed;
+                bottom: 1em;
+                right: 1em;
+                width: 14em;
+                border: white 1px solid;
+                background-color: #111111;
+                padding: 1em;
+        }
+        #ad-note-content-wrapper {
+                margin-top: 0em;
+                margin-bottom: 0em;
+        }
+}}
+
 @media (max-width: 768px) {
   body {
     padding: 16px;
