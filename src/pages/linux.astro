@@ -25,29 +25,28 @@ import Navbar from '../components/Navbar.astro';
       <br />
       <br />
     </p> -->
-    <p>
+    <p class="logo-wrap logo-row">
       <a target="_blank" href="https://www.freebsd.org/">
         <img src="/images/fbsd-banner1.gif" alt="FreeBSD Banner" data-banner />
       </a>
+      <a href="https://freebsdfoundation.org/donate" target="_blank">
+        <img src="https://freebsdfoundation.org/wp-content/uploads/2015/12/proud_donor.gif" alt="Proud Donor" title="FreeBSD Foundation Donor" data-donor/>
+      </a>
     </p>
-    <p>
+    <p class="logo-wrap">
 	    <a target="_blank" href="https://archlinux.org/">
 	      <img src="/images/archlinux-logo-light-90dpi.png" alt="Arch Linux Logo" data-lock-logo/>
 	    </a>
     </p>
-    <p>
+    <p class="logo-wrap">
 	    <a target="_blank" href="https://debian.org/">
 	      <img src="/images/debianbutton.jpg" alt="Debian Linux Logo" data-lock-logo/>
 	    </a>
     </p>
-    <p>
+    <p class="logo-wrap">
 		<a target="_blank" href="https://my.fsf.org/join">
 			      <img src="/images/FSF40-logo.png" alt="Free Software Foundation 40th Anniversary" data-lock-logo/>
 	    </a>
-    </p>
-    <p>
-<a href="https://freebsdfoundation.org/donate" target="_blank">
-<img src="https://freebsdfoundation.org/wp-content/uploads/2015/12/proud_donor.gif" alt="Proud Donor" title="FreeBSD Foundation Donor" data-lock-logo></a>
     </p>
   </section>
   <script>
@@ -89,6 +88,7 @@ import Navbar from '../components/Navbar.astro';
 
     const bannerImage = document.querySelector('[data-banner]');
     const lockImages = document.querySelectorAll('[data-lock-logo]');
+    const donorImage = document.querySelector('[data-donor]');
 
     const applyBannerWidth = () => {
       if (!bannerImage) return;
@@ -105,6 +105,16 @@ import Navbar from '../components/Navbar.astro';
 
       setDimensions(bannerImage);
       lockImages.forEach(setDimensions);
+
+      if (donorImage) {
+        const donorHeight = donorImage.naturalHeight || donorImage.getBoundingClientRect().height;
+        if (!donorHeight) return;
+        donorImage.style.display = 'block';
+        donorImage.style.margin = '0';
+        donorImage.style.width = 'auto';
+        donorImage.style.maxWidth = `${targetWidth}px`;
+        donorImage.style.height = `${Math.round(donorHeight / 2)}px`;
+      }
     };
 
     if (bannerImage) {
@@ -115,5 +125,31 @@ import Navbar from '../components/Navbar.astro';
       }
       window.addEventListener('resize', applyBannerWidth);
     }
+
+    if (donorImage && !donorImage.complete) {
+      donorImage.addEventListener('load', applyBannerWidth, { once: true });
+    }
   </script>
+  <style>
+    .logo-wrap {
+      text-align: center;
+    }
+
+    .logo-wrap img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-row img {
+      margin: 0;
+    }
+  </style>
 </Layout>
