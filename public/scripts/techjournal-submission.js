@@ -182,10 +182,14 @@ function initTechjournalSubmission(initialConfig) {
 
 		setStatus('Submitting your request…');
 
-		const payload = { name, link, role };
-		if (gradYear) {
-			payload.gradYear = gradYear;
+		let decoratedName = name;
+		if (role === 'student') {
+			decoratedName = `${name} (student${gradYear ? `, ${gradYear}` : ''})`;
+		} else if (role === 'staff') {
+			decoratedName = `${name} (staff)`;
 		}
+
+		const payload = { name: decoratedName, link };
 
 		try {
 			const response = await fetch(`${config.proxyBase}/techjournal`, {
