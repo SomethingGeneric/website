@@ -56,6 +56,16 @@ const submissionConfig = {
             <input type="text" id="name-input" name="name" required>
             <label for="link-input">My Techjournal Link</label>
             <input type="url" id="link-input" name="link" required>
+            <label for="role-select">I am a</label>
+            <select id="role-select" name="role" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="student">Student</option>
+              <option value="staff">Staff</option>
+            </select>
+            <div id="grad-year-group" class="grad-year hidden">
+              <label for="grad-year-input">Graduation Year</label>
+              <input type="number" id="grad-year-input" name="gradYear" min="1900" max="2200" inputmode="numeric" pattern="[0-9]{4}">
+            </div>
             <div class="modal-actions modal-actions--form">
               <button type="submit" class="modal-button">Submit</button>
               <button type="button" id="cancel-techjournal" class="modal-button modal-button--outline">Cancel</button>
@@ -252,6 +262,11 @@ const submissionConfig = {
 
   .modal-form label {
     color: var(--accent);
+  }
+
+  .grad-year {
+    display: grid;
+    gap: 8px;
   }
 
   .status-message {

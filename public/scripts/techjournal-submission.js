@@ -22,6 +22,9 @@ function initTechjournalSubmission(initialConfig) {
 	const techjournalForm = document.getElementById('techjournal-form');
 	const statusMessage = document.getElementById('techjournal-status');
 	const submitButton = techjournalForm?.querySelector('button[type=\"submit\"]');
+	const roleSelect = techjournalForm?.querySelector('#role-select');
+	const gradYearGroup = techjournalForm?.querySelector('#grad-year-group');
+	const gradYearInput = techjournalForm?.querySelector('#grad-year-input');
 
 	if (
 		!ackModal ||
@@ -44,6 +47,31 @@ function initTechjournalSubmission(initialConfig) {
 		if (variant === 'error') statusMessage.classList.add('status-error');
 	};
 
+	const toggleGradYear = () => {
+		if (!roleSelect || !gradYearGroup || !gradYearInput) return;
+		if (roleSelect.value === 'student') {
+			gradYearGroup.classList.remove('hidden');
+			gradYearInput.required = true;
+		} else {
+			gradYearGroup.classList.add('hidden');
+			gradYearInput.required = false;
+			gradYearInput.value = '';
+		}
+	};
+
+	const resetRoleAndGradYear = () => {
+		if (roleSelect) {
+			roleSelect.value = '';
+		}
+		if (gradYearInput) {
+			gradYearInput.value = '';
+			gradYearInput.required = false;
+		}
+		if (gradYearGroup) {
+			gradYearGroup.classList.add('hidden');
+		}
+	};
+
 	const showMainContent = () => {
 		ackModal.classList.add('hidden');
 		ackModal.setAttribute('aria-hidden', 'true');
@@ -54,9 +82,14 @@ function initTechjournalSubmission(initialConfig) {
 	const openTechjournalModal = () => {
 		techjournalModal.classList.remove('hidden');
 		techjournalModal.setAttribute('aria-hidden', 'false');
+		resetRoleAndGradYear();
 		if (statusMessage) {
 			statusMessage.textContent = '';
 			statusMessage.classList.remove('status-success', 'status-error');
+		}
+		if (submitButton && config.enabled && config.proxyBase) {
+			submitButton.disabled = false;
+			submitButton.textContent = 'Submit';
 		}
 	};
 
@@ -64,6 +97,7 @@ function initTechjournalSubmission(initialConfig) {
 		techjournalModal.classList.add('hidden');
 		techjournalModal.setAttribute('aria-hidden', 'true');
 		techjournalForm.reset();
+		resetRoleAndGradYear();
 		if (statusMessage) {
 			statusMessage.textContent = '';
 			statusMessage.classList.remove('status-success', 'status-error');
@@ -74,9 +108,18 @@ function initTechjournalSubmission(initialConfig) {
 
 	addMeButton.addEventListener('click', () => {
 		showMainContent();
-		if (config.enabled) {
+		requestAnimationFrame(() => {
 			openTechjournalModal();
-		}
+			if (!config.enabled || !config.proxyBase) {
+				setStatus('Submissions are not enabled at this time.', 'error');
+				if (submitButton) {
+					submitButton.disabled = true;
+					submitButton.textContent = 'Submit';
+				}
+			} else if (submitButton) {
+				submitButton.disabled = false;
+			}
+		});
 	});
 
 	if (config.enabled) {
@@ -93,6 +136,8 @@ function initTechjournalSubmission(initialConfig) {
 		closeTechjournalModal();
 	});
 
+	roleSelect?.addEventListener('change', toggleGradYear);
+
 	techjournalForm.addEventListener('submit', async (event) => {
 		event.preventDefault();
 		if (!config.enabled || !config.proxyBase) {
@@ -103,10 +148,30 @@ function initTechjournalSubmission(initialConfig) {
 		const formData = new FormData(techjournalForm);
 		const name = String(formData.get('name') ?? '').trim();
 		const link = String(formData.get('link') ?? '').trim();
+		const role = String(formData.get('role') ?? '').trim();
+		const gradYearRaw = String(formData.get('gradYear') ?? '').trim();
 
 		if (!name || !link) {
 			setStatus('Both name and link are required.', 'error');
 			return;
+		}
+
+		if (!role || (role !== 'student' && role !== 'staff')) {
+			setStatus('Please choose whether you are a student or staff.', 'error');
+			return;
+		}
+
+		let gradYear = '';
+		if (role === 'student') {
+			if (!gradYearRaw) {
+				setStatus('Please provide your graduation year.', 'error');
+				return;
+			}
+			if (!/^\d{4}$/.test(gradYearRaw)) {
+				setStatus('Graduation year should be four digits (e.g., 2026).', 'error');
+				return;
+			}
+			gradYear = gradYearRaw;
 		}
 
 		const originalButtonLabel = submitButton?.textContent ?? 'Submit';
@@ -117,7 +182,10 @@ function initTechjournalSubmission(initialConfig) {
 
 		setStatus('Submitting your request…');
 
-		const payload = { name, link };
+		const payload = { name, link, role };
+		if (gradYear) {
+			payload.gradYear = gradYear;
+		}
 
 		try {
 			const response = await fetch(`${config.proxyBase}/techjournal`, {
