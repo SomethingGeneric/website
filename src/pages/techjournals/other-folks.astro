@@ -310,10 +310,21 @@ const submissionConfig = {
   td {
     border: 1px solid var(--border);
     padding: 10px 12px;
-    color: var(--text-muted);
     vertical-align: top;
+  }
+
+  td {
+    color: var(--text-muted);
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  th {
+    color: inherit;
+    text-align: left;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   tbody tr:hover {
@@ -322,6 +333,37 @@ const submissionConfig = {
 
   td a {
     word-break: break-word;
+  }
+
+  .courses-collapse {
+    display: block;
+  }
+
+  .courses-collapse summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .courses-collapse summary::-webkit-details-marker {
+    color: var(--accent);
+  }
+
+  .courses-collapse[open] summary {
+    margin-bottom: 8px;
+  }
+
+  .courses-list {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 4px;
+  }
+
+  .courses-collapse summary + .courses-list {
+    margin-top: 12px;
   }
 
   .hidden {
@@ -346,3 +388,4 @@ const submissionConfig = {
 ></script>
 
 <script type="module" src="/scripts/techjournal-submission.js"></script>
+<script type="module" src="/scripts/collapse-course-codes.js"></script>
