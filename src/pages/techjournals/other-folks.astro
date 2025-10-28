@@ -291,6 +291,8 @@ const submissionConfig = {
 
   table {
     margin: 24px 0;
+    width: 100%;
+    border-collapse: collapse;
     border: 2px solid var(--border);
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.35);
@@ -309,10 +311,17 @@ const submissionConfig = {
     border: 1px solid var(--border);
     padding: 10px 12px;
     color: var(--text-muted);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   tbody tr:hover {
     background: rgba(255, 170, 0, 0.08);
+  }
+
+  td a {
+    word-break: break-word;
   }
 
   .hidden {
