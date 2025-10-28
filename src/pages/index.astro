@@ -43,7 +43,7 @@ const latestPost = postsWithDates
 		<p>✨{randomResponse}✨</p>
 
 		<h2 style="color:yellow;">Support right to repair, be a Clippy!</h2>
-		<a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ"><img src="/images/clippy.jpg" style="height: 200px;" alt="Change your profile picture to clippy in order to support the right to repair movement."/></a>
+		<a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ"><img src="/images/clippy.jpg" class="clippy" alt="Change your profile picture to clippy in order to support the right to repair movement."/></a>
 		<p>Louis Rossman's <a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ">video</a> on the Clippy movement.</p>
 
 		{latestPost && (
@@ -132,6 +132,28 @@ const latestPost = postsWithDates
 
 		.latest-post__meta {
 			margin: 0.5rem 0 0;
+		}
+
+		.clippy {
+			height: 200px;
+			animation: clippy-spin 16s linear infinite;
+			transform-origin: center;
+			will-change: transform;
+		}
+
+		@keyframes clippy-spin {
+			0% {
+				transform: rotate(0deg) scale(1);
+			}
+			49% {
+				transform: rotate(176deg) scale(0);
+			}
+			51% {
+				transform: rotate(184deg) scale(0);
+			}
+			100% {
+				transform: rotate(360deg) scale(1);
+			}
 		}
 	</style>
 </Layout>
