@@ -1,0 +1,11 @@
+services:
+  techjournal-proxy:
+    build:
+      context: .
+    image: techjournal-proxy
+    container_name: techjournal-proxy
+    env_file:
+      - .env
+    ports:
+      - "8994:8080"
+    restart: unless-stopped

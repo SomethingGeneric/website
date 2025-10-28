@@ -25,6 +25,13 @@ function initTechjournalSubmission(initialConfig) {
 	const roleSelect = techjournalForm?.querySelector('#role-select');
 	const gradYearGroup = techjournalForm?.querySelector('#grad-year-group');
 	const gradYearInput = techjournalForm?.querySelector('#grad-year-input');
+	const setFormInputsDisabled = (disabled) => {
+		if (!techjournalForm) return;
+		const interactiveFields = techjournalForm.querySelectorAll('input, select, textarea');
+		interactiveFields.forEach((field) => {
+			field.disabled = disabled;
+		});
+	};
 
 	if (
 		!ackModal ||
@@ -83,13 +90,22 @@ function initTechjournalSubmission(initialConfig) {
 		techjournalModal.classList.remove('hidden');
 		techjournalModal.setAttribute('aria-hidden', 'false');
 		resetRoleAndGradYear();
+		setFormInputsDisabled(false);
 		if (statusMessage) {
 			statusMessage.textContent = '';
 			statusMessage.classList.remove('status-success', 'status-error');
 		}
-		if (submitButton && config.enabled && config.proxyBase) {
-			submitButton.disabled = false;
+		if (submitButton) {
+			submitButton.classList.remove('hidden');
+			submitButton.type = 'submit';
 			submitButton.textContent = 'Submit';
+			submitButton.disabled = !(config.enabled && config.proxyBase);
+		}
+		if (cancelTechjournalBtn) {
+			cancelTechjournalBtn.textContent = 'Cancel';
+			if (!cancelTechjournalBtn.classList.contains('modal-button--outline')) {
+				cancelTechjournalBtn.classList.add('modal-button--outline');
+			}
 		}
 	};
 
@@ -98,6 +114,18 @@ function initTechjournalSubmission(initialConfig) {
 		techjournalModal.setAttribute('aria-hidden', 'true');
 		techjournalForm.reset();
 		resetRoleAndGradYear();
+		setFormInputsDisabled(false);
+		if (submitButton) {
+			submitButton.classList.remove('hidden');
+			submitButton.type = 'submit';
+			submitButton.textContent = 'Submit';
+		}
+		if (cancelTechjournalBtn) {
+			cancelTechjournalBtn.textContent = 'Cancel';
+			if (!cancelTechjournalBtn.classList.contains('modal-button--outline')) {
+				cancelTechjournalBtn.classList.add('modal-button--outline');
+			}
+		}
 		if (statusMessage) {
 			statusMessage.textContent = '';
 			statusMessage.classList.remove('status-success', 'status-error');
@@ -182,14 +210,7 @@ function initTechjournalSubmission(initialConfig) {
 
 		setStatus('Submitting your request…');
 
-		let decoratedName = name;
-		if (role === 'student') {
-			decoratedName = `${name} (student${gradYear ? `, ${gradYear}` : ''})`;
-		} else if (role === 'staff') {
-			decoratedName = `${name} (staff)`;
-		}
-
-		const payload = { name: decoratedName, link };
+		const payload = { name, link, role, gradYear };
 
 		try {
 			const response = await fetch(`${config.proxyBase}/techjournal`, {
@@ -206,13 +227,42 @@ function initTechjournalSubmission(initialConfig) {
 			}
 
 			const data = (await response.json().catch(() => ({}))) || {};
+			const statusSegments = [];
 			if (data.issueUrl) {
-				setStatus(`Thanks! Your submission was sent. Track it here: ${data.issueUrl}`, 'success');
-			} else {
-				setStatus('Thanks! Your submission was sent.', 'success');
+				statusSegments.push(`Track the issue: ${data.issueUrl}`);
 			}
+			if (data.mergeRequestUrl) {
+				statusSegments.push(`Review the merge request: ${data.mergeRequestUrl}`);
+			} else if (data.mergeRequestError) {
+				statusSegments.push(`Merge request note: ${data.mergeRequestError}`);
+				if (data.mergeRequestDetails) {
+					statusSegments.push(`Details: ${data.mergeRequestDetails}`);
+				}
+			}
+			if (typeof data.tableRowAdded === 'boolean') {
+				statusSegments.push(
+					data.tableRowAdded
+						? 'Your entry was queued for the public list.'
+						: 'Your link was already on the public list.'
+				);
+			}
+
+			const successMessage = statusSegments.length
+				? `Thanks! Your submission was sent. ${statusSegments.join(' ')}`
+				: 'Thanks! Your submission was sent.';
+
+			setStatus(successMessage, 'success');
 			techjournalForm.reset();
-			setTimeout(() => closeTechjournalModal(), 2000);
+			setFormInputsDisabled(true);
+			if (submitButton) {
+				submitButton.classList.add('hidden');
+				submitButton.disabled = false;
+			}
+			if (cancelTechjournalBtn) {
+				cancelTechjournalBtn.textContent = 'Done';
+				cancelTechjournalBtn.classList.remove('modal-button--outline');
+				cancelTechjournalBtn.focus();
+			}
 		} catch (error) {
 			console.error('Unable to submit techjournal issue', error);
 			setStatus('Something went wrong submitting your request. Please try again later.', 'error');
