@@ -4,7 +4,7 @@ title: "Interesting Links"
 ---
 # Interesting (random) Links
 
-* Coke machine over the network - cseweb.ucsd.edu/~bsy/coke.history.txt
+* Coke machine over the network - https://cseweb.ucsd.edu/~bsy/coke.history.txt
 * History of Linux by Linus - https://www.cs.cmu.edu/~awb/linux.history.html
 * NASA Report on Computers in Spaceflight - https://www.cs.cmu.edu/~awb/linux.history.html
 * HTCPC - https://datatracker.ietf.org/doc/html/rfc2324
