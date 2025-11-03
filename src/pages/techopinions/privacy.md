@@ -13,6 +13,9 @@ In addition, since your local government signed the agreement, you have even les
 
 There are lots of good efforts to fight the rollout of these systems, the links below are just to get you started.
 
+## ALPR Abuse
+* https://www.eff.org/deeplinks/2025/10/flock-safety-and-texas-sheriff-claimed-license-plate-search-was-missing-person-it
+
 ## More ALPR Info
 * https://www.eff.org/pages/what-alpr
 * https://consumerrights.wiki/w/Flock_Safety
