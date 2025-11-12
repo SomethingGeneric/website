@@ -541,6 +541,21 @@ input[type="submit"]:active {
   color: var(--accent);
 }
 
+.badge-row {
+  margin-top: 12px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge-row img {
+  height: 48px;
+  width: auto;
+  image-rendering: pixelated;
+}
+
 #ad-note-hidden, #ad-note {
         display: none;
 }
