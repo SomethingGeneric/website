@@ -52,6 +52,8 @@ build_and_deploy:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: on_success
+    - if: $CI_PIPELINE_SORUCE == "schedule"
+      when: always
   before_script:
     - apt-get update -yq
     - apt-get install -y rsync openssh-client make
