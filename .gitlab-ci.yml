@@ -52,7 +52,7 @@ build_and_deploy:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: on_success
-    - if: $CI_PIPELINE_SORUCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
       when: always
   before_script:
     - apt-get update -yq
