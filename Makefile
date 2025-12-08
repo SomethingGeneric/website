@@ -16,8 +16,16 @@ AUTO_THEME := $(shell \
 
 setup:
 	@if [ ! -d node_modules ]; then \
-		echo "Installing dependencies with npm ci"; \
-		npm ci; \
+		if [ -f package-lock.json ]; then \
+			echo "Installing dependencies with npm ci"; \
+			if ! npm ci; then \
+				echo "npm ci failed; falling back to npm install"; \
+				npm install; \
+			fi; \
+		else \
+			echo "package-lock.json missing; running npm install"; \
+			npm install; \
+		fi; \
 	else \
 		echo "node_modules/ already present; skipping npm ci"; \
 	fi
