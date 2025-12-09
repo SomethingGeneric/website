@@ -30,9 +30,9 @@ testbuild:
 # ----------------------------
 glproxy_docker_build:
   stage: test
-  image: docker:26
+  image: docker:29
   services:
-    - name: docker:26-dind
+    - name: docker:29-dind
       command: ["--tls=false"]
   variables:
     DOCKER_HOST: tcp://docker:2375
