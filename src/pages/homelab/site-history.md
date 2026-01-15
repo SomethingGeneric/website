@@ -31,4 +31,4 @@ After having used Docusaurus for a while, I got the bug to do some fun custom st
 The site *has* changed a bunch even in this current iteration, but it's mostly been related to making switchable themes, having auto-CI rebuilds to update things that then "appear" to be dynamic to the end user, like the tagline on the main page. 
 
 ## That's all folks.
-I've been happy with Astro since (last fall, as of me writing this in fall 2025), so I doubt I'll be totally throwing it out anytime soon. Plus, with Mend Renovate's bot running on my GitLab, handling Node.js and Astro updates, maintenencd on my end is basically non existent, except for me creating content obviously.
+I've been happy with Astro since (last fall, as of me writing this in fall 2025), so I doubt I'll be totally throwing it out anytime soon. Plus, with Mend Renovate's bot running on my GitLab, handling Node.js and Astro updates, maintenence on my end is basically non existent, except for me creating content obviously.
