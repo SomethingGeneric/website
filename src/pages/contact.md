@@ -7,7 +7,7 @@ title: "Contact"
 * Stoat: `ratthew#9549`
 * Discord: Don't use discord as of March 2026..... ~~formerly `r4tth3w`~~
 * Signal: `ratthew.69`
-* Matrix: ``@ratthew:matrix.thibble.org`
+* Matrix: `@ratthew:matrix.thibble.org`
 
 
 ## GPG PubKey
