@@ -41,7 +41,7 @@ glproxy_docker_build:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   script:
-    until docker info; do sleep 1; done
+    - until docker info; do sleep 1; done
     - docker build --tag glproxy:test ./glproxy
 
 # ----------------------------
