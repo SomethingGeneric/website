@@ -14,7 +14,7 @@ layout: /src/layouts/MarkdownLayout.astro
 * [Reverse Shells](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
 
 ## Files
-* [IP/CIDR chart](/IPv4CIDRChart_2015.pdf)
+* [IP/CIDR chart](/docs/IPv4CIDRChart_2015.pdf)
 
 ## GitHub Pages from other Champlain Cyber/DF folks:
 
