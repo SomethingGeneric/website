@@ -16,4 +16,4 @@ Currently, I only have PLA on hand. I'm happy to split the cost of acquiring PET
 I got tired of updating this, I will tell you the current stock on hand when you email.
 
 ## How to order
-Please email me at `matt[at]xhec[dot]dev` or contact me on Discord, or (three-zero-one)-nine-seven-four-five-nine-nine-zero to discuss your project, materials, etc.
+Use any method on the contact page to get in touch
