@@ -19,7 +19,7 @@ For this website, as well as anything on Goober.Cloud, my homelab, etc, you have
 Whether intentional or not, if you discover security issues with this site or any of my other services as mentioned above, please use any of the contact methods listed on the contact page to get in touch with me ASAP. I cannot guarantee rewards, but I will post recognition, and remedy, of your discoveries.
 
 ## Data Collection
-This site does not run analytics scripts, embed trackers, or set profiling cookies. The only information retained is the IP address recorded by the upstream Nginx reverse proxy as part of routine access logging. No additional personal data is collected or shared.
+This site runs Umami analytics, which you can read more abouit [here](github.com/umami-software/umami). This software gives me information on the general demographics of where people are from and what they are reading. I do not export this data, sell, share, or otherwise use it anywhere else. The only reason this or the below mentioned reverse proxy data would ever be disclosed is to comply with US law. If this happens, I will update this page.
 
 ## Transparency
 If I find issues with this site or any services that I offer to the general public, I can promise that I will take all possible steps to notify impacted users, and post writeups of actions taken, causes, etc. Additionally, if I ever break any of my own policies listed here, this page will be updated with a writeup explaining what happened, and how I fixed it.

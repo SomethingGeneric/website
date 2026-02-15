@@ -76,7 +76,12 @@ const inlineThemeScript = `(function () {
 				<div class="console-content">
 					<slot />
 				</div>
+				<!-- Hi there! If you're reading this, don't be alarmed. The below script is NAMED to look like an ads-hook, so that you won't see the 
+				popup content if you actually HAVE an adblocker.-->
 				<script defer src="/scripts/nativeads.js"></script>
+
+				<!-- Umami analytics -->
+				<script defer src="https://umami.mattcompton.dev/script.js" data-website-id="7b10f775-3ad8-45fd-9641-888ad99cac3f"></script>
 
 				<div
 				id="ad-note-hidden"
