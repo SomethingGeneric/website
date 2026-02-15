@@ -10,9 +10,6 @@ The opinions expressed on this site belong solely to me, Matt Compton. They do *
 ## Content Correct-ness
 I will make every effort to post factually correct content, and thoroughly research my blogposts, articles, etc. That said, I am not a full-time writer, and stuff that interests me usually has to do with the internet, technology, computers, etc, and stuff that changes really fast. As with any other errors, please feel free to email me (or use other listed methods to get in touch) if you notice something that needs correction.
 
-## Licensing & Attribution
-Please review the full `LICENSE` published with the source repository on [GitLab](https://gitlab.goober.cloud/matt/website/-/blob/main/LICENSE?ref_type=heads) for details about permitted use. All original content (posts, data files, images, and code) remains © Matt Compton, all rights reserved. Open-source dependencies such as Astro, Node.js, and the broader npm ecosystem retain their respective licenses.
-
 ## Security Policy
 For this website, as well as anything on Goober.Cloud, my homelab, etc, you have my permission to pentest with the understanding that you **WILL NOT** alter, remove, or destroy anything in a way that would disrupt the service.
 
@@ -20,6 +17,12 @@ Whether intentional or not, if you discover security issues with this site or an
 
 ## Data Collection
 This site runs Umami analytics, which you can read more abouit [here](github.com/umami-software/umami). This software gives me information on the general demographics of where people are from and what they are reading. I do not export this data, sell, share, or otherwise use it anywhere else. The only reason this or the below mentioned reverse proxy data would ever be disclosed is to comply with US law. If this happens, I will update this page.
+
+### If you object to being counted in page analytics
+Simply use an ad-blocker like u-block origin, if you aren't already. This will disable being counted in Umami, as well as disable my helpful note that you really should be using an ad-blocker anyways. It's better for your privacy, and will make the entire internet a better experience for you.
+
+## Licensing & Attribution
+Please review the full `LICENSE` published with the source repository on [GitLab](https://gitlab.goober.cloud/matt/website/-/blob/main/LICENSE?ref_type=heads) for details about permitted use. All original content (posts, data files, images, and code) remains © Matt Compton, all rights reserved. Open-source dependencies such as Astro, Node.js, and the broader npm ecosystem retain their respective licenses.
 
 ## Transparency
 If I find issues with this site or any services that I offer to the general public, I can promise that I will take all possible steps to notify impacted users, and post writeups of actions taken, causes, etc. Additionally, if I ever break any of my own policies listed here, this page will be updated with a writeup explaining what happened, and how I fixed it.
