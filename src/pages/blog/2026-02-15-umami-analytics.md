@@ -1,3 +1,8 @@
+---
+layout: /src/layouts/MarkdownLayout.astro
+title: "Umami Analytics are now in use"
+---
+
 # I decided I want analytics on this site
 I know, I like privacy, so I figured I should write a blog post to explain my thinking.
 
