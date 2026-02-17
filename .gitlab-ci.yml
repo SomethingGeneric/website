@@ -1,4 +1,5 @@
 stages:
+  - update
   - test
   - deploy
 
@@ -44,6 +45,27 @@ glproxy_docker_build:
     - until docker info; do sleep 1; done
     - docker build --tag glproxy:test ./glproxy
 
+tj_course_refresh:
+  stage: update
+  image: $IMAGE
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  before_script:
+    - apt-get update -yq
+    - apt-get install -y python3
+  script:
+    - python3 scripts/detect_courses.py --max-depth 1 --max-pages 4
+    - |
+      if git diff --quiet src/pages/techjournals/other-folks.astro; then
+        echo "No techjournal updates found; skipping push."
+        exit 0
+      fi
+      git config user.name "${CI_BOT_NAME:-tj-bot}"
+      git config user.email "${CI_BOT_EMAIL:-tj-bot@example.com}"
+      git add src/pages/techjournals/other-folks.astro
+      git commit -m "update techjournal courses"
+      git push "${GIT_PUSH_REMOTE:-origin}" HEAD:${CI_COMMIT_REF_NAME}
+
 # ----------------------------
 # Production Build + Deploy (Push)
 # ----------------------------
@@ -52,9 +74,6 @@ build_and_deploy:
   image: $IMAGE
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
-      when: on_success
-    - if: $CI_PIPELINE_SOURCE == "schedule"
-      when: always
   before_script:
     - apt-get update -yq
     - apt-get install -y rsync openssh-client make

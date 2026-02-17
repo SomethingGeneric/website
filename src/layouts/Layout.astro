@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SearchPalette from '../components/SearchPalette.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { themeAliases, themeOptions, themeStorageKey } from '../data/themes';
 
@@ -63,8 +64,10 @@ const inlineThemeScript = `(function () {
 	<body>
 		<div class="crt-wrapper">
 			<div class="console">
+				<SearchPalette />
 				<header>
-					<span>matt c</span>
+					<span class="header-title">matt c</span>
+					<span class="header-tip">tip: search with ctrl/cmd + shift + space</span>
 					<div class="status-wrapper">
 						<span class="status" data-status-indicator>
 							<span class="status-prefix">sys/</span>

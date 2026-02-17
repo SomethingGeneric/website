@@ -1,0 +1,541 @@
+---
+const pageModules = Object.values(
+  import.meta.glob('../pages/**/*.{md,astro}', { eager: true })
+);
+
+const excludedUrls = new Set(['/404', '/404/', '/500', '/500/']);
+const customTitles = new Map([
+  ['/', 'Home'],
+  ['/3dprint/', '3D Print'],
+  ['/techjournals/', 'Tech Journals'],
+  ['/techopinions/', 'Tech Opinions']
+]);
+
+const toTitleCase = (value) =>
+  value
+    .split(' ')
+    .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : word))
+    .join(' ');
+
+const slugToTitle = (slug) => {
+  if (!slug) {
+    return 'Untitled';
+  }
+
+  const spaced = slug
+    .replace(/([0-9]+)([a-zA-Z]+)/g, '$1 $2')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+
+  return toTitleCase(spaced || slug);
+};
+
+const resolveTitle = (module) => {
+  const url = module.url ?? '';
+  if (customTitles.has(url)) {
+    return customTitles.get(url);
+  }
+
+  if (module.frontmatter && typeof module.frontmatter.title === 'string') {
+    return module.frontmatter.title;
+  }
+
+  if (module.file) {
+    const filename = module.file.split('/').pop() ?? '';
+    const withoutExtension = filename.replace(/\.[^.]+$/, '');
+    if (withoutExtension === 'index' && url) {
+      const segments = url.replace(/\/$/, '').split('/');
+      const parent = segments.pop();
+      return slugToTitle(parent);
+    }
+    return slugToTitle(withoutExtension);
+  }
+
+  if (url) {
+    const segments = url.replace(/\/$/, '').split('/');
+    return slugToTitle(segments.pop());
+  }
+
+  return 'Untitled';
+};
+
+const urlToBreadcrumbs = (url) => {
+  if (!url || url === '/') {
+    return 'Home';
+  }
+
+  const trimmed = url.replace(/^\/|\/$/g, '');
+  if (!trimmed) {
+    return 'Home';
+  }
+
+  return trimmed
+    .split('/')
+    .map((segment) => slugToTitle(segment))
+    .join(' › ');
+};
+
+const searchItems = pageModules
+  .map((module) => {
+    const url = module.url ?? '';
+    if (!url || excludedUrls.has(url)) {
+      return null;
+    }
+
+    return {
+      title: resolveTitle(module),
+      url,
+      breadcrumbs: urlToBreadcrumbs(url),
+      description:
+        typeof module.frontmatter?.description === 'string'
+          ? module.frontmatter.description
+          : null
+    };
+  })
+  .filter((item) => item)
+  .sort((a, b) => a.title.localeCompare(b.title));
+
+const searchItemsLiteral = JSON.stringify(searchItems).replace(/</g, '\\u003c');
+---
+
+<div class="search-root" data-search-root hidden>
+	<div class="search-backdrop" data-search-backdrop></div>
+	<div class="search-dialog" role="dialog" aria-modal="true" aria-label="Site search">
+		<div class="search-header">
+			<label class="search-label">
+				<span class="sr-only">Search pages</span>
+				<input
+					class="search-input"
+					type="search"
+					placeholder="Search pages..."
+					autocomplete="off"
+					data-search-input
+				/>
+			</label>
+			<button class="search-close" type="button" data-search-close aria-label="Close search">
+				×
+			</button>
+		</div>
+		<ul class="search-results" data-search-results aria-live="polite"></ul>
+		<p class="search-hint">Shortcut: Ctrl/Cmd + Shift + Space · Navigate with ↑ ↓ · Enter to open · Esc to close</p>
+	</div>
+</div>
+<script type="application/json" data-search-items set:html={searchItemsLiteral}></script>
+
+<script is:inline>
+	(function () {
+		var dataScript = document.querySelector('script[data-search-items]');
+		var items = [];
+		if (dataScript) {
+			try {
+				items = JSON.parse(dataScript.textContent || '[]');
+			} catch (error) {
+				items = [];
+			}
+		}
+
+		var root = document.querySelector('[data-search-root]');
+		if (!root || !Array.isArray(items) || items.length === 0) {
+			return;
+		}
+
+		var backdrop = root.querySelector('[data-search-backdrop]');
+		var input = root.querySelector('[data-search-input]');
+		var resultsList = root.querySelector('[data-search-results]');
+		var closeButton = root.querySelector('[data-search-close]');
+
+		var isOpen = false;
+		var filteredItems = items.slice();
+		var activeIndex = 0;
+
+		function isActivationShortcut(event) {
+			if (!event || !(event.ctrlKey || event.metaKey) || !event.shiftKey) {
+				return false;
+			}
+
+			var key = event.key;
+			if (!key) {
+				return false;
+			}
+
+			return key === ' ' || key === 'Spacebar' || key === 'Space';
+		}
+
+		function openSearch() {
+			if (isOpen) {
+				return;
+			}
+
+			isOpen = true;
+			root.dataset.open = 'true';
+			root.style.display = 'flex';
+			renderResults(items);
+			setActiveIndex(0);
+			requestAnimationFrame(function () {
+				input.focus();
+				input.select();
+			});
+		}
+
+		function closeSearch() {
+			if (!isOpen) {
+				return;
+			}
+
+			isOpen = false;
+			delete root.dataset.open;
+			root.style.display = 'none';
+			input.value = '';
+		}
+
+		function renderResults(list) {
+			filteredItems = list;
+			resultsList.innerHTML = '';
+
+			if (list.length === 0) {
+				var emptyItem = document.createElement('li');
+				emptyItem.className = 'search-empty';
+				emptyItem.textContent = 'No matches found';
+				resultsList.appendChild(emptyItem);
+				return;
+			}
+
+			list.forEach(function (item, index) {
+				var entry = document.createElement('li');
+				entry.className = 'search-result';
+				entry.dataset.index = String(index);
+
+				var link = document.createElement('a');
+				link.className = 'search-link';
+				link.href = item.url;
+				link.dataset.searchLink = 'true';
+
+				var title = document.createElement('span');
+				title.className = 'search-title';
+				title.textContent = item.title;
+				link.appendChild(title);
+
+				if (item.breadcrumbs) {
+					var path = document.createElement('span');
+					path.className = 'search-path';
+					path.textContent = item.breadcrumbs;
+					link.appendChild(path);
+				}
+
+				if (item.description) {
+					var description = document.createElement('span');
+					description.className = 'search-description';
+					description.textContent = item.description;
+					link.appendChild(description);
+				}
+
+				entry.appendChild(link);
+				resultsList.appendChild(entry);
+			});
+		}
+
+		function setActiveIndex(index) {
+			if (filteredItems.length === 0) {
+				activeIndex = 0;
+				return;
+			}
+
+			if (index < 0) {
+				index = filteredItems.length - 1;
+			} else if (index >= filteredItems.length) {
+				index = 0;
+			}
+
+			activeIndex = index;
+
+			var entries = resultsList.querySelectorAll('.search-result');
+			entries.forEach(function (entry, idx) {
+				if (idx === activeIndex) {
+					entry.classList.add('is-active');
+					var link = entry.querySelector('.search-link');
+					if (link) {
+						link.setAttribute('aria-current', 'true');
+					}
+					entry.scrollIntoView({ block: 'nearest' });
+				} else {
+					entry.classList.remove('is-active');
+					var inactiveLink = entry.querySelector('.search-link');
+					if (inactiveLink) {
+						inactiveLink.removeAttribute('aria-current');
+					}
+				}
+			});
+		}
+
+		function handleInput(event) {
+			var value = String(event.target.value || '').toLowerCase().trim();
+			if (!value) {
+				renderResults(items);
+				setActiveIndex(0);
+				return;
+			}
+
+			var matches = items.filter(function (item) {
+				var haystack = item.title;
+				if (item.breadcrumbs) {
+					haystack += ' ' + item.breadcrumbs;
+				}
+				if (item.description) {
+					haystack += ' ' + item.description;
+				}
+				return haystack.toLowerCase().indexOf(value) !== -1;
+			});
+
+			renderResults(matches);
+			setActiveIndex(0);
+		}
+
+		function openActiveResult() {
+			var target = filteredItems[activeIndex];
+			if (!target) {
+				return;
+			}
+			window.location.href = target.url;
+			closeSearch();
+		}
+
+		function onGlobalKeyDown(event) {
+			if (isActivationShortcut(event)) {
+				event.preventDefault();
+				openSearch();
+				return;
+			}
+
+			if (event.key === 'Escape' && isOpen) {
+				event.preventDefault();
+				closeSearch();
+			}
+		}
+
+		function onInputKeyDown(event) {
+			if (event.key === 'ArrowDown') {
+				event.preventDefault();
+				setActiveIndex(activeIndex + 1);
+			} else if (event.key === 'ArrowUp') {
+				event.preventDefault();
+				setActiveIndex(activeIndex - 1);
+			} else if (event.key === 'Enter') {
+				event.preventDefault();
+				openActiveResult();
+			}
+		}
+
+		function onResultsClick(event) {
+			var target = event.target;
+
+			while (target && target.nodeType !== 1) {
+				target = target.parentElement;
+			}
+
+			if (!target) {
+				return;
+			}
+
+			var link = target.closest('[data-search-link]');
+			if (!link) {
+				return;
+			}
+
+			closeSearch();
+		}
+
+			if (dataScript && dataScript.parentNode) {
+				dataScript.parentNode.removeChild(dataScript);
+			}
+
+			document.addEventListener('keydown', onGlobalKeyDown);
+			input.addEventListener('input', handleInput);
+			input.addEventListener('keydown', onInputKeyDown);
+			resultsList.addEventListener('click', onResultsClick);
+
+		if (backdrop) {
+			backdrop.addEventListener('click', closeSearch);
+		}
+
+		if (closeButton) {
+			closeButton.addEventListener('click', closeSearch);
+		}
+
+		var triggers = document.querySelectorAll('[data-open-search]');
+		triggers.forEach(function (trigger) {
+			trigger.addEventListener('click', function (event) {
+				event.preventDefault();
+				openSearch();
+			});
+		});
+
+		root.hidden = false;
+		root.style.display = 'none';
+	})();
+</script>
+
+<style>
+		:global(.search-root) {
+			position: fixed;
+			inset: 0;
+			z-index: 1000;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 1.5rem;
+		}
+
+		.search-backdrop {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.65);
+			backdrop-filter: blur(4px);
+		}
+
+		.search-dialog {
+			position: relative;
+			width: min(32rem, 100%);
+			max-height: min(28rem, 100%);
+			background: var(--bg-panel);
+			border: 2px solid var(--border);
+			box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			color: var(--text-main);
+		}
+
+		.search-header {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.search-label {
+			flex: 1;
+		}
+
+		.search-input {
+			width: 100%;
+			padding: 0.5rem 0.75rem;
+			border: 1px solid var(--border);
+			background: var(--bg-primary);
+			color: var(--text-main);
+			font: inherit;
+			letter-spacing: inherit;
+		}
+
+		.search-input:focus {
+			outline: 2px solid var(--accent);
+			outline-offset: 0;
+		}
+
+		.search-close {
+			border: 1px solid var(--border);
+			background: var(--bg-primary);
+			color: var(--text-main);
+			width: 2.25rem;
+			height: 2.25rem;
+			font-size: 1.5rem;
+			line-height: 1;
+			cursor: pointer;
+			border-radius: 0.25rem;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.search-close:hover,
+		.search-close:focus-visible {
+			background: var(--accent-soft);
+			color: var(--accent);
+			outline: none;
+		}
+
+		.search-results {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow-y: auto;
+			border: 1px solid var(--border);
+			max-height: 16rem;
+			background: var(--bg-primary);
+		}
+
+		.search-result + .search-result {
+			border-top: 1px solid var(--border);
+		}
+
+		.search-link {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			padding: 0.75rem;
+			text-decoration: none;
+			color: var(--text-main);
+			transition: background 0.15s ease, color 0.15s ease;
+		}
+
+		.search-result.is-active .search-link {
+			background: var(--accent-soft);
+			color: var(--accent);
+		}
+
+		.search-result:hover .search-link {
+			background: var(--accent-soft);
+			color: var(--accent);
+		}
+
+		.search-title {
+			font-weight: 600;
+		}
+
+		.search-path {
+			font-size: 0.75rem;
+			color: var(--text-muted);
+			text-transform: none;
+		}
+
+		.search-description {
+			font-size: 0.875rem;
+			opacity: 0.75;
+			color: var(--text-muted);
+		}
+
+		.search-empty {
+			padding: 0.75rem;
+			text-align: center;
+			opacity: 0.75;
+		}
+
+		.search-hint {
+			margin: 0;
+			font-size: 0.75rem;
+			text-align: center;
+			opacity: 0.75;
+			color: var(--text-muted);
+		}
+
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			border: 0;
+			clip: rect(0, 0, 0, 0);
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		@media (max-width: 640px) {
+			.search-dialog {
+				padding: 0.75rem;
+			}
+
+			.search-results {
+				max-height: 12rem;
+			}
+		}
+</style>
