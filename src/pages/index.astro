@@ -6,8 +6,11 @@ import path from "path";
 
 const filePath = path.join(process.cwd(), "src/data/ai-responses.md");
 const fileContents = await fs.readFile(filePath, "utf8");
-const responses = fileContents.split("\n").filter(Boolean); // filter(Boolean) removes empty lines
-const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+const responses = fileContents
+  .split("\n")
+  .map((line) => line.trim())
+  .filter(Boolean);
+const fallbackQuote = responses.at(0) ?? "";
 
 const blogModules = Object.values(import.meta.glob("./blog/*.md", { eager: true }));
 
@@ -40,7 +43,39 @@ const latestPost = postsWithDates
 	<Navbar />
 	<main>
 		<h1>Matt C</h1>
-		<p>✨{randomResponse}✨</p>
+		<p id="tagline-text" aria-live="polite">✨{fallbackQuote}✨</p>
+		<script is:inline define:vars={{ quotes: responses }}>
+  const textElement = document.getElementById("tagline-text");
+  if (!Array.isArray(quotes) || quotes.length === 0 || !textElement) {
+    return;
+  }
+
+  const storageKey = "tagline-cycle-index";
+  let nextIndex = 0;
+
+  try {
+    const storedValue = window.localStorage.getItem(storageKey);
+    const parsed = Number.parseInt(storedValue ?? "", 10);
+    if (Number.isInteger(parsed) && parsed >= 0 && parsed < quotes.length) {
+      nextIndex = parsed;
+    }
+  } catch (error) {
+    console.error("Unable to read tagline index from storage", error);
+  }
+
+  const quote = quotes[nextIndex] ?? "";
+  if (quote) {
+    textElement.textContent = `✨${quote}✨`;
+  }
+
+  const followingIndex = (nextIndex + 1) % quotes.length;
+
+  try {
+    window.localStorage.setItem(storageKey, String(followingIndex));
+  } catch (error) {
+    console.error("Unable to persist tagline index to storage", error);
+  }
+		</script>
 
 		<h2 style="color:yellow;">Support right to repair, be a Clippy!</h2>
 		<a href="https://www.youtube.com/watch?v=2_Dtmpe9qaQ"><img src="/images/clippy.jpg" class="clippy" alt="Change your profile picture to clippy in order to support the right to repair movement."/></a>
