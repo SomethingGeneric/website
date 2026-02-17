@@ -258,6 +258,11 @@ def unique_order(items: Iterable[str]) -> Iterator[str]:
         yield item
 
 
+def normalize_cell(text: str) -> str:
+    """Return a case-insensitive, whitespace-normalized version of the cell."""
+    return re.sub(r"\s+", " ", text.strip()).lower()
+
+
 def ensure_header_column(source: str) -> str:
     if HEADER_PATTERN.search(source):
         return source
@@ -277,7 +282,7 @@ class RowEntry:
     year: str
     links_html: str
     best_html: str
-    courses_html: str
+    courses: List[str]
     year_value: Optional[int]
 
     def is_student(self) -> bool:
@@ -287,6 +292,7 @@ class RowEntry:
         return bool(self.year_value is not None and role_lower.strip() == "")
 
     def to_html(self, indent: str) -> str:
+        courses_html = "<br/>".join(self.courses)
         return (
             f"{indent}<tr>"
             f"<td>{self.name}</td>"
@@ -294,7 +300,7 @@ class RowEntry:
             f"<td>{self.year}</td>"
             f"<td>{self.links_html}</td>"
             f"<td>{self.best_html}</td>"
-            f"<td>{self.courses_html}</td>"
+            f"<td>{courses_html}</td>"
             f"</tr>"
         )
 
@@ -308,6 +314,7 @@ def update_rows(source: str, crawler: CourseCrawler, verbose: bool = False) -> s
     rows: List[RowEntry] = []
     row_index = 0
     indent_default = "        "
+    dedupe_map: dict[Tuple[str, str, str, str, str], RowEntry] = {}
 
     for match in re.finditer(r"(\s*<tr>.*?</tr>)", body_content, re.DOTALL):
         row_text = match.group(1)
@@ -330,7 +337,26 @@ def update_rows(source: str, crawler: CourseCrawler, verbose: bool = False) -> s
                 courses.update(crawler.crawl(variant))
 
         sorted_courses = sorted(code for code in courses if code)
-        courses_html = "<br/>".join(sorted_courses)
+        year_val = parse_year_value(year)
+
+        row_key = (
+            normalize_cell(name),
+            normalize_cell(role),
+            normalize_cell(year),
+            normalize_cell(links_html),
+            normalize_cell(best_html),
+        )
+
+        existing_entry = dedupe_map.get(row_key)
+        if existing_entry:
+            merged_courses = sorted(set(existing_entry.courses).union(sorted_courses))
+            existing_entry.courses = merged_courses
+            if not existing_entry.best_html and best_html:
+                existing_entry.best_html = best_html
+            if existing_entry.year_value is None and year_val is not None:
+                existing_entry.year = year
+                existing_entry.year_value = year_val
+            continue
 
         if verbose:
             summary = ", ".join(sorted_courses) if sorted_courses else "none"
@@ -345,10 +371,11 @@ def update_rows(source: str, crawler: CourseCrawler, verbose: bool = False) -> s
                 year=year,
                 links_html=links_html,
                 best_html=best_html,
-                courses_html=courses_html,
-                year_value=parse_year_value(year),
+                courses=sorted_courses,
+                year_value=year_val,
             )
         )
+        dedupe_map[row_key] = rows[-1]
         row_index += 1
 
     if not rows:
