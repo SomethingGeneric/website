@@ -25,6 +25,9 @@ from urllib.request import Request, urlopen
 
 COURSE_REGEX = re.compile(r"\b[A-Z]{3}-\d{3}\b")
 HEADER_SENTINEL = "<th>Courses Detected</th>"
+HEADER_PATTERN = re.compile(
+    r"<th\b[^>]*>.*?\bCourses\s+Detected\b.*?</th>", re.IGNORECASE | re.DOTALL
+)
 
 
 def find_course_codes(text: str) -> Set[str]:
@@ -256,7 +259,7 @@ def unique_order(items: Iterable[str]) -> Iterator[str]:
 
 
 def ensure_header_column(source: str) -> str:
-    if HEADER_SENTINEL in source or "Courses Detected</a></th>" in source:
+    if HEADER_PATTERN.search(source):
         return source
     header_line = "          <th>Best Content*</th>"
     replacement = f"{header_line}\n          {HEADER_SENTINEL}"
