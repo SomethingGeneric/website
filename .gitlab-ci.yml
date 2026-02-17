@@ -26,25 +26,6 @@ testbuild:
       - dist/
     expire_in: 1 day
 
-# ----------------------------
-# GitLab Proxy Docker Build (Pull/Merge Request)
-# ----------------------------
-glproxy_docker_build:
-  stage: test
-  image: docker:29
-  services:
-    - name: docker:29-dind
-      command: ["--tls=false"]
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  script:
-    - until docker info; do sleep 1; done
-    - docker build --tag glproxy:test ./glproxy
-
 tj_course_refresh:
   stage: update
   image: $IMAGE
