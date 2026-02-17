@@ -19,21 +19,43 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Iterable, Iterator, List, Optional, Set, Tuple
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin, urlparse, urldefrag
+from urllib.parse import urljoin, urlparse, urldefrag, unquote
 from urllib.request import Request, urlopen
 
 
 COURSE_REGEX = re.compile(r"\b[A-Z]{3}-\d{3}\b")
-ROW_REGEX = re.compile(
-    r"<tr><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td>(?:<td>(.*?)</td>)?</tr>",
-    re.DOTALL,
-)
 HEADER_SENTINEL = "<th>Courses Detected</th>"
 
 
 def find_course_codes(text: str) -> Set[str]:
     """Return all matching course codes within the supplied text."""
     return set(COURSE_REGEX.findall(text))
+
+
+def find_course_codes_in_url(url: str) -> Set[str]:
+    """Return course codes detected within a URL string."""
+    if not url:
+        return set()
+    decoded = unquote(url)
+    return set(COURSE_REGEX.findall(decoded))
+
+
+def extract_cells(row_html: str) -> List[str]:
+    """Return the <td> cell contents for the provided table row."""
+    return re.findall(r"<td>(.*?)</td>", row_html, flags=re.DOTALL)
+
+
+def parse_year_value(raw_year: str) -> Optional[int]:
+    """Attempt to parse a 4-digit graduation year from the supplied text."""
+    if not raw_year:
+        return None
+    match = re.search(r"\b(\d{4})\b", raw_year)
+    if not match:
+        return None
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return None
 
 
 def strip_fragment(url: str) -> str:
@@ -91,10 +113,8 @@ class CourseCrawler:
     def collect_from_links(self, html: str) -> Set[str]:
         codes: Set[str] = set()
         for raw_href in unique_order(AnchorExtractor.extract(html)):
-            normalized = self._normalize_url(raw_href)
-            if not normalized:
-                continue
-            codes.update(self.crawl(normalized))
+            for variant in self.expand_variants(raw_href):
+                codes.update(self.crawl(variant))
         return codes
 
     def crawl(self, url: str) -> Set[str]:
@@ -108,6 +128,7 @@ class CourseCrawler:
         visited: Set[str] = set()
         queue: deque[Tuple[str, int]] = deque([(normalized, 0)])
         discovered_codes: Set[str] = set()
+        discovered_codes.update(find_course_codes_in_url(normalized))
 
         self._log(f"[crawl] start {normalized}")
 
@@ -116,6 +137,8 @@ class CourseCrawler:
             if current in visited:
                 continue
             visited.add(current)
+
+            discovered_codes.update(find_course_codes_in_url(current))
 
             self._log(f"[fetch] {current} (depth {depth})")
             text = self._fetch(current)
@@ -135,6 +158,7 @@ class CourseCrawler:
                 next_url = self._normalize_url(urljoin(current, href))
                 if not next_url:
                     continue
+                discovered_codes.update(find_course_codes_in_url(next_url))
                 if not same_host(normalized, next_url):
                     continue
                 if next_url in visited:
@@ -179,6 +203,36 @@ class CourseCrawler:
         if self.config.verbose:
             print(message)
 
+    def expand_variants(self, url: str) -> List[str]:
+        """Return normalized variants of a URL that should be crawled."""
+        variants: List[str] = []
+        normalized = self._normalize_url(url)
+        if not normalized:
+            return variants
+
+        variants.append(normalized)
+
+        parsed = urlparse(normalized)
+        host = parsed.netloc.lower()
+        path = parsed.path.strip("/")
+
+        if host == "github.com" and path and "/" not in path:
+            repos_variant = parsed._replace(query="tab=repositories")
+            variants.append(repos_variant.geturl())
+
+        results: List[str] = []
+        seen: Set[str] = set()
+        for candidate in variants:
+            normalized_candidate = self._normalize_url(candidate)
+            if not normalized_candidate:
+                continue
+            if normalized_candidate in seen:
+                continue
+            seen.add(normalized_candidate)
+            results.append(normalized_candidate)
+
+        return results
+
     @staticmethod
     def _normalize_url(url: Optional[str]) -> Optional[str]:
         if not url:
@@ -202,7 +256,7 @@ def unique_order(items: Iterable[str]) -> Iterator[str]:
 
 
 def ensure_header_column(source: str) -> str:
-    if HEADER_SENTINEL in source:
+    if HEADER_SENTINEL in source or "Courses Detected</a></th>" in source:
         return source
     header_line = "          <th>Best Content*</th>"
     replacement = f"{header_line}\n          {HEADER_SENTINEL}"
@@ -211,59 +265,112 @@ def ensure_header_column(source: str) -> str:
     return source.replace(header_line, replacement, 1)
 
 
+@dataclasses.dataclass
+class RowEntry:
+    index: int
+    leading_ws: str
+    name: str
+    role: str
+    year: str
+    links_html: str
+    best_html: str
+    courses_html: str
+    year_value: Optional[int]
+
+    def is_student(self) -> bool:
+        role_lower = self.role.lower()
+        if "student" in role_lower or "alumni" in role_lower:
+            return True
+        return bool(self.year_value is not None and role_lower.strip() == "")
+
+    def to_html(self, indent: str) -> str:
+        return (
+            f"{indent}<tr>"
+            f"<td>{self.name}</td>"
+            f"<td>{self.role}</td>"
+            f"<td>{self.year}</td>"
+            f"<td>{self.links_html}</td>"
+            f"<td>{self.best_html}</td>"
+            f"<td>{self.courses_html}</td>"
+            f"</tr>"
+        )
+
+
 def update_rows(source: str, crawler: CourseCrawler, verbose: bool = False) -> str:
     tbody_match = re.search(r"(<tbody>)(.*?)(</tbody>)", source, re.DOTALL)
     if not tbody_match:
         raise RuntimeError("Unable to find <tbody> block.")
 
     body_content = tbody_match.group(2)
-    rebuilt = []
-    last_index = 0
+    rows: List[RowEntry] = []
+    row_index = 0
+    indent_default = "        "
 
     for match in re.finditer(r"(\s*<tr>.*?</tr>)", body_content, re.DOTALL):
-        rebuilt.append(body_content[last_index:match.start()])
         row_text = match.group(1)
-        leading_ws = row_text[: len(row_text) - len(row_text.lstrip())]
+        leading_ws = indent_default
         trimmed = row_text.strip()
+        cells = extract_cells(trimmed)
 
-        parsed = ROW_REGEX.fullmatch(trimmed)
-        if not parsed:
-            rebuilt.append(row_text)
-            last_index = match.end()
+        if len(cells) < 5:
             continue
 
-        name, role, year, links_html, best_html, _existing_courses = parsed.groups()
-        link_urls = list(unique_order(re.findall(r'href="([^"]+)"', links_html)))
-        if not link_urls:
-            courses = set()
-        else:
-            courses = set()
-            for url in link_urls:
-                courses.update(crawler.crawl(url))
+        name, role, year, links_html, best_html = cells[:5]
+        existing_courses = cells[5] if len(cells) > 5 else ""
 
-        sorted_courses = sorted(courses)
+        link_urls = list(unique_order(re.findall(r'href="([^"]+)"', links_html)))
+        courses: Set[str] = set()
+        if existing_courses:
+            courses.update(code.strip() for code in existing_courses.split("<br/>") if code.strip())
+        for url in link_urls:
+            for variant in crawler.expand_variants(url):
+                courses.update(crawler.crawl(variant))
+
+        sorted_courses = sorted(code for code in courses if code)
         courses_html = "<br/>".join(sorted_courses)
 
         if verbose:
             summary = ", ".join(sorted_courses) if sorted_courses else "none"
             print(f"[row] {name}: {summary}")
 
-        new_row = (
-            f"{leading_ws}<tr>"
-            f"<td>{name}</td>"
-            f"<td>{role}</td>"
-            f"<td>{year}</td>"
-            f"<td>{links_html}</td>"
-            f"<td>{best_html}</td>"
-            f"<td>{courses_html}</td>"
-            f"</tr>"
+        rows.append(
+            RowEntry(
+                index=row_index,
+                leading_ws=leading_ws,
+                name=name,
+                role=role,
+                year=year,
+                links_html=links_html,
+                best_html=best_html,
+                courses_html=courses_html,
+                year_value=parse_year_value(year),
+            )
         )
-        rebuilt.append(new_row)
-        last_index = match.end()
+        row_index += 1
 
-    rebuilt.append(body_content[last_index:])
+    if not rows:
+        return source
 
-    inner = "".join(rebuilt)
+    non_students = [row for row in rows if not row.is_student()]
+    students = [row for row in rows if row.is_student()]
+
+    non_students.sort(key=lambda r: r.index)
+    students.sort(
+        key=lambda r: (
+            r.year_value is None,
+            r.year_value if r.year_value is not None else float("inf"),
+            r.name.lower(),
+        )
+    )
+
+    ordered_rows = non_students + students
+    indent = ordered_rows[0].leading_ws if ordered_rows else indent_default
+    inner = "\n".join(row.to_html(indent) for row in ordered_rows)
+    if inner:
+        inner = "\n" + inner
+        if not inner.endswith("\n"):
+            inner += "\n"
+
     return source[:tbody_match.start(2)] + inner + source[tbody_match.end(2):]
 
 
