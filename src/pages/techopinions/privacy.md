@@ -4,7 +4,7 @@ layout: /src/layouts/MarkdownLayout.astro
 # Thoughts on Privacy and related issues
 Privacy is (or should be?*) a right. It's a privilege you give to a company, government, or any other kind of organization when they know something about you.
 
-And it's a shame that (at least in the US) it's consistently enforced that you can take back any data that you have given out. ("Right to be forgotten")
+And it's a shame that (at least in the US) it's ***NOT*** consistently enforced that you can take back any data that you have given out. ("Right to be forgotten")
 
 ## ALPR (Automated License Plate Readers)
 ALPR systems are an inherent threat to your privacy. Big systems from companies like Flock routinely share their collected data across state/district lines, in violation of typical data sharing agreements/policies for law enforcement.
