@@ -5,7 +5,7 @@ title: "Contact"
 # Contact me
 * Email: `matt[at]xhec[dot]dev`
 * Stoat: `ratthew#9549`
-* Discord: Don't use discord as of March 2026..... ~~formerly `r4tth3w`~~
+* Discord: Don't use discord as of March 2026.....
 * Signal: `ratthew.69`
 * Matrix: `@ratthew:chat.thibble.org`
 
