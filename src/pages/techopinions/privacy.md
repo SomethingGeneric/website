@@ -17,6 +17,7 @@ There are lots of good efforts to fight the rollout of these systems, the links 
 * https://www.eff.org/deeplinks/2025/10/flock-safety-and-texas-sheriff-claimed-license-plate-search-was-missing-person-it
 
 ## More ALPR Info
+* https://alpr.watch
 * https://www.eff.org/pages/what-alpr
 * https://consumerrights.wiki/w/Flock_Safety
 * https://consumerrights.wiki/w/Flock_license_plate_readers
