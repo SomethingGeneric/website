@@ -16,7 +16,7 @@ For this website, as well as anything on Goober.Cloud, my homelab, etc, you have
 Whether intentional or not, if you discover security issues with this site or any of my other services as mentioned above, please use any of the contact methods listed on the contact page to get in touch with me ASAP. I cannot guarantee rewards, but I will post recognition, and remedy, of your discoveries.
 
 ## Data Collection
-This site runs Umami analytics, which you can read more abouit [here](github.com/umami-software/umami). This software gives me information on the general demographics of where people are from and what they are reading. I do not export this data, sell, share, or otherwise use it anywhere else. The only reason this or the below mentioned reverse proxy data would ever be disclosed is to comply with US law. If this happens, I will update this page.
+This site runs Umami analytics, which you can read more about [here](https://github.com/umami-software/umami). This software gives me information on the general demographics of where people are from and what they are reading. I do not export this data, sell, share, or otherwise use it anywhere else. The only reason this or the below mentioned reverse proxy data would ever be disclosed is to comply with US law. If this happens, I will update this page.
 
 ### If you object to being counted in page analytics
 Simply use an ad-blocker like u-block origin, if you aren't already. This will disable being counted in Umami, as well as disable my helpful note that you really should be using an ad-blocker anyways. It's better for your privacy, and will make the entire internet a better experience for you.
