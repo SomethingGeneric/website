@@ -611,6 +611,10 @@ input[type="submit"]:active {
         display: none;
 }
 
+#alpr-note-hidden, #alpr-note {
+        display: none;
+}
+
 @media (min-height: 30em) { @media (min-width: 75em) {
         #ad-note {
                 display: block;
@@ -628,6 +632,69 @@ input[type="submit"]:active {
                 margin-bottom: 0em;
         }
 }}
+
+#alpr-note {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 2000;
+}
+
+.alpr-note__panel {
+        width: min(92vw, 520px);
+        border: 2px solid var(--border);
+        background-color: #111111;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.alpr-note__eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        margin: 0 0 16px;
+}
+
+.alpr-note__image {
+        display: block;
+        width: min(220px, 70vw);
+        height: auto;
+        margin: 0 auto 16px;
+        border: 2px solid var(--border);
+}
+
+.alpr-note__message {
+        margin: 0 0 20px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+}
+
+.alpr-note__message a {
+        color: var(--accent);
+}
+
+.alpr-note__button {
+        background: transparent;
+        color: var(--text);
+        border: 2px solid var(--border);
+        padding: 10px 18px;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+}
+
+.alpr-note__button:hover,
+.alpr-note__button:focus-visible {
+        border-color: var(--accent);
+        color: var(--accent);
+}
 
 @media (max-width: 768px) {
   body {

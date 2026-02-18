@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SearchPalette from '../components/SearchPalette.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { themeAliases, themeOptions, themeStorageKey } from '../data/themes';
+import alprStatesRaw from '../data/alpr-states.txt?raw';
 
 const currentYear = new Date().getFullYear();
 const buildDate = new Date().toLocaleString('en-US', {
@@ -51,6 +52,87 @@ const inlineThemeScript = `(function () {
 		document.documentElement.dataset.theme = initialTheme;
 	}
 })();`;
+
+const stateCodeMap = {
+  alabama: 'AL',
+  alaska: 'AK',
+  arizona: 'AZ',
+  arkansas: 'AR',
+  california: 'CA',
+  colorado: 'CO',
+  connecticut: 'CT',
+  delaware: 'DE',
+  florida: 'FL',
+  georgia: 'GA',
+  hawaii: 'HI',
+  idaho: 'ID',
+  illinois: 'IL',
+  indiana: 'IN',
+  iowa: 'IA',
+  kansas: 'KS',
+  kentucky: 'KY',
+  louisiana: 'LA',
+  maine: 'ME',
+  maryland: 'MD',
+  massachusetts: 'MA',
+  michigan: 'MI',
+  minnesota: 'MN',
+  mississippi: 'MS',
+  missouri: 'MO',
+  montana: 'MT',
+  nebraska: 'NE',
+  nevada: 'NV',
+  'new hampshire': 'NH',
+  'new jersey': 'NJ',
+  'new mexico': 'NM',
+  'new york': 'NY',
+  'north carolina': 'NC',
+  'north dakota': 'ND',
+  ohio: 'OH',
+  oklahoma: 'OK',
+  oregon: 'OR',
+  pennsylvania: 'PA',
+  'rhode island': 'RI',
+  'south carolina': 'SC',
+  'south dakota': 'SD',
+  tennessee: 'TN',
+  texas: 'TX',
+  utah: 'UT',
+  vermont: 'VT',
+  virginia: 'VA',
+  washington: 'WA',
+  'west virginia': 'WV',
+  wisconsin: 'WI',
+  wyoming: 'WY',
+  'district of columbia': 'DC'
+};
+
+const normalizeStateCode = (input) => {
+  if (!input) {
+    return null;
+  }
+  const trimmed = input.trim();
+  if (!trimmed) {
+    return null;
+  }
+  const upper = trimmed.toUpperCase();
+  if (upper.length === 2) {
+    return upper;
+  }
+  const key = trimmed.toLowerCase();
+  return stateCodeMap[key] ?? null;
+};
+
+const alprStateCodes = alprStatesRaw
+  .split(/\r?\n/)
+  .map((line) => line.split('#')[0].trim())
+  .filter(Boolean)
+  .map(normalizeStateCode)
+  .filter(Boolean);
+
+const alprStateCodesLiteral = JSON.stringify(alprStateCodes);
+const envGeoipUrl = import.meta.env.PUBLIC_GEOIP_URL;
+const geoipUrlLiteral = JSON.stringify(envGeoipUrl && envGeoipUrl.trim() ? envGeoipUrl : 'https://ipapi.co/json/');
 ---
 <!DOCTYPE html>
 <html lang="en" data-theme={defaultTheme}>
@@ -82,6 +164,7 @@ const inlineThemeScript = `(function () {
 				<!-- Hi there! If you're reading this, don't be alarmed. The below script is NAMED to look like an ads-hook, so that you won't see the 
 				popup content if you actually HAVE an adblocker.-->
 				<script defer src="/scripts/nativeads.js"></script>
+				<script defer src="/scripts/alpr-warning.js"></script>
 
 				<!-- Umami analytics -->
 				<script defer src="https://umami.mattcompton.dev/script.js" data-website-id="7b10f775-3ad8-45fd-9641-888ad99cac3f"></script>
@@ -92,6 +175,28 @@ const inlineThemeScript = `(function () {
 				>
 				<p id="ad-note-content-wrapper">
 				</p>
+				</div>
+
+				<div
+				id="alpr-note-hidden"
+				data-alpr-states={alprStateCodesLiteral}
+				data-geoip-url={geoipUrlLiteral}
+				data-privacy-link="/techopinions/privacy"
+				class="alpr-note"
+				role="dialog"
+				aria-modal="true"
+				aria-hidden="true"
+				>
+					<div class="alpr-note__panel">
+						<p class="alpr-note__eyebrow">captcha required</p>
+						<img class="alpr-note__image" src="/images/clippy.jpg" alt="Clippy" width="220" height="220" loading="lazy" />
+						<p class="alpr-note__message">
+							Hi, clippy sees that you live in <span id="alpr-state-label">your state</span> and your state is
+							uncomfortably friendly to ALPR, which damages your privacy.
+							<a id="alpr-privacy-link" href="/techopinions/privacy">Read more</a>.
+						</p>
+						<button type="button" id="alpr-close-button" class="alpr-note__button">I Understand</button>
+					</div>
 				</div>
 				<footer>
 					<p>please contact me if you notice anything missing or broken on this site</p>
