@@ -10,6 +10,9 @@ The opinions expressed on this site belong solely to me, Matt Compton. They do *
 ## Content Correct-ness
 I will make every effort to post factually correct content, and thoroughly research my blogposts, articles, etc. That said, I am not a full-time writer, and stuff that interests me usually has to do with the internet, technology, computers, etc, and stuff that changes really fast. As with any other errors, please feel free to email me (or use other listed methods to get in touch) if you notice something that needs correction.
 
+## AI Development Tool Use
+I may use AI for site development, but I will **NEVER** post AI created text content on this website. By this, I mean that site styling or functionality may be made with the help of LLMs, but I am committed to never making you read some AI generated content that you didn't ask for. I hope we can all agree that the only place AI written paragraphs belong is in the chat with one that you asked for by yourself. 
+
 ## Security Policy
 For this website, as well as anything on Goober.Cloud, my homelab, etc, you have my permission to pentest with the understanding that you **WILL NOT** alter, remove, or destroy anything in a way that would disrupt the service.
 
